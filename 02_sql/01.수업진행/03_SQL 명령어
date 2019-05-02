@@ -1,0 +1,30 @@
+SQL 명령어 
+
+# DDL : Data Definition Language
+ - CREATE, DROP, TRUNCATE, RENAME...
+ - DB에서 사용하는 객체(테이블, 뷰, 함수, 트리거 등)를 생성, 변경, 삭제등의 명령어
+ - 테이블(TABLE) : 데이터를 저장하는 객체
+ - 뷰(VIEW) : 쿼리문을 저장해서 관리 
+ - 트리거(Trigger) 
+ 	: 객체의 이벤트에 대해 특정한 타이밍에 자동으로 실행하는 프로시져
+	: 이벤트 -> (INSERT, UPDATE, DELETE 등)
+ - 함수(Function) : 결과를 하나만 반환
+ - 프로시져(Procedure)
+ 	: 일련의 쿼리를 마치 하나의 함수처럼 실행하기 위한 쿼리의 집합
+ - 인덱스(Index)
+ 	: 쿼리의 속도 향상을 위해서 사용
+ 
+ 
+# DML : Data Manipulation Language
+ - INSERT, DELETE, UPDATE
+ - 테이블의 데이터를 조작하는 명령어..  등록,수정,삭제
+
+# DQL : Data Query Language
+ - SELECT
+ - 테이블의 데이터를 조회하기 위해서 사용
+
+# TCL : Transaction Control Language
+ - COMMIT, ROLLBACK, SAVEPOINT
+ - 논리적인 데이터 처리 단위에 대한 명령어
+ 
+ 

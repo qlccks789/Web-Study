@@ -1,0 +1,33 @@
+1. 메뉴에서 RunCommandLine 창을 열기
+2. 관리자 사용자 접속하기
+	-> conn system/패스워드
+	-> conn system/admin
+	
+3. HR 사용자 계정을 잠금을 해제한다.
+	- alter user 사용자아이디 identified by 패스워드설정 account unlock(잠금해제);
+	- alter user hr identified by hr account unlock;
+
+4. HR 접속하기
+	- conn 접속할사용자아이디/패스워드
+	- conn hr/hr
+	
+
+5. 접속 
+Sqldeveloper 접속하기..
+	- 화면상단 "+" 아이콘 눌러서 접속 정보 저장하기
+	- 팝업에서 : 
+		1. 접속 이름 : HR - 연습용 사용자 (사용자가 접속하는 정보를 관리하기 위한 것)
+		2. 사용자 이름 : hr (접속할 사용자 아이디)
+		3. 비밀번호 : hr (사용자의 설정된 패스워드)
+		호스트이름 : localhost, 127.0.0.1 자신 컴퓨터
+		포트번호 : 1521 (오라클 서비스 구분 번호) 
+		SID : xe (서비스이름 - xe(eXpress Edition)
+		
+6.Toad(토드) 접속방법
+User / Schema 
+	: hr
+패스워드 
+	: hr
+TNS 
+Database
+	:XE 선택
