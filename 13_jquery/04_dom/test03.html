@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>css selectors</title>
+<style type="text/css">
+	p {
+		font-weight:bold;
+		font-size:30px;
+		color:blue;
+		margin:10 10;
+		padding:2px;
+		border: 2px solid orange;
+	}
+	b {
+		font-size:30px;
+	}
+</style>
+<script src="../js/jquery-3.2.1.js"></script>
+</head>
+<body>
+	<p>p태그-1</p>
+	<p id="p2">p태그-2</p>
+	<p>p태그-3</p>
+	
+	<button>insertAfter()</button>
+	<button>insertBefore()</button>
+	<button>appendTo()</button>
+	<button>prependTo()</button>
+	
+	<script>
+	/*
+		insertAfter   : 선택자 뒤에 추가
+		insertBefore  : 선택자 앞에 추가
+		appendTo  : 선택자 엘리먼트 내용의 뒤에 추가
+		prependTo : 선택자 엘리먼트 내용의 앞에 추가
+	*/
+		var cnt = 1;
+		$("button:eq(0)").click(function () {
+			$("<b>" + cnt++ + "</b>").insertAfter("#p2");
+		});
+		$("button:eq(1)").click(function () {
+			$("<b>" + cnt++ + "</b>").insertBefore("#p2");
+		});
+		$("button:eq(2)").click(function () {
+			$("<b>" + cnt++ + "</b>").appendTo("#p2");
+		});
+		$("button:eq(3)").click(function () {
+			$("<b>" + cnt++ + "</b>").prependTo("#p2");
+		});	
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+

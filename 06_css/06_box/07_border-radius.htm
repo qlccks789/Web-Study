@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!-- 
+    테두리 둥근선 만들기 : border-radius
+ -->
+<html>
+<head>
+<title> border-radius </title>
+<meta charset="utf-8" />
+<style>
+    div {
+        border: 1px solid red;
+        width: 300px;
+        height: 300px;
+        margin-bottom: 10px;
+    }
+    .radius1 {
+        border-radius: 20px;
+    }
+    .radius2 {
+        border-top-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
+    .radius3 {
+        border-radius: 20px 50px;
+    }
+</style>
+</head>
+<body>
+    <div class="radius1">
+        border-radius: 20px;
+    </div>
+    <div class="radius2">
+ 	    border-top-left-radius: 20px;<br />
+ 	    border-bottom-right-radius: 20px;
+    </div>
+    <div class="radius3">border-radius: 20px 50px;</div>
+</body>
+</html>

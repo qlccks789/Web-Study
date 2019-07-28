@@ -1,0 +1,56 @@
+<!-- 
+	애니메이션 체인
+	: 동일한 요소에 대해서 효과 적용시 큐에 쌓이고 순서대로 실행된다.
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <style>
+        div {
+            width: 50px; height: 50px;
+            background-color:orange;
+            position: relative;
+        }
+		button {
+			margin: 5px;
+			font-size: 20px;
+			height: 50px;
+			background: tomato;
+			color: white;
+			border: 5px solid black;
+		}        
+    </style>
+    <script src="../js/jquery-3.2.1.js"></script>    
+</head>
+<body>
+    <button>클릭</button>	
+    <div></div>
+    <script>
+	// 애니메이션 체인
+	// : 동일한 요소에 대해서 효과 적용시 큐에 쌓이고 순서대로 실행된다.
+	
+	$("button").click(function () {
+		$("div").animate({left: "+=100"}, 1000)
+		        .animate({width: "+=100"}, 1000);
+	});
+	
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

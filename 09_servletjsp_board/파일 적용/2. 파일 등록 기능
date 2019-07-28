@@ -1,0 +1,110 @@
+1. 파일 등록 SQL 추가하기(board.xml에 추가)
+
+	<insert id="insertFile" parameterType="file">
+		insert into tb_board_file (
+			file_no, no, file_path, org_name, system_name, file_size
+		) values (
+			s_board_file_no.nextval, #{no}, #{filePath}, #{orgName}, #{systemName}, #{fileSize}		
+		)
+	</insert> 			
+
+
+2. SQL을 호출하는 Mapper 코드 추가 (BoardMapper.java)
+
+	void insertFile(FileVO file);
+
+
+3. writeform.jsp 페이지에 첨부파일 추가
+
+	- 내용 항목 바로 밑에 추가하기 	
+	    <div>
+	 		첨부파일 : <input type="file" name="attach" />
+	 	</div>
+	
+	- form 에 enctype 추가하기
+	    <form method='post' action='write.do' enctype="multipart/form-data">
+			
+
+4. 업로드시의 이름 정책 클래스 생성하기(kr.co.mlec.common.file 패키지 하위)
+
+public class FunnyFileRenamePolicy implements FileRenamePolicy {
+	@Override
+	public File rename(File f) {
+		String parent = f.getParent();
+		String name = f.getName();
+		String ext = "";
+		int index = name.lastIndexOf(".");
+		if (index != -1) ext = name.substring(index);
+		
+		String uName = UUID.randomUUID().toString();
+		return new File(parent, uName + ext);
+	}
+}
+
+
+5. board.xml 게시물 입력 코드를 selectKey로 변경
+   - 등록된 게시물의 글번호를 파일에 넣어주기 위해서 사용
+   - myBatis 수업한 것중 
+   - Test3.java 의  test03() 메서드 test3.xml 의 insertBoard 확인
+
+    <insert id="insertBoard" parameterType="board">
+    	<selectKey keyProperty="no" resultType="int" order="BEFORE">
+    		select s_board_no.nextval from dual
+    	</selectKey>
+		insert into tb_board(
+			no, writer, title, content
+		) values (
+			#{no}, #{writer}, #{title}, #{content}
+		) 
+	</insert>
+	
+6. Controller 서블릿 내용 변경하기(kr.co.mlec.board.controller.WriteBoardController)
+
+	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String uploadRoot = "c:/bit2019/upload";
+		SimpleDateFormat sdf = new SimpleDateFormat(
+				"/yyyy/MM/dd"
+		);
+		String path = "/board" + sdf.format(new Date());
+		File file = new File(uploadRoot + path);
+		if (file.exists() == false) file.mkdirs();
+		
+		MultipartRequest mRequest = new MultipartRequest(
+				request, 
+				uploadRoot + path, //  
+				1024 * 1024 * 100,  // 
+				"utf-8", // 
+				new FunnyFileRenamePolicy()
+		);
+		
+		// 파라미터 정보를 읽어 데이터베이스에 저장하기
+		BoardVO board = new BoardVO();
+		board.setTitle(mRequest.getParameter("title"));
+		board.setWriter(mRequest.getParameter("writer"));
+		board.setContent(mRequest.getParameter("content"));
+		mapper.insertBoard(board);
+
+		// 첨부파일 부분 추가
+		String name = "attach";
+		File f = mRequest.getFile(name);
+		if (f != null) {
+			String oriName = mRequest.getOriginalFileName(name);
+			String systemName = mRequest.getFilesystemName(name);
+			long fileSize = f.length();
+			
+			// 데이터베이스에 파일 정보 저장
+			FileVO fileVO = new FileVO();
+			fileVO.setNo(board.getNo());
+			fileVO.setFilePath(path);
+			fileVO.setOrgName(oriName);
+			fileVO.setSystemName(systemName);
+			fileVO.setFileSize((int)fileSize);
+			mapper.insertFile(fileVO);
+		}
+		
+		response.sendRedirect("list.do");
+	}
+
+
+		
+	

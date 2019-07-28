@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--
+    이벤트 설정 이해하기
+
+    고전 이벤트 설정 방식
+    - 태그에 이벤트를 직접 설정하기 : 권장하지 않는다.
+      <button type="button" onclick="a();">클릭</button>
+      
+    - 태그 객체의 프로퍼티를 활용
+      : 객체.on이벤트타입 = 콜백함수;  
+      : <button>클릭</button>
+        var btn = document.querySelector("button");
+        btn.onclick = a;
+
+
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h2>고전 이벤트 설정 연습</h2>
+    <button onclick="fn1();">버튼 1</button>
+    <button id="btn2">버튼 2</button>
+    <button id="btn3">버튼 3</button>
+
+    <script>
+        function fn1() {
+            console.log("fn1 호출");
+            console.log(this);
+        }
+        function fn2() {
+            console.log("fn2 호출");
+            console.log(this);
+        }
+        
+        var btn2 = document.querySelector("#btn2");
+        btn2.onclick = fn2;
+        
+        var btn3 = document.querySelector("#btn3");
+        btn3.onclick = function () {
+            console.log("버튼 3번 눌림");
+            console.log(this);
+            console.log(this.innerHTML);
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p" 
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context 
+                           http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/mvc 
+                           http://www.springframework.org/schema/mvc/spring-mvc.xsd
+                           http://www.springframework.org/schema/tx 
+                           http://www.springframework.org/schema/tx/spring-tx.xsd
+                           http://www.springframework.org/schema/aop 
+                           http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<context:component-scan base-package="kr.co.mlec.db" />
+	
+	<!-- 마이바티스 정보 처리부분 -->
+	<context:property-placeholder 
+		   location="classpath:config/db/mybatis/db.properties" />
+	
+	<!-- 데이터베이스의 연결을 커넥션 풀 관리 : apache 제공되는 dbcp2 라이브러리 활용 -->
+	<bean id="dataSource" 
+	      class="org.apache.commons.dbcp2.BasicDataSource" 
+	      p:driverClassName="${jdbc.oracle.driver}" 
+	      p:url="${jdbc.oracle.url}" 
+	      p:username="${jdbc.oracle.username}" 
+	      p:password="${jdbc.oracle.password}" />
+	
+	<!-- 스프링과 myBatis 연결 -->
+	<bean id="sqlSessionFactory" 
+	      class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="typeAliasesPackage" 
+		          value="kr.co.mlec.db.repository.vo" />
+		<property name="mapperLocations" 
+		          value="classpath:config/db/sqlmap/*.xml" />
+		<property name="configLocation" 
+		          value="classpath:config/db/mybatis/sqlMapConfig.xml" />
+	</bean>
+	
+	<!-- Mapper 인터페이스 정보를 스프링이 관리 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" 
+		          value="kr.co.mlec.db.repository.mapper" />
+	</bean>
+	
+	<!-- 트랜잭션 관리하기 -->
+	
+	<bean id="transactionManager" 
+	      class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<!-- 트랜잭션처리를 어노테이션 방식으로 -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+
+	<!-- 
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="insert*" rollback-for="Exception" />
+			<tx:method name="delete*" rollback-for="Exception"  />
+			<tx:method name="update*" rollback-for="Exception"  />
+		</tx:attributes>
+	</tx:advice>
+	 -->	
+	
+	<!-- 트랜잭션을 위한 AOP 설정 
+	<aop:config>
+		<aop:pointcut id="pCut" 
+		              expression="execution(public * kr.co.mlec.db..service.*Impl.*(..))"/>
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="pCut" />			
+	</aop:config>
+	-->
+
+
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

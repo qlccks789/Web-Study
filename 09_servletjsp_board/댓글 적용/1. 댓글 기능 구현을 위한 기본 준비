@@ -1,0 +1,73 @@
+1. 테이블 생성
+create table tb_comment (
+	comment_no number(6) primary key,
+	no number(6) not null references tb_board(no),
+	content varchar2(200) not null,
+	writer varchar2(20) not null,
+	reg_date date default sysdate
+);
+
+2. 시퀀스 생성
+create sequence s_comment_no;
+
+3. VO 추가하기
+package kr.co.mlec.board.vo;
+
+import java.util.Date;
+
+public class CommentVO {
+	private int commentNo;
+	private int no;
+	private String content;
+	private String writer;
+	private Date regDate;
+	public int getCommentNo() {
+		return commentNo;
+	}
+	public void setCommentNo(int commentNo) {
+		this.commentNo = commentNo;
+	}
+	public int getNo() {
+		return no;
+	}
+	public void setNo(int no) {
+		this.no = no;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public String getWriter() {
+		return writer;
+	}
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
+	public Date getRegDate() {
+		return regDate;
+	}
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
+	}
+}
+
+4. sqlMapConfig.xml 파일에 VO 별칭 설정하기
+
+	<typeAlias alias="comment" type="kr.co.mlec.board.vo.CommentVO" />
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

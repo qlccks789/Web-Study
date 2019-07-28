@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.2.1.js"></script>
+<script src="notify.js"></script>
+</head>
+<body>
+	<button>전송</button>
+	<script>
+	// https://notifyjs.jpillora.com/
+		$("button").click(function () {
+			$.notify("홍길동님 안녕하세요~~");
+
+			$.notify("Access granted", "success");
+			$.notify("Do not press this button", "info");
+			$.notify("Warning: Self-destruct in 3.. 2..", "warn");
+			$.notify("BOOM!", "error");
+
+			$("button").notify(
+				"I'm to the right of this box", 
+				{ position:"right" }
+			);
+
+			$.notify(
+				"홍길동님이 접속하였습니다.", 
+				{position: "bottom right"}
+			);
+		});
+
+
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+

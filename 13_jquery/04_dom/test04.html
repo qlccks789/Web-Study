@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>dom</title>	
+	<meta charset="utf-8">
+	<style>
+        * {
+            margin: 0px; padding: 0px;
+        }
+		div > img {
+            display: block;
+            float: left;
+			margin-right: 5px;
+		}
+		input[type=button] {
+			font-size: 20px;
+			font-weight: bold;
+			width: 150px;
+			height: 40px;
+		}
+	</style>
+	<script src="../js/jquery-3.2.1.js"></script>
+</head>
+<body>
+	<button>이미지 이동</button>
+	<button>이미지 중지</button><br /><br />
+	<div>
+	    <img src="images/pic1.jpg" width="200" height="300" />
+	    <img src="images/pic2.jpg" width="200" height="300" />
+	    <img src="images/pic3.jpg" width="200" height="300" />
+		<img src="images/pic4.jpg" width="200" height="300" />
+		<img src="images/Koala.jpg" width="200" height="300" />
+	</div>
+    <script>
+		var id = null;
+
+		$("button:eq(0)").click(function () {
+			if (id == null) {
+				id = setInterval(function () {
+					$("div").append( $("img:first") );
+				}, 1000 / 77);
+			}
+		});
+		$("button:eq(1)").click(function () {
+			if (id != null) {
+				clearInterval(id);
+				id = null;
+			}
+		});
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,56 @@
+<!-- 
+	http://www.jqueryscript.net/loading/jQuery-Plugin-For-Creating-Loading-Overlay-with-CSS3-Animations-waitMe.html
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="waitme/waitMe.css">
+<script src="../js/jquery-3.2.1.js"></script>
+<script src="waitme/waitMe.js"></script>
+</head>
+<body>
+	<button>호출</button>
+	<div id="result"></div>
+	<script>
+		$("button").click(function () {
+			
+			$("body").waitMe({
+				effect: "ios", 
+				text: "처리중입니다.",
+				color: "#000"
+			});
+			
+			$.ajax({
+				url: "/14_jquery_ajax/basic/exam01.do",
+				data: "msg=exam01",
+				success: function (result) {
+					$("#result").html(result);
+					$("body").waitMe("hide");
+				}
+			});
+		});
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

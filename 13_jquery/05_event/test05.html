@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+	p {
+		font-size: 20px;
+		font-weight: bold;
+		height: 40px;
+		background: tomato;
+		color: white;
+		text-align: center;
+		line-height: 40px;
+	}
+	div  {
+		height: 200px;
+		background: yellow;
+		margin-top: 10px;
+		border: 1px solid black;
+	}
+</style>
+<script src="../js/jquery-3.2.1.js"></script>
+</head>
+<body>
+    <p>이벤트 <span>연습</span></p>
+    <div></div>
+    <script>
+		$("div").mousedown(function (event) {
+			var pos = $(this).offset();
+			$("div").prepend(
+				pos.left + "," + pos.top + "," + 
+				event.offsetX + "," + event.offsetY + "," + 
+				event.clientX + "," + event.clientY + "<br>"
+			);
+
+		});
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

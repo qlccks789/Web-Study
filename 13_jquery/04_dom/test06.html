@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+	div {
+		margin: 10px 0px;
+		height: 222px;
+		border: 5px solid skyblue;
+        white-space: nowrap;
+        overflow: auto;
+	}
+	input[type=button] {
+		font-size: 20px;
+		font-weight: bold;
+		width: 150px;
+		height: 40px;
+	}
+</style>
+<script src="../js/jquery-3.2.1.js"></script>
+</head>
+<body>
+	<button>데이터 설정</button>
+	<button>데이터 추출</button>
+	
+    <div>
+		<img src="images/pic1.jpg" width="150" height="200" 
+		     data-who="고아라" />
+    </div>
+	<script>
+	/*
+		data(name, value)  :  jQuery  내부 캐시에 저장
+		data(name)         :  jQuery  내부 캐시에 있는 데이터를 조회 없다면 data-*의 값을 참조
+		data(object)       :  한번에 여러개의 데이터를 저장
+	*/	
+
+	$("button:eq(0)").click(function () {
+		$("img").data("msg", "그림 1입니다.");
+		// $("img").data("who", "고아라의 그림 입니다.");
+	});
+	$("button:eq(1)").click(function () {
+		console.log( $("img").data("msg") );
+		console.log( $("img").data("who") );
+		console.log( $("img").data("test") );
+	});
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

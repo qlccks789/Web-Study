@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>css selectors</title>
+<style type="text/css">
+    div {
+        font-size: 16px;
+        font-weight: normal;
+        padding: 5px;
+    }
+    
+    .choice {
+		border : 2px solid #000000;
+        background: tomato;
+    }
+
+	.fs {
+		font-size: 30px;
+        color: white;
+	}
+</style>
+<script src="../js/jquery-3.2.1.js"></script>
+</head>
+<body>
+	<div id="d1">div1</div>
+	<div id="d2">div<span>2</span></div>
+	<div id="d3">div3</div>
+	<div id="d4">div<span>4</span></div>
+	<div id="d5">div5</div>
+	<div id="d6">div<span>6</span></div>
+	<script>
+	/*
+        필터링 메서드 
+        first()
+        last()
+        eq()       :  0부터 인덱스 시작
+        filter(선택자) : 엘리먼트 집합에서 선택자에 해당하는 엘리먼트 선택 
+        not(선택자) : 엘리먼트 집합에서 선택자에 해당하는 엘리먼트를 제외한 엘리먼트 선택 
+        has(선택자) : 선택자를 포함하는 엘리먼트 선택 
+        slice(숫자1, 숫자2) : 숫자1 부터 숫자2 - 1 인 위치까지 선택
+        is(선택자)
+    */
+    /*    
+        $("div").addClass("choice");
+        $("div:first").addClass("fs");
+    */    
+        
+        // $("div").addClass("choice").first().addClass("fs");
+
+        // $("div").addClass("choice").last().addClass("fs");
+        
+        // $("div").addClass("choice").eq(1).addClass("fs");
+
+        // $("div").addClass("choice").not("#d1").addClass("fs");
+
+        // $("div").addClass("choice").has("span").addClass("fs");
+
+        // $("div").addClass("choice").filter(":gt(2)").addClass("fs");
+        
+        // $("div").addClass("choice").slice(0, 3).addClass("fs");
+
+        console.log($("div").is("#d3"));
+        console.log($("div").is(".d3"));
+
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

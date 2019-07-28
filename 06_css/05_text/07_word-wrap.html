@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!-- 
+   	한 단어가 길때 자동으로 줄 넘기기
+      -  word-wrap : 속성
+      -  word-break
+ -->
+<html>
+<head>
+<meta charset="utf-8">
+<title>한줄텍스트</title>
+<style>
+    p {
+        /* 넓이를 400, 테두리선을 1px solid black, 글자 크기를 1.5배로 */
+        width: 400px;
+        border: 1px solid black;
+        font-size: 1.5em;
+    }
+    .wrap {
+        word-break: break-word;
+    }
+</style>
+</head>
+
+<body>
+    <h2>word-break</h2>    
+    <p>
+    	단어의 길이가 너무 길때 자동 줄넘김 처리한다.
+    	단어의길이가너무길때자동줄넘김처리한다.
+    	aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    </p>
+    <p class="wrap">
+               단어의 길이가 너무 길때 자동 줄넘김 처리한다.
+    	단어의길이가너무길때자동줄넘김처리한다.
+    	aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    </p>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

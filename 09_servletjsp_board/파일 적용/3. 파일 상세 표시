@@ -1,0 +1,39 @@
+1. 파일 목록 SQL 추가하기(board.xml에 추가)
+
+	<resultMap id="fileMap" type="file">
+		<result column="file_no" property="fileNo" />
+		<result column="no" property="no" />
+		<result column="org_name" property="orgName" />
+		<result column="system_name" property="systemName" />
+		<result column="file_path" property="filePath" />
+		<result column="file_size" property="fileSize" />
+	</resultMap>
+	<select id="selectFilesByNo" parameterType="int" 
+	        resultMap="fileMap">
+		select *
+		  from tb_board_file
+		 where no = #{no}
+	</select>			
+
+
+2. SQL을 호출하는 Mapper 코드 추가 (BoardMapper.java)
+
+	List<FileVO> selectFilesByNo(int no);
+
+
+3. Controller 서블릿 내용 변경하기(kr.co.mlec.board.controller.DetailBoardController)
+
+	// 파일 목록 공유
+	List<FileVO> fileList = mapper.selectFilesByNo(no);
+	request.setAttribute("fileList", fileList);
+		
+
+4. detail.jsp 페이지에 첨부파일 항목 추가
+
+	- 조회수 항목 바로 밑에 추가하기 	
+	<div>첨부파일 : 
+		<c:forEach var="file" items="${fileList}">
+			${file.orgName}(${file.fileSize}bytes)
+		</c:forEach>
+	</div>
+

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--
+    innerHTML 설정하기
+    html(val)
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery.js"></script>
+</head>
+<body>
+    <button>1번</button>
+    <button>2번</button>
+    <button>3번</button>
+
+    <div id="a">아이디 접근</div>
+    <div class="b">클래스 접근</div>
+    <div>태그 접근</div>
+    
+    <script>
+        /*
+        var btn1 = document.querySelector("button:nth-child(1)");        
+        btn1.addEventListener("click", function () {
+            var aDiv = document.querySelector("#a");
+            aDiv.innerHTML = "버튼 클릭 후 변경됨";
+        });
+        */
+
+       /* 
+       var btn1 = $("button:nth-child(1)")[0];        
+       btn1.addEventListener("click", function () {
+           var aDiv = $("#a")[0];
+           aDiv.innerHTML = "버튼 클릭 후 변경됨";
+       });
+       */
+
+       var btn1 = $("button:nth-child(1)")[0];        
+       btn1.addEventListener("click", function () {
+           // innerHTML 설정 부분 대체
+        //    $("#a").html("버튼 클릭 후 변경됨");
+           $("div").html("버튼 클릭 후 변경됨");
+       });      
+
+
+    </script>
+</body>
+</html>

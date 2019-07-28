@@ -1,0 +1,53 @@
+<!-- 
+	FormData를 이용한 ajax 파일 전송하기
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.2.1.js"></script>
+</head>
+<body>
+	<form id="ajaxForm">
+		<input type="text" id="msg" name="msg" /><br>
+		<input type="file" name="attachFile" multiple="multiple" />
+		<button type="button">업로드</button>	      
+	</form>
+	<script>
+		$("button").click(function () {
+			let fd = new FormData();
+			
+			// 파라미터 값들을 추가한다.
+			fd.append("msg", $("#msg").val());
+			
+			let files = $("input[name='attachFile']")[0].files;
+// 			console.dir($("input[name='attachFile']")[0].files);
+			
+			for (let i = 0; i < files.length; i++) {
+				console.log(files[i].name, files[i].type, files[i].size);
+				
+				fd.append("attachFile" + i, files[i]);
+			}
+		});
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <style>
+        div {
+            width: 50px; height: 50px;
+            background-color: orange;
+			position: relative;
+        }
+		button {
+			margin: 5px;
+			font-size: 20px;
+			height: 50px;
+			background: tomato;
+			color: white;
+			border: 1px solid black;
+		}          
+    </style>
+    <script src="../js/jquery-3.2.1.js"></script>
+</head>
+<body>
+    <button>시작</button>	
+    <button>stop</button>
+    <button>clearQueue</button>
+    <button>finish</button>
+    <div></div>
+    <script>
+    /*
+        stop() : 현재 실행중인 효과는 즉시 중단
+        stop(clearQueue, jumpToEnd) : true, false 설정
+        clearQueue() : 현재 실행중인 효과는 진행하고 나머지는 삭제
+        finish() : 모든 효과 종료하고 요소를 효과가 완료된 상태로 변경
+    */
+        $("button:eq(0)").click(function () {
+            $("div").animate({left: 500}, 4000)
+                    .animate({top: 200}, 4000)
+                    .animate({width: 200}, 4000);
+        });
+        $("button:eq(1)").click(function () {
+            // $("div").stop();
+            // $("div").stop(false, false);
+            // $("div").stop(true, false);
+            // $("div").stop(false, true);
+            $("div").stop(true, true);
+        });  
+        $("button:eq(2)").click(function () {
+            $("div").clearQueue();
+        });    
+        $("button:eq(3)").click(function () {
+            $("div").finish();
+        });    
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

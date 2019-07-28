@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!-- 
+변형 관련 스타일
+   - 웹 요소의 위치를 옮기거나 크기를 조절하고 
+         회전, 왜곡시키는 것
+   
+     ----------------------------   X축                         Z축
+     |                                                        \
+     |                                                         \
+     |                                                          \ 
+     |                                                           \
+     |                                                             ---------  X축
+     |                                                             |
+     |                                                             |
+     |         2차원 좌표                                                |     3차원 좌표
+     |                                                             |
+     |                                                             |
+                                                                 
+     Y축                                                                  Y축
+   
+   - X, Y 축 값이 커질수록 오른쪽, 아래쪽으로 내려감  
+   - Z 축은 값이 커질수록 앞으로 작을 수록 뒤로
+
+1. transform: 변형함수 값
+   - 변형함수 
+     1. translate(이동)
+         1. translate(tx, ty)
+         2. translateX(tx)
+         3. translateY(ty)
+         4. translateZ(tz)
+     
+     2. scale(확대 / 축소)
+         1. scale(tx, ty)
+         2. scaleX(tx)
+         3. scaleY(ty)
+         4. scaleZ(tz)
+     
+     3. rotate(회전)
+         1. rotate(각도)
+         2. rotateX(각도)
+         3. rotateY(각도)
+         4. rotateZ(각도) 
+            : 각도가 양수일 경우 시계방향 회전, 음수는 반시계 방향
+     
+     4. skew(비틀기)
+         1. skew(x각도, y각도) : y각도를 주지 않으면 0으로 설정됨
+         2. skewX(x각도)
+         3. skewY(y각도)
+         
+2. transform-origin: x축, y축 값;        
+     - x축 : 원점에서의 좌표나 길이 값이나 백분율, left, center, right
+     - y축 : 원점에서의 좌표나 길이 값이나 백분율, top, center, bottom
+
+ -->
+<html>
+<head>
+<title> translate (이동) </title>
+<meta charset="utf-8" />
+<style>
+    div {
+       width: 300px; height: 250px;
+       background: yellow; 
+       border: 2px solid tomato;
+       float: left;
+       margin: 20px;
+    }
+    img {
+        width: 300px; height: 250px;
+        transition: .3s;
+    }
+    #x > img:hover {
+        transform: translateX(80px);
+    }
+    #y > img:hover {
+        transform: translateY(20px);
+    }
+    #all > img:hover {
+        transform: translate(20px, 20px);
+    }
+</style>
+</head>
+<body>
+	<h1>translate(이동)</h1>
+    <div id="x"><img src="../images/pic1.jpg" /></div>
+    <div id="y"><img src="../images/pic1.jpg" /></div>
+    <div id="all"><img src="../images/pic1.jpg" /></div>
+</body>
+</html>
+
+
+
+
+
+

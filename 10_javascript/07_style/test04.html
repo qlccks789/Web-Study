@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <a href="#1" onclick="changeSize('up');">크게</a>
+        <a href="#1" onclick="changeSize('down');">작게</a>
+    </div>
+
+    <div id="result">
+        <p>
+            마술사<br>
+            300년전 유명한 악당인 에더마스크 그가 마을에 나타났다...
+        </p>
+    </div>
+
+    <script>
+        function changeSize(comm) {
+
+            let divEle = document.querySelector("#result");
+            var cssObj = document.defaultView.getComputedStyle(divEle);
+            console.log("fontSize", cssObj.fontSize);
+            let fSize;
+            switch (comm) {
+                case "up":
+                    fSize = parseInt(cssObj.fontSize) + 2;
+                    break;
+                case "down":
+                    fSize = parseInt(cssObj.fontSize) - 2;
+                    break;
+            }
+            divEle.style.fontSize = fSize + "px";
+        }
+    </script>
+</body>
+</html>

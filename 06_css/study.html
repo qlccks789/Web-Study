@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>다이닝코드 클론 연습하기</title>
+    <style>
+        * {margin: 0px; padding: 0px; box-sizing: border-box;}
+        html, body{
+            height: 100%;
+        }
+        ul, li {
+            list-style: none;
+        }
+
+        .container {
+            height: 100%;
+            width: 100%;
+            background: #aabbcc;
+        }
+
+        .header {
+            background: #fff;
+            height: 80px;
+        }
+
+        .header__center {
+            /* border: 1px solid black; */
+            height: 100%;
+            width: 940px;
+            margin: 0 auto;
+        }
+
+        .header__center > .header__logo {    
+            float: left;
+            width: 23%;
+            height: 100%;
+            border-right: 1px solid #ccc;
+            background: url(https://s3-ap-northeast-1.amazonaws.com/dcicons/new/images/web/common/ic-header-logo@2x.png) no-repeat center center;
+            background-size: 200px;
+        }
+
+        .header__center > .header__search {
+            float: left;
+            width: 54%;
+            height: 100%;
+        }
+        .header__center > .header__search > input {
+            background: url(https://s3-ap-northeast-1.amazonaws.com/dcicons/new/images/web/common/search@2x.png) no-repeat left;
+            background-size: 45px;
+            
+            width: 100%;
+            height: 70%;
+            float: left;
+            margin-left: 20px;
+            margin-top: 13px;
+            border: hidden;
+            border-bottom: 1px solid black;
+            text-align: left;
+            padding-left : 50px;
+            font-size: 18px;
+            
+        }
+        .header__center > .header__link {
+            float: right;
+            widows: 23%;
+            height: 100%;
+            /* border: 1px solid black; */
+            margin-top: 30px;
+            font-size: 10px;
+        }
+        
+
+        .header2 {
+            background: #eeeeee;
+            width: 100%;
+            height: 40px;
+            
+        }
+        .header2__center {
+            /* border: 1px solid black; */
+            height: 100%;
+            width: 940px;
+            margin: 0 auto;
+            
+        }
+
+        .header2 > .header2__center > .menu > a {
+            text-decoration: none;
+            color : black;
+            font-size: 13px;
+            margin: 5px;
+            margin-top: 10px;
+            float: left;
+        }
+        
+        .header2 > .header2__center > .locationinfoimage {
+            background : url("https://s3-ap-northeast-1.amazonaws.com/dcicons/new/images/web/common/btn-main-location-on@2x.png") no-repeat right;
+            border: 1px solid black;
+            width: 20px; height: 20px;
+            background-size: 40px;
+            width:44px; margin-top:10px;
+            float: right;
+            border: hidden;
+        }
+        
+        .header2 > .header2__center > .locationinfo > a{
+            color : black;
+            font-size: 13px;
+            margin-top: 10px;
+            float: right;
+            border: 1px solid black;
+            width: 85px; height: 20px;
+            border: hidden;
+        }
+        .locationinfomation {
+            height: 100%;
+            width: 940px;
+            margin: 0 auto;
+            border: 1px solid gray;
+            background: #fff;
+            height: 140px;
+            margin-top: 20px;
+        }
+
+        .locationinfomation > p {
+            text-align: center;
+            margin-top: 20px;
+            
+        }
+
+        .locationinfomation > p > button {
+            background-color: black;
+            color: white;
+            width: 200px;
+            height: 40px;
+            border: hidden;
+            margin-top: 23px;
+        }
+
+        .magazine {
+            height: 100%;
+            width: 940px;
+            margin: 0 auto;
+            border: 1px solid gray;
+            background: #fff;
+            height: 360px;
+            margin-top: 20px;
+        }
+
+        .magazine > .title {
+            float: left;
+/*             width: 100%;
+            height: 70px;
+            border: 1px solid black;
+            border: hidden; */
+            font-size: 25px;
+            margin-top: 20px;
+            padding-left: 20px;
+            font-weight: bold;
+        }
+
+        /* 이미지 4개의 큰 박스 크기를 지정해주기 */
+        .magazine > .image {
+            /* border: 1px solid red; */
+            width: 95%;
+            height: 210px;
+            margin : 70px 20px 0 20px;
+            /* position: absolute; */
+            position: relative;
+        }
+        
+        /* 4개 이미지 구역 정해주기 */
+        .magazine > .image > div {
+            margin-left: 20px;
+            margin-right: 20px;
+            /* border: 1px solid green; */
+            width: 182px;
+            height: 208px;
+            float: left;
+            overflow: hidden;
+        }
+        
+        .image1 > a > img{
+            width: 100%;
+            height: 100%;
+            position: relative;
+            filter: brightness(50%);
+        }
+
+        .image1 > a > img:hover {
+            transform: scale(1.2);
+            transition: 2s;
+        }
+        .image2 > a > img{
+            width: 100%;
+            height: 100%;
+            filter: brightness(50%);
+        }
+
+        .image2 > a > img:hover {
+            transform: scale(1.2);
+            transition: 2s;
+        }
+        .image3 > a > img{
+            width: 100%;
+            height: 100%;
+            filter: brightness(50%);
+        }
+
+        .image3 > a > img:hover {
+            transform: scale(1.2);
+            transition: 2s;
+        }
+        .image4 > a > img{
+            width: 100%;
+            height: 100%;
+            filter: brightness(50%);
+        }
+
+        .image4 > a > img:hover {
+            transform: scale(1.2);
+            transition: 2s;
+        }
+
+        #text1{
+            position: absolute;
+            color: white;
+            text-align: center;
+            font-size: 12px; 
+            top: 40%; left: 20px;
+            width: 182px;
+            height: 208px;
+            
+        }
+        #text2 {
+            position: absolute;
+            color: white;
+            text-align: center;
+            font-size: 12px; 
+            top: 40%; left: 245px;
+            width: 182px;
+            height: 208px;
+        }
+        #text3 {
+            position: absolute;
+            color: white;
+            text-align: center;
+            font-size: 12px; 
+            top: 40%; left: 465px;
+            width: 182px;
+            height: 208px;
+        }
+        #text4 {
+            position: absolute;
+            color: white;
+            text-align: center;
+            font-size: 12px; 
+            top: 40%; left: 685px;
+            width: 182px;
+            height: 208px;
+
+        }
+        
+/*         #text2 {
+            position: absolute;
+            color: white;
+            text-align: center;
+            margin-top: 140px;
+            font-size: 10px;
+            padding-left: 15px;   
+        } */
+
+/*          .magazine > .image > .image2 > img {
+            border: 1px solid green;
+            width: 200px;
+            height: 210px;
+            position: absolute;
+        }  */
+
+    </style>
+</head>
+<body>
+    <div class="container"> <!-- 메인 -->
+        <!-- header : 첫번째 줄 -->
+        <div class="header">
+            <div class="header__center">
+                <a class="header__logo" href = "https://www.diningcode.com"></a>
+                <div class="header__search">
+                    <input type="text" name="search" placeholder="음식명으로 주변 맛집을 찾아보세요"/>
+                </div>
+                <div class="header__link">
+                    <a href="https://www.diningcode.com/user/?mode=login" style="border-right: 1px solid gray;">로그인</a> 
+                    <a href="https://www.diningcode.com/user/?mode=intro&retURL=/index.php">회원가입</a>
+                </div>
+            </div>
+        </div>
+        <!-- header2 : 두번쨰줄 -->
+        <div class="header2">
+            <div class="header2__center">
+                <div class="menu">
+                    <a href="">다이닝코드소개</a>
+                    <a href="">매거진</a>
+                    <a href="">다코뉴스</a>
+                    <a href="">FAQ</a>
+                </div>
+                <div class="locationinfo">
+                    <a>위치정보 꺼짐</a>
+                </div>
+                <div class="locationinfoimage"></div>
+            </div>
+        </div>
+        <!-- 3번째 줄 -->
+        <div class="locationinfomation">
+            <p>
+            사용자의 위치정보를 찾을 수 없습니다.<br>
+            위치정보를 설정하시면 내주변의 맛집을 검색할 수 있습니다.<br>            
+            <button>현재 위치정보 켜기</button>
+            </p>
+        </div>
+        <!-- 4번째 줄  -->
+        <div class="magazine">
+            <div class="title"><p>맛집매거진</p></div>
+            <div class="image">
+                <div class="image1">
+                    <a href="">
+                        <img src="https://d2u8ukm27m1oiz.cloudfront.net/magazine/magazine_1551333663.PNG" />
+                        <span id="text1">
+                            <strong>
+                            날도 풀려가는데, 드라이브 어때?
+                            서울에 1시간 거리, 드라이브 갔다가 들리기 좋은 카페 추천
+                            </strong>
+                            <p>서울 근교 드라이브도 하고 카페에서 커피도 마시면, 일석 이조 !</p>
+                        </span>
+                    </a>
+                </div>
+                <div class="image2">
+                    <a href="">
+                        <img src="https://d2u8ukm27m1oiz.cloudfront.net/magazine/magazine_1551257319.jpg"/>
+                        <span id="text2">
+                            <strong>
+                                한남동 카페 정복, 취향 따라 골라가는 한남동 카페 5곳!
+                            </strong>
+                            <p>디저트 카페, 브런치 카페, 커피 맛집</p>
+                        </span>
+                    </a>
+                </div>
+                <div class="image3">
+                    <a href="">
+                        <img src="https://d2u8ukm27m1oiz.cloudfront.net/magazine/magazine_1551155835.JPG"/>
+                        <span id="text3">
+                            <strong>
+                                카페의 본질은 커피 맛,커피 잘하는 카페 추천!
+                            </strong>
+                            <p>한땀 한땀 정성 들인 커피 맛!</p>
+                        </span>
+                    </a>
+                </div>
+                <div class="image4">
+                    <a href="">
+                        <img src="https://d2u8ukm27m1oiz.cloudfront.net/magazine/magazine_1550820291.jpeg">
+                        <span id="text4">
+                            조용해진 경리단길, 그래도 아직 갈 곳은 남아있다!! 남산뷰가 좋은 카페
+                        </span>
+                        <p>
+                            뷰가 다하는 경리단길 카페.좀 더 따듯해져 북적이기전에 내가 먼저 가야지.
+                        </p>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

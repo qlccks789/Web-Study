@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!-- 
+	innerText 기능 추가하기
+	
+	설정 : text(설정할 값)
+	추출 : text()
+-->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="jquery.js"></script>
+</head>
+<body>
+	<button>설정하기</button>
+	<button>가져오기</button>
+	<button>설정 후 가져오기</button>
+	
+	<div id="a">테스트1</div>	
+	<div class="b">테스트2</div>	
+	<div>테스트3</div>
+	
+	<script>
+		$("button:nth-child(1)")[0].addEventListener(
+			"click",
+			function () {
+				$("div").text("<strong>변경됨</strong>");
+			}
+		);
+		$("button:nth-child(2)")[0].addEventListener(
+			"click",
+			function () {
+				alert($("div").text());
+			}
+		);
+		$("button:nth-child(3)")[0].addEventListener(
+			"click",
+			function () {
+				alert($("div").text("변경").text());
+			}
+		);
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

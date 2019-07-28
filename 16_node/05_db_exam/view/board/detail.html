@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>노드 게시판</title>
+</head>
+<body>
+	<h1>노드 게시판</h1>
+	<table style="border: 1px solid black">
+	<tr>
+		<th>제목</th>
+		<td>:title</td>
+	</tr>
+	<tr>
+		<th>글쓴이</th>
+		<td>:writer</td>
+	</tr>
+	<tr>
+		<th>내용</th>
+		<td>:content</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<a href="updateform.do?no=:no">수정</a>
+			<a href="delete.do?no=:no">삭제</a>
+			<a href="list.do">목록</a>
+		</td>
+	</tr>
+	</table>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> scale (확대) </title>
+<meta charset="utf-8" />
+<style>
+    div {
+       width: 300px; height: 250px;
+       background: yellow; 
+       border: 2px solid tomato;
+       float: left;
+       margin: 20px;
+       overflow: hidden;
+    }
+    img {
+        width: 300px; height: 250px;
+        transition: .7s;
+    }
+    #x > img:hover {
+        transform: scaleX(1.5);
+    }
+    #y > img:hover {
+        transform: scaleY(1.5);
+    }
+    #all > img:hover {
+        transform: scale(1.1);
+    }
+</style>
+</head>
+<body>
+    <h1>scale(이동)</h1>
+    <div id="x"><img src="../images/pic1.jpg" /></div>
+    <div id="y"><img src="../images/pic1.jpg" /></div>
+    <div id="all"><img src="../images/pic1.jpg" /></div>
+</body>
+</html>
+

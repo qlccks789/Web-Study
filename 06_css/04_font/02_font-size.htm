@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!-- 
+font-size : 글꼴의 크기 지정
+- 단위 : 
+  절대적 크기 설정 : px(컴퓨터에서 점 한개), 
+  상대적 크기 설정 : em, %(부모요소 기준)
+  
+        1em 은 16px, 100% 와 동일, H4 태그와 동일한 크기
+        16px = 1 / 16 * 16 = 1em
+        15px = 1 / 16 * 15 = 0.9375em
+       
+- 상수 값을 사용 : 
+  xx-small(9px), x-small(10px), small(13px), 
+  medium(16px), large(18px), x-large(24px), xx-large(32px)
+  부모에 비해 상대적으로 크기 지정 : smaller, larger  
+ -->
+<html>
+<head>
+<title> 다양한 글자 꾸미기 </title>
+<meta charset="utf-8" />
+<style>
+    body {
+        font-family: "Time New Roman", Verdana, sans-serif;
+    }
+    #content {
+        font-size: 16px;
+    }
+    .fs_percent { font-size: 150%; }
+    .fs_em { font-size: 1.5em; }
+    .fs_constant { font-size: x-large; }
+    .fs_px { font-size: 24px; }
+</style>
+</head>
+<body>
+    <div id="content">
+	    <h2>하이브(hive)</h2>
+	    <p>하이브 내용 소개</p>
+	    <p class="fs_percent">내가 살던 이 도시에 무슨 일이 일어난거지?</p>
+	    <p class="fs_em">원시시대로 돌아간 지구의 대기상태</p>
+	    <p class="fs_constant">김규삼 작가가 선보이는 판타지 스릴러</p>
+	    <p class="fs_px">네이버 웹튠 연재 1위</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    title 노드 게시판
+  body
+    h1 노드 게시판
+    table(style='border: 1px solid black')
+      tr
+        th 제목
+        td #{title}
+      tr
+        th 글쓴이
+        td #{writer}
+      tr
+        th 내용
+        td #{content}
+      tr
+        td(colspan='2')
+          a(href='updateform.do?no=' + no) 수정
+          a(href='delete.do?no=' + no) 삭제
+          a(href='list.do') 목록

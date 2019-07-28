@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.mlec.repository.dao.BoardMapper">
+	<resultMap id="boardMap" type="board">
+		<result column="no" property="no" />
+		<result column="writer" property="writer" />
+		<result column="title" property="title" />
+		<result column="content" property="content" />
+		<result column="reg_date" property="regDate" />
+		<result column="view_cnt" property="viewCnt" />
+	</resultMap>
+
+	<select id="selectBoard" parameterType="page" resultMap="boardMap">
+		select *
+		  from (select rownum rnum, a.*
+		          from ( select *
+		                   from tb_board
+		                  order by no desc) a
+		       )   
+		 where rnum between #{begin} and #{end}
+	</select>
+
+	<select id="selectBoardCount" resultType="int">
+		select count(*)
+		  from tb_board
+	</select>
+	
+	<!-- 게시글 상세 정보 가져오기 -->
+	<select id="selectBoardByNo" parameterType="int" resultMap="boardMap">
+		select *
+		  from tb_board
+		 where no = #{no}		
+	</select>
+	
+
+	<!-- 게시글 등록하기 -->
+    <insert id="insertBoard" parameterType="board">
+    	<selectKey keyProperty="no" resultType="int" order="BEFORE">
+    		select s_board_no.nextval from dual
+    	</selectKey>
+		insert into tb_board(
+			no, writer, title, content
+		) values (
+			#{no}, #{writer}, #{title}, #{content}
+		) 
+	</insert>
+	
+	<!-- 조회수 증가시키기 -->
+	<update id="updateViewCnt" parameterType="int">
+		update tb_board
+		   set view_cnt = view_cnt + 1
+		 where no = #{no}  
+	</update>
+	
+	<delete id="deleteBoard" parameterType="int">
+		delete 
+		  from tb_board
+		 where no = #{no} 
+	</delete>
+	
+	<update id="updateBoard" parameterType="board">
+		update tb_board
+		   set title = #{title},		
+		       content = #{content}		
+		 where no = #{no} 
+	</update>	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

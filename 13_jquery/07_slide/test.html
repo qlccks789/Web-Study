@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <style>
+        * { margin:0px; padding:0px; }
+        button {
+			margin: 5px;
+			font-size: 20px;
+			height: 50px;
+		}
+        .container  {
+            overflow:hidden;
+            position:relative;           
+            width:600px; height:400px;
+        }
+        .area { width:3000px; position:relative; }
+        .img { float:left; width:600px; height:400px; }
+		
+    </style>
+    <script src="../js/jquery-3.2.1.js"></script>
+</head>
+<body>
+    <h1>이미지 슬라이더</h1>
+    <div class="container">
+        <div class="area">
+            <img src="Desert.jpg" class="img"/>
+            <img src="Hydrangeas.jpg" class="img"/>
+            <img src="Jellyfish.jpg" class="img"/>
+            <img src="Koala.jpg" class="img"/>
+            <img src="Lighthouse.jpg" class="img"/>
+        </div>
+    </div>
+    <div>
+	    <button>이전</button>
+	    <button>다음</button>
+    </div>
+    <script>
+        let index = 0;
+
+        function moveSlide() {
+            $(".area").animate({left: index * -600}, 1000);
+        }
+        $("button:eq(0)").click(function () {
+            if (index == 0) index = 4;
+            else index--;
+
+            moveSlide();
+        });
+        $("button:eq(1)").click(function () {
+            if (index == 4) index = 0;
+            else index++;
+
+            moveSlide();
+        });
+    </script>    
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

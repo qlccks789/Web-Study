@@ -1,0 +1,46 @@
+1. 테이블 생성
+create table tb_board_file (
+	file_no number(6) primary key,
+	no number(6) references tb_board(no) on delete cascade,
+	org_name varchar2(100) not null,
+	system_name varchar2(100) not null,
+	file_path varchar2(50) not null,
+	file_size number not null
+);
+
+2. 시퀀스 생성
+create sequence s_board_file_no;
+
+3. VO 추가하기
+package kr.co.mlec.board.vo;
+
+public class FileVO {
+   private int fileNo;
+   private int no;
+   private String orgName;
+   private String systemName;
+   private String filePath;
+   private int fileSize;
+    
+   .. 세터, 게터
+}
+
+4. sqlMapConfig.xml 파일에 VO 별칭 설정하기
+
+   <typeAlias alias="file" type="kr.co.mlec.board.vo.FileVO" />
+   
+5. 	pom.xml 파일 관련 라이브러리 추가하기
+
+	<!-- https://mvnrepository.com/artifact/com.servlets/cos -->
+	<dependency>
+		<groupId>com.servlets</groupId>
+		<artifactId>cos</artifactId>
+		<version>05Nov2002</version>
+	</dependency>
+
+	<!-- 썸네일 : https://mvnrepository.com/artifact/net.coobird/thumbnailator -->
+	<dependency>
+		<groupId>net.coobird</groupId>
+		<artifactId>thumbnailator</artifactId>
+		<version>0.4.8</version>
+	</dependency>   

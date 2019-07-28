@@ -1,0 +1,56 @@
+<!-- 
+	Dom관련 퀴즈 - 2
+ -->
+ <!DOCTYPE html>
+ <html>
+ <head>
+ <meta charset="UTF-8">
+ <title>Insert title here</title>
+ <script>
+     var count = 0;
+     function add() {
+         var listDiv = document.querySelector("#listDiv");
+         var childDiv = document.createElement("div");
+         childDiv.setAttribute("id", `child_${++count}`);
+         
+         childDiv.innerHTML = `<h2>추가된 DIV id : child_${count}&nbsp;`
+                            + `<input type='button' value='삭제' onclick='del(${count})' />`
+         listDiv.appendChild(childDiv)
+     }
+     
+     function del(count) {
+         document.querySelector(`#child_${count}`).remove();
+     }
+ </script>
+ </head>
+ <body>
+     <input type="button" value="추가" onclick="add()" />
+     <div id="listDiv"></div>
+ </body>
+ </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

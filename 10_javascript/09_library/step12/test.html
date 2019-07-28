@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!-- 
+	선택자에 태그  기능 추가하기
+	$(HTMLElement)
+ --> 
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="jquery.js"></script>
+</head>
+<body>
+	<button>버튼 1</button>
+	<button>버튼 2</button>
+	<h1 id="msg">테스트입니다.</h1>
+	<script>
+		$("button").click(function () {
+			console.dir(this);
+			$(this).html("버튼입니다.");
+		});
+	</script>
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	div {
+		position: absolute;
+		
+		top: 300px;
+		left: 600px;
+		
+		width: 200px;
+		height: 200px;
+		font-size: 30px;
+	}
+	div:nth-child(5n) { background: skyblue; }
+	div:nth-child(5n + 1) { background: orange; }
+	div:nth-child(5n + 2) { background: aquamarine }
+	div:nth-child(5n + 3) { background: #334455 }
+	div:nth-child(5n + 4) { background: coral }
+</style>
+</head>
+<body>
+	<div class="drag" contenteditable="true">이동1</div>
+	<div class="drag" contenteditable="true">이동2</div>
+	<div class="drag" contenteditable="true">이동3</div>
+	<div class="drag" contenteditable="true">이동4</div>
+	<div class="drag" contenteditable="true">이동5</div>
+	<div class="drag" contenteditable="true">이동6</div>
+	<div class="drag" contenteditable="true">이동7</div>
+	<div class="drag" contenteditable="true">이동8</div>
+	<div class="drag" contenteditable="true">이동9</div>
+	<div class="drag" contenteditable="true">이동10</div>
+	<script>
+		var zCnt = 1;
+		var drags = document.querySelectorAll(".drag");
+		for (var drag of drags) {
+			drag.addEventListener("mousedown", downAction);
+		}
+
+		function downAction(e) {			
+			var gap = {};
+			var isDrag = false;
+			var div = e.target;
+
+			div.style.zIndex = zCnt++;
+
+			if (!isDrag) isDrag = true;
+
+			gap.x = e.offsetX;
+			gap.y = e.offsetY;
+
+			console.log(gap.x, gap.y)
+
+			document.addEventListener("mousemove", moveAction);
+			document.addEventListener("mouseup", upAction);
+
+			function moveAction(e) {
+				if (isDrag) {
+					let left = e.clientX - gap.x;
+					let top = e.clientY - gap.y;
+					if (left < 0) left = 0;
+					if (top < 0) top = 0;
+					div.style.left = left + "px";
+					div.style.top = top + "px";
+				}
+			}
+			function upAction(e) {
+				gap.x = 0;
+				gap.y = 0;
+				isDrag = false;
+
+				document.removeEventListener("mouseup", upAction);
+				document.removeEventListener("mousemove", moveAction);
+			}		
+		}
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

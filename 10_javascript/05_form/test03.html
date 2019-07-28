@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--
+    select 객체
+
+    선택된 항목 정보 이해하기
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h2>select 활용 - 1</h2>    
+    <form name="mForm">
+        <select name="sType">
+            <option value="">선택하세요</option>
+            <option value="writer">작성자</option>
+            <option value="title">제목</option>
+        </select>
+        <input type="text" name="sWord">
+        <button type="button" onclick="doAction()">검색</button>
+    </form>
+
+    <script>
+        function doAction() {
+            var f = document.mForm;
+            // select box 접근
+            // select.selectedIndex : 선택된 항목의 인덱스 값 반환
+            console.log(f.sType.selectedIndex);
+            if (f.sType.selectedIndex != 0 && f.sWord.value == "") {
+                alert("검색어를 입력하세요");
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

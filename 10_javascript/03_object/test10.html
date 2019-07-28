@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--
+    prototype 자체를 새로운 객체로 변경할 수 있다.
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Prototype 이해하기</h2>
+    <script>
+        function Member(id, name) {
+            this.id = id;
+            this.name = name;
+        }
+/*
+        Member.prototype.setId = function (id) {
+            this.id = id;
+        }
+        Member.prototype.getId = function () {
+            return this.id;
+        }
+        Member.prototype.setName = function (name) {
+            this.name = name;
+        }
+        Member.prototype.getName = function () {
+            return this.name;
+        }
+        */  
+       Member.prototype = {
+           setId: function (id) { this.id = id; },
+           getId: function () { return this.id; },
+           setName: function (name) { this.name = name; },
+           getName: function () { return this.name; }
+       };
+
+       Member.prototype.constructor = Member;
+
+       console.dir(Member); 
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!-- 
+    inline 과 block의 특성을 같이 가지려면??
+    - display 속성의 값을 inline-block로 설정한다.
+    - inline의 특성인 한라인에 여러개의 값들이 설정될 수 있고 block의 특성인 크기와 높이를 지정할 수 있다.
+ -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>block, inline</title>
+<style>
+    h1, div, p, span, a {
+        border: 2px solid teal;
+        padding: 5px;
+        width: 400px; height: 200px;
+        margin: 10px;
+    }
+    span {
+        display: inline-block;
+    }
+</style>
+</head>
+<body>
+    <h1>Block, Inline</h1>
+    <div>블록과 인라인 태그의 차이점은 무엇일까요?</div>
+    <p>대표적인 블록형 태그는 div, p, h1 ~ h6 태그가 있습니다.</p>
+    <span>span 태그는 대표적인 인라인 태그입니다.</span>
+    또한 <a href="#1">a태그</a> 역시 대표적 인라인 태그입니다.
+</body>
+</html>

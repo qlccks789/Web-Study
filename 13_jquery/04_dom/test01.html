@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>dom</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		div.a {
+			margin: 30px;
+			font-size: 20px;
+			padding: 10px;
+			border : 5px solid orange;
+		}
+		button {
+			margin-left: 30px;
+			height: 50px;
+			font-weight: bold;
+			font-size: 20px;
+		}
+	</style>
+	<script src="../js/jquery-3.2.1.js"></script>
+</head>
+<body>
+    <button>remove</button>
+    <button>empty</button>
+    <button>replaceWith</button>
+	<div class="a">
+		<h1>1</h1>
+		<h1>2</h1>
+		<h1>3</h1>
+		<h1>4</h1>
+		<h1>5</h1>
+	</div>
+	<script>
+	/*	
+		remove : 엘리먼트 자체 삭제
+		empty  : 엘리먼트 안의 내용 제거
+		replaceWith : 해당 선택자를 완전히 변경
+	*/	
+		$("button:eq(0)").click(function () {
+			// $("div.a > h1:last").remove();
+			$("div.a > h1").remove();
+		});
+		$("button:eq(1)").click(function () {
+			// $("div.a > h1:last").empty();
+			$("div.a").empty();
+		});
+		$("button:eq(2)").click(function () {
+			$("div.a").replaceWith("<p>replaceWith</p>");
+		});
+	</script>	
+</body>
+</html>
+
+
+
+
+

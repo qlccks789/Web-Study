@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!-- 
+	value 기능 추가하기
+	값 설정 : 객체.value = 값;
+	값 추출 : 객체.value;
+	
+	설정 : val(설정할 값)
+	추출 : val()
+-->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="jquery.js"></script>
+</head>
+<body>
+	<button>설정하기</button>
+	<button>가져오기</button>
+	
+	아이디 : <input type="text" name="id" size="20" />	
+	
+	<script>
+		var btn1 = $("button:nth-child(1)")[0].addEventListener(
+			"click",
+			function () {
+				$("input[name='id']").val("설정...");
+			}
+			);
+		var btn2 = $("button:nth-child(2)")[0].addEventListener(
+			"click",
+			function () {
+				alert( $("input[name='id']").val() );
+
+			}
+		);
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

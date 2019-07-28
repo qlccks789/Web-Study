@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--
+    location
+    - href : 페이지 주소 설정, 설정된 페이지로 이동
+    - reload() : 현재 페이지를 다시 로딩, 새로고침
+
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="movePage();">페이지 이동</button>
+    <button onclick="reloadPage();">새로고침</button>
+    <button onclick="infoPage();">클릭</button>
+
+    <script>
+        function infoPage() {
+            console.log(location.href);
+            console.log(location.host);
+            console.log(location.hostname);
+            console.log(location.port);
+            console.log(location.search);
+
+            // ?id=a&pass=b
+            var params = location.search;
+
+            // id=a&pass=b
+            params = params.substr(1);
+            console.log("params", params);
+
+            let arr = params.split("&");
+
+            let list = {};
+            for (let param of arr) {
+                console.log("param", param);
+                let pArr = param.split("=");
+                list[pArr[0]] = pArr[1];
+            }
+            console.log("list", list);
+        }
+        function movePage() {
+            location.href = "test01.html";
+        }
+        function reloadPage() {
+            alert("1초뒤 페이지가 새로고침 됩니다.");
+            setTimeout(function () {
+                location.reload();
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

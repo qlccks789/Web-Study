@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+    #result {
+        font-size: 50px;
+        font-weight: bold;
+    }
+</style>
+</head>
+<body>
+	<button onclick="doAction();">클릭</button>
+	<div id="result"></div>
+	
+	<script>
+		function doAction() {
+			var result = 
+                document.querySelector("#result");
+			if (!result.innerText) {
+				result.innerText = 0;
+			} 
+			result.innerText = 
+				parseInt(result.innerText) + 1;
+		}
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

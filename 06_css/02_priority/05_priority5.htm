@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!-- 
+CSS 선택 우선순위
+
+- 엘리먼트의 CSS 속성의 정의는 여러번 선언이 가능  
+- 동일한 속성이 중복되어 있을 경우 나중에 선언된 속성이 적용된다.
+- 개발자 도구에서 체크하자..
+ -->
+<html>
+<head>
+<meta charset="utf-8" />
+<title> 속성 선택 스타일 </title>
+<style type="text/css">
+    div[name="a"] {
+        background: gray;
+    }
+    div.a {
+        background: skyblue;
+        color: tomato;
+    }
+</style>                        
+</head>
+<body>
+    <div style="background: yellowgreen" name="a" class="a">
+        <h1>h1</h1>
+        <p>CSS 우선순위 연습</p>
+    </div>
+</body>
+</html>

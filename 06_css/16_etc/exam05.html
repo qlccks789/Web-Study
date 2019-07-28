@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div:nth-child(3n){
+            transform: rotateZ(7deg);
+            background-color: pink;
+        }
+        div:nth-child(3n+1){
+            transform: rotateZ(-10deg);
+            background-color: yellow;
+        }
+        div:nth-child(3n+2){
+            transform: rotateZ(10deg);
+            background-color: palevioletred;
+        }
+        
+        div:hover {
+            transform: scale(1.5);
+            transition: 3s;
+        }
+        
+        div {
+            box-shadow: 1px 10px 10px  #000;
+            font-size: 30px;
+            float: left;
+            padding: 40px;
+            margin: 30px;
+            widows: 50px; height: 130px;
+
+        }
+
+        body {
+            background: gray;
+        }
+    </style>
+</head>
+<body>
+    <div>안녕!!</div>
+    <div>오늘은CSS</div>
+    <div>행복한</div>
+    <div>행복한</div>
+    <div>행복한</div>
+    <div>행복한</div>
+    <div>수요일</div>
+    <div>해피</div>
+    <div>파이팅!!</div>
+    <div>파이팅!!</div>
+    <div>파이팅!!</div>
+    <div>파이팅!!</div>
+    <div>파이팅!!</div>
+</body>
+</html>

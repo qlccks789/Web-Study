@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	#wheel {
+		position: absolute;
+		width: 200px; height: 200px;
+		left: 100px; top: 100px;
+		
+ 		animation: cube 10s linear 0s infinite; 
+		/* 자식 요소의 3차원 속성 사용 */
+		transform-style: preserve-3d;
+    }
+    
+	.item {
+		position: absolute;
+		width: 200px; height: 200px;
+		left: 0px; top: 0px;
+		border: 1px solid tomato;
+		
+		font-size: 40px;
+		text-align: center;
+		line-height: 200px;
+    }
+    
+	.item:nth-child(1) { 
+		background: #d9d9d9; 
+		transform: rotateY( 0deg) translateZ(100px); 
+	}
+	.item:nth-child(2) { 
+		background: #343434; 
+		transform: rotateY( 90deg) translateZ(100px); 
+	}
+	.item:nth-child(3) { 
+		background: #565656; 
+		transform: rotateY( 180deg) translateZ(100px); 
+	}
+	.item:nth-child(4) { 
+		background: #787878; 
+		transform: rotateY( 270deg) translateZ(100px); 
+	}
+	.item:nth-child(5) { 
+		background: #9a9a9a; 
+		transform: rotateX( 90deg) translateZ(100px); 
+	}
+	.item:nth-child(6) { 
+		background: #bcbcbc; 
+		transform: rotateX( 270deg) translateZ(100px); 
+	}
+	
+ 	@keyframes cube { 
+ 		from { transform: rotateX( 0deg) rotateY( 0deg);} 
+ 		to { transform: rotateX( 360deg) rotateY( 360deg); } 
+ 	} 
+</style>
+</head>
+<body>
+	<h1>큐브</h1>
+    <div id= "wheel"  >
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+    </div>	
+</body>
+</html>
+
+
+
+
+

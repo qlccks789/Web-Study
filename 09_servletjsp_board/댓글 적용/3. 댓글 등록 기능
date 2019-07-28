@@ -1,0 +1,63 @@
+1. 댓글 등록 SQL 추가하기(board.xml에 추가)
+
+	<insert id="insertComment" parameterType="comment">
+		insert into tb_comment(
+			comment_no, no, writer, content
+		) values (
+			s_comment_no.nextVal, #{no}, #{writer}, #{content}
+		)
+	</insert>				
+
+
+2. SQL을 호출하는 Mapper 코드 추가 (BoardMapper.java)
+
+	void insertComment(CommentVO comment);
+
+
+3. detail.jsp 페이지에 댓글 등록폼 추가하기
+
+	- 댓글 목록(<div id="commentList">) 태그 위쪽에 추가하기
+	
+		<div id="commentRegistForm">
+			<form method="post" action="comment-regist.do">
+				<input type="hidden" name="no" value="${board.no}" />	
+				<table width="70%">
+				<tr>
+					<td><input type="text" name="writer" /></td>
+					<td><textarea name="content" rows="2" cols="60"></textarea></td>
+					<td><input type="submit" value="등록" /></td>
+				</tr>	
+				</table>
+			</form>
+		</div>
+		
+	
+4. Controller 서블릿 작성하기(kr.co.mlec.board.controller)
+		
+@WebServlet("/board/comment-regist.do")
+public class CommentRegistController extends HttpServlet {
+
+	private BoardMapper mapper;
+	
+	public CommentRegistController() {
+		mapper = MyAppSqlConfig.getSqlSession().getMapper(BoardMapper.class);
+	}
+	
+	@Override
+	public void doPost(
+			HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		int no = Integer.parseInt(request.getParameter("no"));
+		
+		// 게시판과 파일 테이블에 저장할 글번호를 조회
+		CommentVO comment = new CommentVO();
+		comment.setNo(no);
+		comment.setContent(request.getParameter("content"));
+		comment.setWriter(request.getParameter("writer"));
+		
+		// 게시물 저장 처리 부탁..
+		mapper.insertComment(comment);
+		
+		response.sendRedirect("detail.do?no=" + no);
+	}
+}		

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--
+    팝업창 크기 조절과 이동
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h2>팝업창 이동과 크기 조절</h2>
+    <div>
+        <button onclick="createPop();">생성</button>
+        <button onclick="movePop();">이동</button>
+        <button onclick="resizePop();">사이즈변경</button>
+    </div>
+
+    <script>
+        var pop;
+        function createPop() {
+            pop = window.open("", "", "width=400,height=400");
+
+            // 전체화면 채우기
+            resizePop();
+
+            pop.onunload = function () {
+                createPop();
+            };
+        }
+        function movePop() {
+            // 절대 이동
+            // pop.moveTo(200, 200);
+
+            // 상대 이동
+            pop.moveBy(30, 30);
+        }
+        function resizePop() {
+            // pop.resizeTo(500, 500);
+            // pop.resizeBy(20, 20);
+            // 전체화면 채우기
+            pop.resizeTo(screen.width, screen.height);
+        }
+    </script>
+</body>
+</html>

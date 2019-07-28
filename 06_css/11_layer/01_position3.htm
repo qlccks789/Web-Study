@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!-- 
+    엘리먼트 위치 지정하기
+    position 속성의 값을 지정
+    absolute 절대좌표 지정시 사용함
+    top, left, right, bottom으로 위치를 지정
+    
+    주의점
+    --------------------------------------------
+    부모 DIV 태그가 영역을 차지하지 않는다. 
+      - height 속성의 값을 설정으로 해결
+      
+    부모 DIV 태그를 기준으로 위치를 설정하지 않는다.
+      - position 속성의 값을 relative 로 설정
+      - 부모중에 absolte나 relative 유형의 태그가 없다면 body를 기준으로 위치를 찾는다.
+      
+    규칙 : 자식의 position이 absolute로 설정하면 부모의 position 속성의 값을 relative로 설정  
+    --------------------------------------------
+ -->
+<html>
+<head>
+<title> position </title>
+<meta charset="utf-8" />
+<style type="text/css">
+    html {
+        background-color: #b3b3b3;
+        padding: 15px;
+        margin: 0px;
+        height: 1000px;
+    }
+    body {
+        background-color: #fa923f;
+        padding: 20px;
+        margin: 0px;
+        border: 5px solid black;
+    }
+    .parent {
+        background-color: white;
+        padding: 20px;
+        margin: 0px;
+        border: 5px solid black;
+        /* position이 relative로 설정하면
+           자식엘리먼트가 absolute 였다면 
+           좌표의 기준이 부모가 된다.
+        */
+        position: relative;
+        height: 200px;
+    }
+
+    .parent > div {
+        padding: 10px;
+        border: 5px solid black;
+        margin: 10px;
+        font-size: 2em;
+        font-weight: bold;
+
+        /* 사용시 좌표와 같이 사용함 */
+        position: absolute;
+    }
+    #abs1 { 
+        background-color: skyblue; 
+        top: 10px; right: 10px;
+    }
+    #abs2 { 
+        background-color: tomato; 
+        top: 100px;
+        left: 100px;
+    }
+    #abs3 { 
+        background-color: yellow; 
+        bottom: 10px;
+        right: 10px;
+    }
+</style>
+</head>
+<body>
+    <h1>위</h1>
+    <div class="parent">
+        <div id="abs1">1</div>
+        <div id="abs2">2</div>
+        <div id="abs3">3</div>
+    </div>
+    <h1>아래</h1>
+</body>
+</html>
+
+
+
+
+
+
+

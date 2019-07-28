@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="jquery.js"></script>
+</head>
+<body>
+	<h2>요청방식과 파라미터</h2>
+	<button id="btn1">GET</button>
+	<button id="btn2">POST</button>
+	<hr>
+	<div id="result"></div>
+	
+	<script>
+		$("#btn1").click(function () {
+			// test04.do ajax 코드 작성
+			var xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = function () {
+				if (xhr.readyState == 4) {
+					if (xhr.status == 200) {
+						$("#result").html(xhr.responseText);	
+					}
+				}
+			};
+			xhr.open("GET", "test04.do?msg=hello", true);
+			xhr.send();
+		});
+		
+		
+		
+		$("#btn2").click(function () {
+			var xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = function () {
+				if (xhr.readyState == 4) {
+					if (xhr.status == 200) {
+						$("#result").html(xhr.responseText);	
+					}
+				}
+			};
+			xhr.open("POST", "test04.do", true);
+			
+			// POST 방식일 경우 파라미터를 전송하기 위해서 헤더정보를 추가한다.
+			xhr.setRequestHeader(
+				"Content-Type", "application/x-www-form-urlencoded"
+			);
+			
+			// POST 방식일 경우에는 파라미터를 send 메서드를 이용한다.
+			xhr.send("msg=hello&name=hong");			
+		});
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

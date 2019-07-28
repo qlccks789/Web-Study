@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            height: 800px;
+        }
+        div {
+            position: relative;
+            width: 200px; 
+            height: 200px;
+            background-color: red;
+            animation : posmove 10s linear infinite;
+        }
+        @keyframes posmove {
+            0%  {left: 0px;   top: 0px; }
+            25% {left: 50%;  top: 0%; background-color: orange; border-radius: 100px;}
+            50% {left: 0%;   top: 50%; background-color: yellow; border-radius: 0px;}
+            75% {left: 50%;   top: 50%; background-color: yellow; border-radius: 100px;}
+            100%{left: 0%;   top: 0%; background-color: green; }
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

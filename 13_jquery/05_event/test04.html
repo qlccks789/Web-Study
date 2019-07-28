@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<style>
+		p {
+			font-size: 20px;
+			font-weight: bold;
+			height: 40px;
+			background: tomato;
+			color: white;
+			text-align: center;
+			line-height: 40px;
+		}
+		div {
+			height: 600px;
+			overflow: auto;
+			background: yellow;
+		}
+	</style>
+	<script src="../js/jquery-3.2.1.js"></script>
+</head>
+<body>
+    <p>이벤트 연습</p>
+    <div></div>
+    <script>
+		// 이벤트 자동 실행
+		$("p").click(function () {
+			$("div").append("p 클릭됨<br>");
+		});	
+
+		setInterval(function () {
+			$("p").trigger("click");
+		}, 1000);
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

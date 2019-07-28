@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!-- 
+   checked, disabled 기능 추가하기
+   
+   el.checked = (true | false);
+   el.disabled = (true | false);
+   
+   prop("checked", true|false)
+   prop("disabled", true|false)
+-->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="jquery.js"></script>
+</head>
+<body>
+	<div>
+		<input type="checkbox" id="all" name="all" value="all"
+			   onclick="doCheck(this.checked);">
+		<label for="all">전체</label>
+	</div>
+	<div>
+		오늘의 저녁 메뉴?<br>
+		<input type="checkbox" id="menu1" name="menu" value="1">
+		<label for="menu1">치킨</label>
+		<input type="checkbox" id="menu2" name="menu" value="2">
+		<label for="menu2">피자</label>
+		<input type="checkbox" id="menu3" name="menu" value="3">
+		<label for="menu3">버거</label>
+	</div>
+	<script>
+		function doCheck(flag) {
+			$("input[name='menu']").prop("checked", flag);
+			alert($("#all").prop("checked"));
+		}
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

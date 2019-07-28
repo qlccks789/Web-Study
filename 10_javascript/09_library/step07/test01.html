@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!-- 
+	setAttribute 기능 추가하기
+	원래 : el.setAttribute("width", 200);
+	원래 : el.setAttribute("height", 300);
+	
+	설정 : attr("속성명", 설정할 값);
+-->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="jquery.js"></script>
+</head>
+<body>
+	<button>설정하기</button>
+	<div id="a">a</div>	
+	<div id="b">b</div>	
+	<div id="c">c</div>	
+
+	<script>
+		$("button").click(function () {
+			/*
+			$("div").attr("data-msg1", "연습중1")
+					.attr("data-msg2", "연습중2")
+					.attr("data-msg3", "연습중3");
+			*/
+			
+			$("div").attr({
+				"data-msg1": "연습중1",
+				"data-msg2": "연습중2",
+				"data-msg3": "연습중3"
+			});
+		});
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

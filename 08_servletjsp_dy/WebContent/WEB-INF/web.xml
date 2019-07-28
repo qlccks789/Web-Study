@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>08_servletjsp_dy</display-name>
+  
+  <!-- 
+  	xml 파일을 이용한 서블릿 정보 등록
+  	servlet-name  : 서블릿 클래스를 찾을 논리적 이름 지정
+  	servlet-class : 작성한 클래스의 이름(패키지)
+   -->
+  <servlet>
+  	<servlet-name>test01</servlet-name>
+  	<servlet-class>kr.co.mlec.servlet.basic.Test01</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>test02</servlet-name>
+  	<servlet-class>kr.co.mlec.servlet.basic.Test02</servlet-class>
+  </servlet>
+  
+  <!-- 
+  http://localhost:8000/08_servletjsp_dy/servlet/basic/test01.do
+  url-pattern 작성시 프로젝트명 까지는 제외하고 적는다. 
+   -->
+  <servlet-mapping>
+  	<servlet-name>test01</servlet-name>
+   	<url-pattern>/servlet/basic/test01.do</url-pattern>	
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>test02</servlet-name>
+   	<url-pattern>/servlet/basic/test02.do</url-pattern>	
+  </servlet-mapping>
+  
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
+
+
+

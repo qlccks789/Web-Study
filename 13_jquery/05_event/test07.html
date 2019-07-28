@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<style>
+	button {
+		margin: 5px;
+		font-size: 20px;
+		height: 50px;
+	}
+	</style>
+	<script src="../js/jquery-3.2.1.js"></script>
+</head>
+<body>
+	<button>추가</button>
+    <div id="content">
+		<input type="checkbox" name="ck" value="1" />
+		
+    </div>
+    <script>
+		$("#content").on("click", "input:checkbox", function () {
+			alert( $(this).val() );
+		});
+
+		$("button").click(function () {
+			let size = $("input:checkbox").length + 1;
+			$("#content").append(
+				`<input type='checkbox' name='ck' value='${size}'>`
+			);
+		});
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

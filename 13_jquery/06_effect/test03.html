@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<style>
+	div {
+		width: 200px;
+		height: 200px;
+		border: 5px solid black;
+		font-size: 20px;
+		margin-bottom: 10px;
+	}
+	button {
+		margin: 5px;
+		font-size: 20px;
+		height: 50px;
+		background: tomato;
+		color: white;
+		border: 5px solid black;
+	}
+	</style>
+	<script src="../js/jquery-3.2.1.js"></script>
+</head>
+<body>
+    <button>콜백1</button>
+    <button>콜백2</button>
+    <div id="effDiv1"><h1>효과1</h1></div>
+    <div id="effDiv2"><h1>효과2</h1></div>
+    <div id="effDiv3"><h1>효과3</h1></div>
+    <script>
+	/*
+		효과가 적용될 시간 설정
+		----------------------------
+		show(시간, function(완료시 콜백함수))    
+		hide(시간)
+		toggle(시간)
+
+		fadeOut
+		fadeIn
+		fadeToggle
+
+		slideUp
+		slideDown
+		slideToggle
+		-----------------------------
+	*/	
+
+	$("button:eq(0)").click(function () {
+		$("#effDiv3").slideToggle(2000, function outer() {
+			let div = $(this).prev();
+			if (div[0].nodeName == 'DIV') {
+				$(div).slideToggle(2000, outer);
+			}
+		});
+	});
+
+	$("button:eq(1)").click(function () {
+		let $div = $("div:first");
+		if ($("div").is(":visible")) $div = $("div:last");
+		$div.slideToggle(700, function outer() {
+			let div = $(this).prev("div");
+			if ($(this).is(":visible")) div = $(this).next("div");
+			
+			div.slideToggle(700, outer);
+		});
+	});
+    </script>
+</body>
+</html>

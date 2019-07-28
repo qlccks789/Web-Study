@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        table {
+            width: 700px;
+        }
+        table, th, td {
+            border: 1px solid #444;
+        }
+    </style>
+</head>
+<body>
+    <!--
+        table : 표 형식의 데이터를 화면에 보여줄때
+        tbody, thead, tfoot
+        tr
+        th, td
+    -->
+    <h2>테이블 연습</h2>
+    <table>
+        <thead>
+            <th>번호1</th>
+            <th>번호2</th>
+            <th>번호3</th>
+            <th>번호4</th>
+            <th>번호5</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td rowspan="2">3</td>
+                <td rowspan="2">4</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td colspan="4">2</td>
+            </tr>
+            <tr>
+                <td colspan="2">1</td>
+                <td colspan="3">2</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- thead, tbody에 명시적으로 선언하지 않으면
+         자동으로 tbody에 포함시킨다.
+    -->
+    <table>
+        <tr><th>번호</th></tr>
+        <tr><td>1</td></tr>
+    </table>
+</body>
+</html>

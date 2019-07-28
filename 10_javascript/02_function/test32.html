@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!-- 퀴즈 연습 -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>로또결과</title>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+    .lotto {
+        height: 60px;
+        border-style: solid;
+        border-width: 5px 0px;
+        padding: 5px;
+    }
+    button {
+        font-size: 1.1em;
+        border: 0px;
+        box-shadow: 2px 2px 1px 1px #345;
+    }
+</style>
+</head>
+<body>
+<div align="center">
+	<!-- <hr width="50%" /> -->
+	<h2>로또게임</h2>
+	<!-- <hr width="50%" /> -->
+	<div class="lotto">
+		<span id="lottoSpan1"></span>
+		<span id="lottoSpan2"></span>
+		<span id="lottoSpan3"></span>
+		<span id="lottoSpan4"></span>
+		<span id="lottoSpan5"></span>
+		<span id="lottoSpan6"></span>
+	</div>
+	<!-- <hr width="50%" /> -->
+	<br />
+	<button onclick="doStart();">추첨시작</button>
+</div>
+<script>
+	var lottoArr = [],
+		num,
+		loc;
+
+	function imgChange() {
+		let no = lottoArr[Math.floor(Math.random() * lottoArr.length)];
+		document.querySelector(`#lottoSpan${loc}`).innerHTML 
+		= `<img width='40' height='40' src='images/ball${no}.gif' />`;
+		
+		if (num != 0) {
+			num--;
+			setTimeout(imgChange, 100);
+			return;
+		} 
+		lottoArr.splice(no - 1, 1);
+
+		num = 30;
+		loc++;
+		if (loc < 7) {
+			setTimeout(imgChange, 100);
+		} 
+	}
+	
+	function doStart() {
+		// 추천번호를 눌렀을 때의 초기화
+		lottoArr.splice(0, lottoArr.length);
+		loc = 1;
+		var spanArr = document.querySelectorAll("span[id^='lottoSpan']");
+		for (let sEle of spanArr) sEle.innerHTML = '';
+
+		// 초기 번호 설정
+		for (var i = 0; i < 45; i++) 
+			lottoArr[i] = i + 1
+	
+		num = 30;
+		imgChange();
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title> 가상클래스 선택자 </title>
+<style type="text/css">
+    /*
+    pseudo class(특정상태)
+    :hover, :active, :first-of-type, ..
+
+    pseudo element(특정부분)
+    ::before, ::after, ::first-letter,
+    ::first-line 
+    */
+    input:focus {
+       background: black;
+       color: white; 
+    }
+
+    input:active {
+        background: tomato;
+        color: white;
+    }
+
+    div::before {
+        content: "오늘은 "
+    }
+
+    div::after {
+        content: " 옵니다."
+    }
+
+    h1:hover {
+        /* background: black;
+        color: white; */
+        width: 160px;
+        border-bottom: 3px solid tomato;
+    }
+
+    p.big-letter::first-letter {
+        font-size: 30px;
+        font-weight: bold;
+        border: 1px solid blue;
+        padding: 4px;
+        background: #ffeaae;
+        color: yellowgreen;
+    }
+
+    p.big-line::first-line {
+        font-size: 30px;
+        font-weight: bold;
+        border: 1px solid blue;
+        padding: 4px;
+        background: #ffeaae;
+        color: yellowgreen;
+    }
+</style>                        
+</head>
+<body>
+    <h1>가상클래스</h1>
+    <h2>연습하기</h2>
+    <ul>
+        <li><a href="#1">네이버</a></li>
+        <li><a href="#2">다음</a></li>
+        <li><a href="#3">전투식량</a></li>
+    </ul>
+    <input type="text" value="마우스로 이곳을 클릭하세요" /><br />
+
+    <div>
+        <span>1</span>
+        비가
+        <span>2</span>
+    </div>
+    <p class="big-letter">
+        오늘은 CSS 익히는 날
+    </p>
+    <p class="big-line">
+        오늘은 CSS 익히는 날<br>
+        selector를 먼저 배우고 있습니다.
+    </p>
+</body>
+</html>

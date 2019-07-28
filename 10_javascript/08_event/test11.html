@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        h2 {
+            font-size: 20px;
+            font-weight: bold;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            border: 2px solid brown;
+        }
+        #debug {
+            height: 500px;
+            overflow: auto;
+            font-size: 20px;
+            border: 2px solid brown;
+        }
+    </style>
+</head>
+<body>
+    <h2>마우스 이벤트</h2>
+    <div id="debug"></div>
+
+    <script>
+        let h2Ele = document.querySelector("h2");
+        h2Ele.addEventListener("mouseenter", function () {
+            print("마우스가 들어갔습니다.");
+        });
+        h2Ele.addEventListener("mouseleave", function () {
+            print("마우스가 빠져나왔습니다.");
+        });
+        h2Ele.addEventListener("mousedown", function () {
+            print("마우스가 눌렸습니다.");
+        });
+        h2Ele.addEventListener("mouseup", function () {
+            print("마우스가 올라갔습니다.");
+        });
+        h2Ele.addEventListener("mousemove", function (e) {
+            let obj = e.target;
+            let left = obj.offsetLeft;
+            let top = obj.offsetTop;
+
+            let x = e.offsetX;
+            let y = e.offsetY;
+
+            let cx = e.clientX;
+            let cy = e.clientY;
+
+            print(`left=${left}, top=${top}, x=${x}, y=${y}, cx=${cx}, cy=${cy}`);
+        });
+
+        let d = document.querySelector("#debug");
+        function print(msg) {
+            d.innerHTML = msg + "<br>" + d.innerHTML;
+        }
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

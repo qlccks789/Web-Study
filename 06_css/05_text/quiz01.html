@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--
+	조건
+    1. 문서의 기본 텍스트로 구글 폰트에 있는 "Jua" 를 활용
+       - body 태그의 폰트를 "Jua"로 지정
+       - 글자크기를 12px로 지정
+    2. 텍스트 링크 지정
+       - 텍스트의 내용으로 "배경색과 전경색을 활용하자" 사용
+       - 글자 크기를 2배로 지정
+       - 배경색으로 검정을 텍스트의 색상은 노란색을 지정
+       - 링크의 밑줄은 없앤 상태로 만듭니다.
+    3. 링크에 마우스를 올렸을 때 
+       - 텍스트에 밑줄이 보이도록 하고 
+       - 배경색을 빨간색으로 텍스트의 색상은 하얀색으로 지정
+       - 글자 크기를 3배로 지정
+    4. 문서의 배경 이미지 지정
+       - 배경 이미지로 images/test04.jpg를 지정 
+       - 배경 이미지는 반복하지 않습니다.
+       - 배경 이미지를 화면 하단의 오른쪽에 위치시킵니다.  
+-->
+<html lang="en">
+        <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                <link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
+                <title>퀴즈</title>
+                <style>
+                    * {
+                        margin: 0px; padding: 0px;
+                    }
+                    html, body {
+                        height: 100%;
+                    }
+                    body {
+                        font-family: 'Jua', sans-serif;
+                        font-size: 12px;
+                        background-image: url("../images/test4.jpg");
+                        background-repeat: no-repeat;
+                        background-position: bottom right;
+                    }
+                    div {
+                        font-size: 24px;
+                    }
+                    a {
+                        background: black;
+                        color: yellow;
+                        text-decoration: none;
+                        font-size: 2em;
+                    }
+                    a:hover {
+                        background: red;
+                        color: white;
+                        font-size: 3em;
+                        text-decoration: underline;
+                    }
+                </style>
+            </head>
+            <body>
+                <!-- 연습하기
+                <div>연습하기(24px)</div> -->
+                <a href="#1">배경색과 전경색을 활용하자</a>
+            </body>
+            </html>

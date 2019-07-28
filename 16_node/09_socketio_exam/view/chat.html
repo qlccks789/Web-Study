@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>채팅</title>
+  
+<link rel="stylesheet" href="/chat.css" />
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="http://172.168.0.149:10001/socket.io/socket.io.js"></script>
+</head>
+<body>
+
+<div class="chat_main">
+<div class="chat">
+  <div class="chat_header">
+    병찬
+    <div class="chat_status">ONLINE</div>
+  </div>
+  
+  <div class="chat_s"></div>
+
+  <div class="chat_input">
+    <input id="message" placeholder="Type here..." class="chat_text">
+    <button id="sendBtn" class="chat_submit fa fa-send">↵</button>
+  </div>
+</div>
+</div>
+
+<script>
+	var socket;
+	$(document).ready(function() {
+		var strWidth;
+		var strHeight;
+		//innerWidth / innerHeight / outerWidth / outerHeight 지원 브라우저
+		if ( window.innerWidth && window.innerHeight && window.outerWidth && window.outerHeight ) {
+			strWidth = $('.chat_main').outerWidth() + (window.outerWidth - window.innerWidth);
+			strHeight = $('.chat_main').outerHeight() + (window.outerHeight - window.innerHeight);
+		}
+		else {
+			var strDocumentWidth = $(document).outerWidth();
+			var strDocumentHeight = $(document).outerHeight();
+
+			window.resizeTo ( strDocumentWidth, strDocumentHeight );
+
+			var strMenuWidth = strDocumentWidth - $(window).width();
+			var strMenuHeight = strDocumentHeight - $(window).height();
+
+			strWidth = $('.chat_main').outerWidth() + strMenuWidth;
+			strHeight = $('.chat_main').outerHeight() + strMenuHeight;
+		}
+		//resize
+		window.resizeTo( strWidth+15, strHeight+15 );
+		
+		socket = io.connect("http://172.168.0.149:10001");
+		socket.on("msg", function (data) {
+			$(".chat_s").append('<div class="chat_bubble-1">' + data + '</div>');
+		});
+		
+		$('#sendBtn').click(function() { 
+			send(); 
+		});
+		
+	  $('#message').keypress(function(event){
+		    var keycode = (event.keyCode ? event.keyCode : event.which);
+		    if(keycode == '13'){
+		         send();
+		    }
+		    event.stopPropagation();
+		});
+	});
+	
+	function send() {
+	    var $msg = $("#message");
+	    var sendMsg = $msg.val();
+	    socket.emit("msg", sendMsg);
+	    $msg.val("");
+	    $(".chat_s").append('<div class="chat_bubble-2">' + sendMsg + '</div>');
+	}
+</script>
+</body>
+</html>

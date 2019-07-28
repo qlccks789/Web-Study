@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="doAdd();">추가</button>    
+    <button onclick="doDel();">삭제</button>    
+
+    <div id="list"></div>
+
+    <script>
+        function doAdd() {
+            var h2Ele = document.createElement("h2");
+            var txt = document.createTextNode("테스트");
+            h2Ele.appendChild(txt);
+
+            document.querySelector("#list").appendChild(h2Ele);
+        }
+        function doDel() {
+            document.querySelector("h2").remove();
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

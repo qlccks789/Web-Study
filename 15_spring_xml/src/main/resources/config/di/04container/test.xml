@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- 
+		컨테이너가 관리할 객체 정보 설정 
+		id or name 둘 중 하나 필수 지정 : 빈을 관리할 이름
+		name : 이름에 특수문자등이 가능하다. 별칭 등록
+		id : 자바 변수 네이밍룰에 일치해야 한다.
+		
+		class : 관리할 객체의 이름 지정(패키지 포함한 클래스명)
+		선택속성... : init-method, destroy-method, 
+		          : lazy-init=true 객체가 필요한 시점에 객체 생성
+		           	
+	-->
+	
+	<bean id="ham" class="kr.co.mlec.di._04container.HamSand" />
+	<bean id="egg" name="egg2,egg3;egg4 egg5" 
+	      class="kr.co.mlec.di._04container.EggSand" 
+		  init-method="init"
+		  destroy-method="destroy"
+	/>
+	
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

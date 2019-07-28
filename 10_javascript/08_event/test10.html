@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--
+    조건 
+    1. 입력창에 입력되는 내용은 총 6글자 까지만 가능함
+    2. 6글자 입력된 상태에서는 백스페이스, DEL, 화살표 왼쪽만 입력 가능
+    3. ctrl + v를 이용해서 많은 내용을 추가한 경우
+       내용을 6글자만 남기고 삭제한다.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" id="msg">
+  <script>
+    var msg = document.querySelector("#msg");
+    msg.onkeydown = function (e) {
+        if (e.key == "v" && e.ctrlKey) {
+            setTimeout(function () {
+            if(msg.value.length > 6) {
+                alert("6자까지만 입력 가능");
+                msg.value = msg.value.substr(0, 6)
+            }
+            }, 10);
+        }
+        
+      if (this.value.length < 6) return;  
+      
+
+      setTimeout(function () {
+          msg.value = msg.value.substr(0, 6)
+      }, 10);
+
+      // 8 : backspace, 46 : Delete, 37 : ArrowLeft(왼쪽 화살표)  
+      if ([8, 37, 46].indexOf(e.keyCode) == -1) {
+        return false;
+      }
+    };
+    msg.onblur = function () {
+        this.value = this.value.substr(0, 6);
+    }
+  </script>
+</body>
+</html>

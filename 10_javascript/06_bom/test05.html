@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<!--
+    navigator
+
+    navigator.userAgent : 접속한 사용자의 시스템 정보등을 가져온다.
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // www.naver.com -> m.naver.com
+        console.log(navigator.userAgent);
+        var agent = navigator.userAgent;
+        if (agent.indexOf("Android") || agent.indexOf("iPhone")) {
+            location.href = "m.naver.com";
+        }
+    </script>
+
+    <h2>PC 웹 페이지</h2>
+</body>
+</html>

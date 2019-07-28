@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <style>
+        div {
+            margin: 10px; padding: 5px;
+            border: 3px solid black;
+            height: 200px;
+        }
+        
+        a {
+            margin: 10px; padding: 5px;
+            border: 3px solid black;
+            display: inline-block;
+            width: 500px;
+            height: 100px;
+        }
+    </style>
+    <script src="../js/jquery-3.2.1.js"></script>
+</head>
+<body>
+    <div>
+        <a href="http://www.naver.com">Naver 이동하기</a>
+    </div>
+    <script>
+        $(document).on("contextmenu", function (event) {
+            alert("이 컨텐트는 불펌 입니다.");
+            event.preventDefault();
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

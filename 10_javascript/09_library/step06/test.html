@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!--
+    간편 이벤트 설정 추가하기
+
+    on("이벤트 타입", 콜백함수) -> 이벤트타입(콜백함수)
+    on("click", function () {}) -> 
+    click(function () {})
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery.js"></script>
+</head>
+<body>
+    <button>클릭</button>    
+    <script>
+        $("button").click(function () {
+            alert("클릭됨");
+        })
+        .mousemove(function () {
+            console.log("마우스 움직임");
+        });
+    </script>
+</body>
+</html>

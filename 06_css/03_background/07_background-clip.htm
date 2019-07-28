@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!-- 
+	background-clip : border-box, padding-box, content-box
+ -->
+<html>
+<head>
+<meta charset="utf-8">
+<title>background-clip</title>
+<style>
+    div {
+        width: 300px; height: 200px;
+        text-align: center;
+        margin: 20px;
+        padding: 20px;
+        border: 20px solid black;
+        border: 20px solid transparent;
+        background: orange;
+
+    }
+
+    #clip1 { background-clip: border-box; }
+    #clip2 { background-clip: padding-box; }
+    #clip3 { background-clip: content-box; }
+</style>
+</head>
+<body>
+    <div id="clip1"><h2>border-box</h2></div>
+    <div id="clip2"><h2>padding-box</h2></div>
+    <div id="clip3"><h2>content-box</h2></div>
+</body>
+</html>

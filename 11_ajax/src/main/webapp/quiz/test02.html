@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+	<div id="main">
+		<div id="btnDiv">
+			<input type="button" id="addBtn" value="추가" />&nbsp;&nbsp;
+			<input type="button" id="delBtn" value="삭제" />
+		</div>
+		<div id="code_list" >
+			<div class="code_item">
+				코드값 : 
+				<input type="text" data-num="1" maxlength="4">
+				<input type="text" id="n1" readonly="readonly">
+			</div>
+		</div>
+	</div>
+	<script>
+	$("#addBtn").click(function () {
+		let count = $("div.code_item").length;
+		if (count == 3) {
+			alert("최대 3개까지 가능합니다.");
+			return false;
+		} 
+		$("#code_list").append(
+			$("<div class='code_item'>").html(
+				`코드값 : 
+				<input type='text' data-num='${count + 1}' maxlength='4' />&nbsp;
+				<input type='text' id='n${count + 1}' readonly='readonly' />`
+			)
+		);
+		
+		$(".code_item:last > input:first-child").on("keyup", codeFind);
+	});
+
+	$("#delBtn").click(function () {
+		if ($(".code_item").length == 1) {
+			alert("더이상 삭제가 불가능 합니다.");
+			return false;
+		} 
+		$(".code_item:last-child").remove();
+	});
+	
+	$(".code_item:last > input:first-child").on("keyup", codeFind);
+	function codeFind(val) {
+		let num = $(this).attr("data-num");
+ 		var code = $(this).val();
+ 		if (code.length != 4) {
+ 			$("#n" + num).val("");
+			return; 			
+ 		}
+
+ 		$.ajax({
+			url: "서버처리 주소", 
+			data: "code=" + code, 
+			success: function (result) {
+				$("#n" + num).val(result);
+			}	
+		});
+	}	
+	</script>
+</body>
+</html>

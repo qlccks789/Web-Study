@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="jquery.js"></script>
+</head>
+<body>
+	<h2>Ajax 통신 연습</h2>
+	<button>호출하기</button>
+	<hr>
+	<div id="result"></div>
+	
+	<script>
+		$("button").click(function () {
+			let xhr = new XMLHttpRequest();
+			
+			// 처리결과 받아서 화면에 표시하기
+			xhr.onreadystatechange = function () {
+				/*
+					xhr.readyState : 0 ~ 4
+					
+					0번 : xhr 생성되면
+					1번 : open 함수
+					2번 : send 함수
+					3번 : 서버와 데이터를 주고받기
+					4번 : 서버에서 데이터가 다 왔을때
+				*/
+				console.log(xhr.readyState);
+				if (xhr.readyState == 4) {
+					
+					// 응답된 결과가 정상인 경우인지 비정상인 경우인지
+					if (xhr.status == 200) {
+						$("#result").html(xhr.responseText);						
+					} else {
+						$("#result").html("에러발생");
+					}
+					
+				} else {
+					console.log("처리중 이미지 보이기..")
+				}
+			};
+			
+			xhr.open("GET", "hello.jsp", true);
+			xhr.send();
+		});	
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

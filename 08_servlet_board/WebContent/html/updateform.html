@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>자유게시판</title>
+</head>
+<body>
+	 <h2>자유게시판</h2>
+	 <form method='post' action='/06_servlet_board/board/update.do'>
+	 	<input type="hidden" name="no" value="#no" />
+	 	<div>
+  		   제목 : <input type='text' name='title' size='70' value="#title" />	 	
+	 	</div>
+	 	<div>
+		     글쓴이 : <input type='text' name='writer' size='30' value="#writer" readonly="readonly" />
+	 	</div>
+	 	<div>
+	            내용 : <textarea name='content' rows='7' cols='70'>#content</textarea>
+	 	</div>
+	    <button type='submit'>수정</button>
+	 </form>
+</body>
+</html>

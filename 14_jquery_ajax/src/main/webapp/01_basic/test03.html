@@ -1,0 +1,57 @@
+<!-- 
+	$.ajax(url, options);
+	$.ajax(options);
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.2.1.js"></script>
+</head>
+<body>
+	<button>호출</button>
+	<div id="result"></div>
+	<script>
+		$("button").click(function () {
+			let $call1 = $.ajax("/14_jquery_ajax/basic/exam01.do");
+			let $call2 = $.ajax({
+				url: "/14_jquery_ajax/basic/exam02.do",
+				data: {msg: "다중호출"}
+			});
+			
+			// 다중호출시 처리
+			$.when($call1, $call2).done(function (result1, result2) {
+				console.dir(result1);
+				console.dir(result2);
+			});
+			
+		});
+		
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

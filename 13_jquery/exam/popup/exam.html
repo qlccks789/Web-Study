@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>컨텍스트 메뉴 띄우기</title>
+<meta charset="utf-8">
+<style>
+	div#popup { 
+		width:150px; font-size:9pt; z-index:999;
+	  border:solid 2px #DDDDDD; position:absolute; display:none;
+	  box-shadow: 3px 3px 2px #444;  
+	}
+
+	div#popup > div { 
+		text-align: center;
+		padding: 7px 5px; 
+		background: white;
+		border-bottom: 1px solid #ddd;
+		box-sizing: border-box;
+	}
+
+	div#popup > div:last-child { 
+		border: 0px;
+	}
+
+	div#popup > div:hover { 
+		background-color: #ddd; cursor:pointer; 
+	}
+</style>
+
+<script src="../../js/jquery-3.2.1.js"></script>
+</head>
+<body>
+	
+	<div id="test" contenteditable="true">오늘은 비가 오네요~aaaa</div>
+	<div id="result" contenteditable="true"></div>
+	<div><input type="text"></div>
+	<div><textarea cols="70" rows="5"></textarea></div>
+
+	<div id="popup">
+		<div data-cmd="copy">복사하기</div>
+		<div data-cmd="paste">붙여넣기</div>
+	</div>
+	<script type="text/javascript">
+
+		var selectNode;
+		var choiceObj;
+		$(document).on("contextmenu", function(e) {
+			// 마우스 오른쪽 클릭된 요소 파악
+			choiceObj = e.target;
+
+			//컨텍스트 메뉴 요소 선택
+			var pop = $("#popup"); 
+
+			//오른쪽 클릭에 대한 default event 실행 취소
+			e.preventDefault();
+
+			//마우스 오른쪽 클릭한 좌표에 컨텍스트 메뉴 배치
+			var clientX = e.clientX;
+			var clientY = e.clientY;
+			pop.css({top: clientY , left: clientX});
+
+			//컨텍스트 메뉴 크기,브라우저 화면 영역(viewport) 파악
+			var popWidth = pop.width();
+			var popHeight = pop.height();
+			var wWidth = $(window).width();
+			var wHeight = $(window).height();
+
+			//화면이 스크롤 된 경우를 위해 스크롤한 높이를 파악 
+			var scrTop = $(window).scrollTop();
+
+			//화면에서 오른쪽 경계선, 아래쪽 경계선 근처에서 클릭했을 때 
+			//컨텍스트 메뉴를 안정적으로 보이도록 좌표를 다시 설정한 후 출력
+			if(clientX + popWidth > wWidth) {
+				pop.css({left: clientX - popWidth});
+			}
+			if(clientY + popHeight > wHeight + scrTop) {
+				pop.css({top: clientY - popHeight});
+			}	
+			pop.show();
+
+			// 팝업 띄울때 선택된 텍스트 노드 저장하기
+			if (document.getSelection().toString().length > 0) {
+				selectText = document.getSelection().toString();
+				console.log(selectText)
+			}
+		}); 
+	
+		//문서에서 클릭이벤트가 발생할 경우 컨텍스트 메뉴 닫음
+		$(document).on("click", function(){
+			$("#popup").hide();
+		});
+	
+		//컨텍스트 메뉴를 클릭하면 커맨드 실행
+		var copyText;
+		$("#popup > div").click(function(e) {
+			var cmd = $(this).data("cmd");
+			$(this).parent().hide();
+			// 팝업창 띄울때 선택한 객체
+			console.dir(choiceObj)
+			
+			if (cmd == 'copy') {
+				var temp = $("<textarea>" + selectText + "</textarea>");
+				$("body").append(temp);
+				temp.select();
+				
+				document.execCommand('copy');
+				temp.remove();
+			}
+			else if (cmd == 'paste') {
+				let arr = ["INPUT", "TEXTAREA"];
+				if (arr.indexOf(choiceObj.nodeName) != -1) {
+					choiceObj.value += selectText;
+				} else {
+					choiceObj.innerHTML += selectText;
+				}
+			}
+			return false;
+		});
+	</script>	
+
+</body>
+</html>

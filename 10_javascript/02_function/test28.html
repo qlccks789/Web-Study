@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #result {
+            width: 80%;
+            height: 200px;
+            border: 5px solid brown;
+            margin: 40px 0px;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <h2>엘리먼트 접근하기 - 2</h2>
+    <hr>
+    <p class="food">사과</p>
+    <p class="food">배</p>
+    <p class="food">포도</p>
+    <p class="food">딸기</p>
+
+    <div id="result">결과출력</div>
+
+    <div>
+        <button onclick="doAction();">클릭</button>
+        <button onclick="doClear();">지우기</button>
+    </div>
+
+    <script>
+        function doAction() {
+            let pList = document.querySelectorAll("p.food");
+            let html = "";
+            for (let i = 0; i < pList.length; i++) {
+                console.log(pList[i].innerText);
+                html += "<br>" + pList[i].innerText;
+            }
+
+            let result = document.querySelector("#result");
+            result.innerHTML = result.innerHTML + html;
+        }
+        function doClear() {
+            /*
+            let result = document.querySelector("#result");
+            result.innerText = "결과출력";
+            */
+            document.querySelector("#result").innerText = "결과출력";
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

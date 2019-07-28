@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="ham" class="kr.co.mlec.di._06setter.HamSand" />
+	
+	<!-- id를 menu1으로 Menu 클래스 설정 -->
+	<bean id="menu1" class="kr.co.mlec.di._06setter.Menu" />
+	
+	<!-- setDesc(String desc) 처리 Menu 클래스 설정 -->
+	<bean id="menu2" class="kr.co.mlec.di._06setter.Menu">
+		<!-- 
+		<property name="desc">
+			<value>
+				샌드위치 : 햄
+			</value>
+		</property>
+		 -->
+		<property name="desc" value="샌드위치 : 햄" /> 
+	</bean>
+	
+	<!-- Sand 타입을 받는 생성자 활용 -->
+	<bean id="menu3" class="kr.co.mlec.di._06setter.Menu">
+		<!-- 
+		<property name="sand">
+			<ref bean="ham" />
+		</property>
+		 -->
+		<property name="sand" ref="ham" />
+	</bean>
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

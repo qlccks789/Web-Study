@@ -1,0 +1,68 @@
+1. 댓글 데이터 조회 쿼리 작성 (board.xml 파일에 내용 추가)
+
+	<!-- 댓글 파트 ============================================= -->
+	<resultMap id="commentMap" type="comment">
+		<result column="comment_no" property="commentNo" />
+		<result column="no" property="no" />
+		<result column="writer" property="writer" />
+		<result column="content" property="content" />
+		<result column="reg_date" property="regDate" />
+	</resultMap>
+	
+	<select id="selectCommentsByNo" parameterType="int" resultMap="commentMap">
+	    select *
+	      from tb_comment
+	     where no = #{no}
+	     order by comment_no 
+	</select>
+
+
+2. SQL을 호출하는 Mapper 코드 추가 (BoardMapper.java)
+
+	/* 댓글 파트 시작 ========================================= */
+	List<CommentVO> selectCommentsByNo(int no);
+	
+	
+3. DetailBoardController 클래스에 코드 추가
+
+	- forward 코드 위쪽에 아래 코드 복사 붙이기
+
+	// 댓글 목록 공유
+	List<CommentVO> commentList = mapper.selectCommentsByNo(no);
+	request.setAttribute("commentList", commentList);	
+	
+	
+4. detail.jsp 페이지에 댓글 목록 추가하기
+
+	- 화면 상단 지시자(taglib) 추가
+	
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    	
+	
+	
+	- body 태그 종료 전 아래 내용 추가하기
+	
+	<div id="commentList">
+		<table width='80%' border='1'>
+			<c:forEach var="comment" items="${commentList}">
+				<tr>
+				  <td><c:out value="${comment.writer}" /></td>
+				  <td><c:out value="${comment.content}" /></td>
+				  <td><fmt:formatDate value="${comment.regDate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+				  <td>
+				  	  <a href="#">삭제</a>	
+				  	  <a href="#">수정</a>	
+				  </td>
+			    </tr>
+			 </c:forEach>
+			 <c:if test="${empty commentList}">
+			 <tr>
+			    <td colspan='4'>댓글이 존재하지 않습니다.</td>
+			 </tr>
+		 	</c:if>
+		</table>
+	</div>	
+	
+	
+	
+	

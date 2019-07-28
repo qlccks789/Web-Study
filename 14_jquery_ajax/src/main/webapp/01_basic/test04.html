@@ -1,0 +1,73 @@
+<!-- 
+	전역  Ajax 함수
+	ajaxStart
+	ajaxStop
+	
+	ajaxSend
+	ajaxSuccess
+	ajaxComplete
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.2.1.js"></script>
+</head>
+<body>
+	<button>호출</button>
+	<div id="result1"></div>
+	<div id="result2"></div>
+	<script>
+		$(document).ajaxStart(function () {
+						console.log("ajaxStart");
+				   })
+		           .ajaxStop(function () {
+						console.log("ajaxStop");
+		           });
+		
+		$("button").click(function () {
+			$.ajax({
+				url: "/14_jquery_ajax/basic/exam01.do",
+				data: "msg=exam01",
+				success: function (result) {
+					$("#result1").html(result);
+					console.log("ajax1 - done");
+				}
+			});
+			$.ajax({
+				url: "/14_jquery_ajax/basic/exam02.do",
+				data: "msg=exam02",
+				success: function (result) {
+					$("#result2").html(result);
+					console.log("ajax2 - done");
+				}
+			});
+		});
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

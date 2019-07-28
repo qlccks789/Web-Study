@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!-- 
+그림자 효과 내기
+-  text-shadow : h-shadow | v-shadow | blur | 색상
+  : 수평거리(필수) 
+      - 그림자가 수평으로 얼마나 떨어져 있는지 지정, 
+         양수값은  요소의 오른쪽에 음수값은 요소의 왼쪽에 그림자 표시
+  : 수직거리(필수) 
+      - 그림자가 수직으로 얼마나 떨어져 있는지 지정,  
+         양수값은 요소의 위쪽에 음수값은 요소의 아래쪽에 그림자 표시
+  : blur  
+      - 그림자의 흐림 정도, 생략시 0을 기본값으로 진한 그림자, 
+         음수 불가능, 값이 커지면 흐려짐
+  : 색상  
+      - 그림자 색상
+ -->
+<html>
+<head>
+<title> text-shadow </title>
+<meta charset="utf-8" />
+<style>
+    body {
+		background: #808080;
+    }
+    h1 {
+        font-size: 80px;
+        color: white;
+        text-align: center;
+    }
+    .shadow1 {
+		text-shadow: 1px 10px 10px #000;
+	}
+    .shadow2 {
+        color: black;
+    	text-shadow: 3px -3px 5px #fff;
+    }
+	.shadow3 {
+	    color:#000;
+	    text-shadow:0 0 4px #ccc, 
+	                0 -5px 4px #ff3, 
+	                2px -10px 6px #fd3, 
+	                -2px -15px 11px #f80, 
+	                2px -19px 18px #f20;  	
+	}	    
+</style>
+</head>
+
+<body>
+ <h1>불꽃코딩</h1>
+ <h1 class="shadow1">불꽃코딩</h1>
+ <h1 class="shadow2">불꽃코딩</h1>
+ <h1 class="shadow3">불꽃코딩</h1>
+</body>
+</html> 

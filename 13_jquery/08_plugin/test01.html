@@ -1,0 +1,23 @@
+<!--
+    플러그인 만드는 방식
+    1. 정적 메서드 형태로 만들기 : $.메서드()
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="test01.js"></script>
+</head>
+<body>
+    <button>클릭</button>
+    <div></div>
+    <script>
+        $("button").click(function () {
+            console.log($.arr([3, 1, 2, 5, 7], "sum"));
+            console.log($.arr([3, 1, 2, 5, 7], "max"));
+        });
+    </script>
+</body>
+</html>

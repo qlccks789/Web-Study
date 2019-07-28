@@ -1,0 +1,60 @@
+<!-- 
+	FormData를 이용한 ajax 파일 전송하기
+ -->
+ <!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.2.1.js"></script>
+</head>
+<body>
+	<form id="ajaxForm">
+		<input type="text" id="msg" name="msg" /><br>
+		<input type="file" name="attachFile" multiple="multiple" />
+		<button type="button">업로드</button>	      
+	</form>
+	<div id="result"></div>
+	<script>
+		$("button").click(function () {
+			
+			let fd = new FormData();
+			fd.append("msg", $("#msg").val());
+			let files = $("input[name='attachFile']")[0].files;
+			for (let i = 0; i < files.length; i++) {
+				fd.append("attachFile" + i, files[i]);
+			}
+			
+			$.ajax({
+				url: "/14_jquery_ajax/file/exam02.do",
+				data: fd,
+				type: "POST",
+				// 파일 정보를 전송하기 위한 옵션
+				processData: false,
+				contentType: false,
+				success: function (result) {
+					$("#result").html(result);
+				}
+			});
+		});
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

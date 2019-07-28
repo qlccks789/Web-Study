@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!-- 
+	radio, checkbox 경우는 사용자가 하나도 선택하지 않으면 서버로 전송되지 않는다.
+ -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>input - radio, checkbox 데이터 전송하기</h2>
+	<form action="/08_servletjsp_dy/servlet/basic/test08.do">
+		<input type="radio" id="sms1" name="sms" value="Y" />
+		<label for="sms1">문자수신</label>
+		<input type="radio" id="sms2" name="sms" value="N" />
+		<label for="sms2">문자수신하지 않음</label>
+		
+		<br><br>
+		
+		<!-- 
+		...test08.do?dinner=1&dinner=2&dinner=3
+		 -->
+		<input type="checkbox" id="dinner1" name="dinner" value="1" />
+		<label for="dinner1">피자</label>		
+		<input type="checkbox" id="dinner2" name="dinner" value="2" />
+		<label for="dinner2">치킨</label>		
+		<input type="checkbox" id="dinner3" name="dinner" value="3" />
+		<label for="dinner3">콜라</label>
+		
+		<br><br>
+		
+		<button>전송</button>
+				
+	</form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

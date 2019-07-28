@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            background-color: #345;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h2>CSS 정보 얻어오기</h2>
+    <div style="width: 200px; height: 200px;">
+        <p>DIV</p>
+    </div>
+
+    <script>
+        let divEle = document.querySelector("div");
+        console.log("width", divEle.style.width);
+        console.log("height", divEle.style.height);
+
+        // 접근이 안됨..
+        console.log("backgroundColor", divEle.style.backgroundColor);
+
+        // 기본 적용된 스타일 가져오기
+        // console.dir(document);
+        console.dir(document.defaultView.getComputedStyle(divEle));
+        let backColor = document.defaultView.getComputedStyle(divEle).backgroundColor;
+        console.log("backColor", backColor);
+    </script>
+</body>
+</html>

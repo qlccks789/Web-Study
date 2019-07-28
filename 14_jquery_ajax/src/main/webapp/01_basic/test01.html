@@ -1,0 +1,83 @@
+<!-- 
+	$.ajax(options);
+	options 주요 속성
+	url :  요청하려는 서버 페이지 주소(기본 : 현재페이지)
+	type : 요청 메서드, 
+	     : GET, POST, PUT, PATCH, DELETE (REST, SEMANTIC URI)
+	       GET - 조회
+	       POST - 등록
+	       PUT, PATCH - 수정
+	       DELETE -  삭제
+	       
+	       GET    /board/all    /board/list 
+	       GET    /board/10     /board/detail?no=10
+	       DELETE /board/10     /board/delete?no=10
+	       PUT    /board/10     /board/update
+	       POST   /board        /board/write 
+	     
+	data : 파라미터 문자열
+	dataType : 서버로부터 응답받기를 원하는 데이터 타입
+
+	contentType : 요청시 서버에 전달하는 데이터 타입
+	headers : 요청시 전달할 헤더값을 객체 형태로 지정
+
+	beforeSend : 요청을 서버에 전송하기 전에 실행될 함수
+	
+	success - done, error - fail
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.2.1.js"></script>
+</head>
+<body>
+	<input type="text" id="msg" />
+	<button>호출</button>
+	<div id="result"></div>
+	<script>
+	$("button").click(function () {
+		$.ajax({
+			url: "/14_jquery_ajax/basic/exam01.do",
+			type: "GET",
+			data: "msg=" + $("#msg").val(),
+			beforeSend: function () {
+				if ($("#msg").val() == "") {
+					alert("메세지를 입력하세요");
+					return false;
+				}
+			}
+			/*
+			,
+			success: function (result) {
+				$("#result").html(result);	
+			}
+			*/
+		})
+		.done(function (result) {
+			$("#result").html(result);	
+		});
+	});
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

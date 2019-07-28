@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            position: absolute;
+            left: 10px; top: 10px;
+            width: 150px; height: 150px;
+            font-size: 30px;
+            background: #738;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div>이동</div>
+
+    <script>
+        let divEle = document.querySelector("div");
+        /*
+        divEle.addEventListener("mousemove", function (e) {
+            divEle.style.left = e.clientX + "px";
+            divEle.style.top = e.clientY + "px";
+        });
+        */
+        document.addEventListener("mousemove", function (e) {
+            divEle.style.left = e.clientX + "px";
+            divEle.style.top = e.clientY + "px";
+        });
+    </script>
+</body>
+</html>

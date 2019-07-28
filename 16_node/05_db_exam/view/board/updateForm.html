@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>노드 게시판</h1>
+	<form action="update.do" method="post">
+		<input type="hidden" name="no" value=":no" />
+		<table style="border: 1px solid black">
+		<tr>
+			<th>제목</th>
+			<td><input type="text" name="title" value=":title" /></td>
+		</tr>
+		<tr>
+			<th>글쓴이</th>
+			<td>:writer</td>
+		</tr>
+		<tr>
+			<th>내용</th>
+			<td><textarea name="content" rows="6" cols="70">:content</textarea></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<button>수정</button>
+				<a href='detail.do?no=:no'>취소</a>
+			</td>
+		</tr>
+		</table>
+	</form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

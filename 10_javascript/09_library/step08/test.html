@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!-- 
+	CSS 속성 기능 추가하기	
+
+	css(프로퍼명, 값) : 설정
+	css(프로퍼명) : 추출
+
+	<div id="a" name="b" data-msg="c"></div>
+	<div style="width: 100px; height: 100px;"></div>
+-->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="jquery.js"></script>
+</head>
+<body>
+	<button>설정하기</button>
+	<button>가져오기</button>
+	
+	<div>CSS 라이브러리 추가...</div>
+	
+	<script>	
+		$("button:nth-child(1)").click(function () {
+			/*
+			$("div").css("background", "tomato")
+					.css("color", "white")
+					.css("fontSize", "50px")
+					.css("border", "5px solid black");
+			*/
+			$("div").css({
+				"background": "tomato",
+				"color": "white",
+				"fontSize": "50px",
+				"border": "5px solid black"
+			});
+		});
+		$("button:nth-child(2)").click(function () {
+			alert($("div").css("color"));
+		});
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

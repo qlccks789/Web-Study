@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--
+    DOM(Document Object Model)
+
+    -> 웹브라우져는 HTML 태그를 읽고 각 태그를 자바스크립트 객체로 만든다.
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="doAction(1);">태그 선택자</button>    
+    <button onclick="doAction(2);">아이디 선택자</button>    
+    <button onclick="doAction(3);">클래스 선택자</button>    
+
+    <div>테스트1</div>
+    <div id="a">테스트2</div>
+    <div class="b">테스트3</div>
+
+    <script>
+        function doAction(comm) {
+            switch (comm) {
+                case 1: 
+                    // var divList = document.querySelectorAll("div");
+                    var divList = document.getElementsByTagName("div");
+                    for (let i = 0; i < divList.length; i++) {
+                        console.log(divList[i].innerText);
+                    }
+                    break;
+                case 2:
+                    // var divEle = document.querySelector("#a");
+                    var divEle = document.getElementById("a");
+                    console.log(divEle.innerText);
+                    break;
+                case 3:
+                    var divList = document.querySelectorAll(".b");
+                    console.log(divList[0].innerText);
+
+                    // var divList = document.getElementsByClassName("b");
+                    console.log(divList[0].innerText);
+                    
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

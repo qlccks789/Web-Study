@@ -1,0 +1,55 @@
+<!-- 
+	Dom 관련 퀴즈 - 1
+ -->
+ <!DOCTYPE html>
+ <html>
+ <head>
+ <meta charset="utf-8">
+ <title>JAVA SCRIPT EXAMPLE</title>
+ <script>
+ 
+ function getHtml(type) {
+     switch (type) {
+     case "text":     return "문자열 : <input type='text' name='aaa' size='20'>";
+     case "password": return "비밀번호 : <input type='password' name='aaa'>";
+     case "radio":    return "<input type='radio' name='radio1'> 라디오버튼";
+     case "checkbox": return "<input type='checkbox' name='box1'> 체크박스";
+     case "button": return "<input type='button' value='버튼'>";
+     case "select":
+         var innerHTML = "<SELECT name='sel1'>";
+         innerHTML += "<option value='1 '>콤보항목 -> 1 </option>";
+         innerHTML += "<option value='2 '>콤보항목 -> 2 </option>";
+         innerHTML += "<option value='3 '>콤보항목 -> 3 </option>";
+         innerHTML += "<option value='4 '>콤보항목 -> 4 </option>";
+         innerHTML += "<option value='5 '>콤보항목 -> 5 </option>";
+         return innerHTML;
+     }
+ }
+ 
+ function appenDiv(type) {
+     var myDiv = document.querySelector("#myDiv");
+     var div   = document.createElement("DIV");
+         div.innerHTML = getHtml(type);
+     myDiv.appendChild(div);
+ }
+ </script>
+ </head>
+ <body>
+     <form>
+         <h3 id="myHead">DOM Node 생성 </h3>
+         <hr noshade>
+         <div id="myDiv"></div>      
+         <div>
+               <ul>
+                 <li><a href="#" onclick="appenDiv('text')">문자열 박스 생성</a></li>
+                 <li><a href="#" onclick="appenDiv('password')">비밀번호 박스 생성</a></li>
+                 <li><a href="#" onclick="appenDiv('checkbox')">체크 박스 생성</a></li>
+                 <li><a href="#" onclick="appenDiv('radio')">라디오 버튼 생성</a></li>
+                 <li><a href="#" onclick="appenDiv('button')">버튼 생성</a></li>
+                 <li><a href="#" onclick="appenDiv('select')">콤보 박스  생성</a></li>
+               </ul>
+         </div>
+         <br />
+     </form>
+ </body>
+ </html>

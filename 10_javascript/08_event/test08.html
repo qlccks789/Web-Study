@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="msg">
+    <div id="result"></div>
+    <script>
+        let msg = document.querySelector("#msg");
+        let result = document.querySelector("#result");
+
+        msg.onfocus = function () {
+            result.innerHTML = "포커스 이벤트 발생함";
+        };
+        
+        msg.onblur = function () {
+            if (msg.value.length != 6) {
+                alert("6자리를 입력해야 합니다.");
+            }
+            result.innerHTML = "블러 이벤트 발생함";
+        }
+
+    </script>
+</body>
+</html>

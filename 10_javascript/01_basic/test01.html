@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!--
+자바스크립트
+  - 객체 기반의 스크립트 프로그래밍
+  - NodeJS 언어 이전에는 웹브라우져내에서 사용이 가능했음(클라이언트)
+  - NodeJS 언어 이후에는 콘솔창에서 실행이 가능(서버)
+    NodeJS(서버용) + Javascript(클라이언트) - 바닐라 자바스크립트
+    Java(서버용) + HTML,..JSP
+  - 프레임워크(AngularJS, VueJS, React)
+  - 라이브러리(jQuery, Prototype, ..) 
+  - 웹페이지의 UI를 제어하기 위한 용도
+  - 자바와 문법이 유사한 점이 있음(자바와 자바스크립트 모두 C 언어의 기본 문법 바탕)
+
+자바스크립트 엔진
+  - 브라우저마다 스크립트로 작성된 명령을 해석해서 실행시키는 프로그램
+  - 크롬(V8), 인터넷엣지(차크라), ..
+  
+브라우져에서 실행하기
+  - <script></script> 태그로 감싸고 태그 사이에 스크립트 명령어를 작성
+  - <script> 태그의 위치로 body 태그 종료전을 권장..  
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 개발자 도구 > console 탭에 출력
+        console.log(1);
+    </script>
+    <!-- 외부파일 불러오기 -->
+    <script src="test01.js">
+        // 무시됨..
+        console.log(4);
+    </script>
+</head>
+<body>
+    <h2>스크립트 실행하기</h2>
+    <script>
+        console.log(2);    
+    </script>
+</body>
+</html>

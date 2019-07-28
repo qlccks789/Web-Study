@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+  <style>
+  div {
+    border: 3px solid #666;
+    margin: 5px;
+    padding: 5px;
+    width: 200px;
+    height: 300px;
+    overflow: auto;
+  }
+
+  </style>
+  <script src="../js/jquery-3.2.1.js"></script>
+</head>
+<body>
+	<button id="top">스크롤 위로 올리기</button> 
+	<button id="bottom">스크롤 아래로 내리기</button>
+	<div>
+		<h2>테스트1</h2>
+		<h2>테스트2</h2>
+		<h2>테스트3</h2>
+		<h2>테스트4</h2>
+		<h2>테스트5</h2>
+		<h2>테스트6</h2>
+		<h2>테스트7</h2>
+		<h2>테스트8</h2>
+		<h2>테스트9</h2>
+		<h2>테스트1</h2>
+		<h2>테스트2</h2>
+		<h2>테스트3</h2>
+		<h2>테스트4</h2>
+		<h2>테스트5</h2>
+		<h2>테스트6</h2>
+		<h2>테스트7</h2>
+		<h2>테스트8</h2>
+		<h2>테스트9</h2>
+	</div>
+	<script>
+		$("div").scroll(function () {
+			// console.log("스크롤 이벤트 발생");
+			console.log("top : " + $(this).scrollTop());
+		});
+
+		$("button:eq(0)").click(function () {
+			var $div = $("div");
+			var id = setInterval(function () {
+				if ($div.scrollTop() > 0) {
+					$div.scrollTop($div.scrollTop() - 10);
+				} else {
+					clearInterval(id);
+				}
+			}, 1000/30);
+		});
+		$("button:eq(1)").click(function () {
+			var $div = $("div");
+			console.log(
+				$div[0].scrollHeight, $div.scrollTop(), $div[0].offsetHeight
+			);
+			var id = setInterval(function () {
+				if ($div.scrollTop() + $div[0].offsetHeight < $div[0].scrollHeight) {
+					$div.scrollTop($div.scrollTop() + 10);
+				} else {
+					clearInterval(id);
+				}
+			}, 1000/10);
+		});
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!--
+    이벤트 전파 이해하기
+
+    addEventListener("이벤트타입", 리스너, 전파방식(true/false(기본)))
+    전파방식
+    : 캡처링(부모에서 자식으로), 버블링(자식에서 부모로..)
+    : true (캡처링), false(버블링)
+
+    전파중지
+    : 이벤트객체.stopPropagation();
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            border: 3px solid #345;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>이벤트 전파 방식 이해하기</h2>    
+
+    <div id="outer">
+        <div id="inner">
+            <div id="child">이벤트 전파 테스트</div>
+        </div>
+    </div>
+    <div id="debug"></div>
+    <script>
+        function print(msg) {
+            let d = document.querySelector("#debug");
+            d.innerHTML += msg + "<br>";
+        }
+
+        let outer = document.querySelector("#outer");
+        let inner = document.querySelector("#inner");
+        let child = document.querySelector("#child");
+
+        outer.addEventListener("click", function (e) {
+            print("outer");
+        });
+        inner.addEventListener("click", function (e) {
+            print("inner");
+            // 이벤트 중지시키기
+            e.stopPropagation();
+        });
+        child.addEventListener("click", function (e) {
+            print("child");
+            // 이벤트 중지시키기
+            e.stopPropagation();
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

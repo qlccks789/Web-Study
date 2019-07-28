@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>다이닝코드</title>
+    <style>
+        * { margin: 0px; padding: 0px; box-sizing: border-box; }
+        html, body {
+            height: 100%;
+        }
+        ul, li {
+            list-style: none;
+        }
+
+        .container {
+            height: 100%;
+            width: 100%;
+            background: #aabbcc;
+        }
+        .header {
+            background: #fff;
+            height: 80px;
+        }
+        .header__center {
+            /* border: 1px solid black; */
+            height: 100%;
+            width: 940px;
+            margin: 0 auto;
+        }
+        .header__center > .header__logo {
+            float: left;
+            width: 23%;
+            height: 100%;
+            border-right: 2px solid #ddd;
+            background: url(https://s3-ap-northeast-1.amazonaws.com/dcicons/new/images/web/common/ic-header-logo@2x.png) no-repeat center center;
+            background-size: 190px;
+        }
+        .header__center >  .header__search {
+            float: left;
+            width: 54%;
+            height: 100%;
+        }
+        .header__center > .header__link {
+            float: right;
+            width: 23%;
+            height: 100%;
+            border: 1px solid black;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header__center">
+                <div class="header__logo"></div>
+                <div class="header__search"></div>
+                <div class="header__link"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

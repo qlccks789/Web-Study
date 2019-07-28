@@ -1,0 +1,24 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    title Insert title here
+  body
+    h1 노드 게시판  
+    form(action='write.do', method='post')
+      table(style='border: 1px solid black')
+        tr
+          th 제목
+          td
+            input(type='text', name='title')
+        tr
+          th 글쓴이
+          td
+            input(type='text', name='writer')
+        tr
+          th 내용
+          td
+            textarea(name='content', rows='6', cols='70')
+        tr
+          td(colspan='2')
+            input(type='submit', value='등록')

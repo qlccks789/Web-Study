@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!-- 
+font-family : 글꼴 집합, 글꼴의 종류를 지정할 때 사용
+- 하나 이상의 글꼴을 열거할 때는 쉼표를 사용  
+- 글꼴 이름에 공백이 들어갈 경우 인용부호(", ')로 묶어서 사용
+
+generic family : 모양이 비슷한 글꼴들 집합
+- sans-serif(고딕체) : 맑은 고딕, 돋움체(Dotum), 굴림체(Gulim), Arial , Tahoma, Verdana
+- serif(명조체) : 궁서체, 바탕체, Time New Roman
+- monospace(가로폭이 동일) : monaco, consolas, Currier New
+- cursive(필기체) : Comic Sans
+- fantasy(화려한 서체)
+ -->
+<html>
+<head>
+<title> 다양한 글자 꾸미기 </title>
+<meta charset="utf-8" />
+<style>
+    p.serif {
+        font-family: monaco, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+    p.sans {
+        font-family: sans-serif;
+    }
+    p.monospace {
+        font-family: monospace;
+    }
+    p.cursive {
+        font-family: cursive;
+    }
+    p.fantasy {
+        font-family: fantasy;
+    }
+
+    
+</style>
+</head>
+<body>
+    <h2>글꼴 테스트</h2>
+    <p class="serif ">명조체(serif)</p>
+    <p class="sans">고딕체(sans-serif)</p>
+    <p class="monospace">가로폭이 동일(monospace)</p>
+    <p class="cursive">필기체(cursive)</p>
+    <div class="fantasy">화려한 서체(fantasy)</div>
+</body>
+</html>

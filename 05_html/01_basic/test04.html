@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--
+    a(anchor) : 링크를 걸어주는 태그, 텍스트나 이미지에 설정
+
+    대표속성
+    href 
+    - 이동할 페이지의 주소 설정
+    - 주소가 #으로 시작할 경우
+      #뒤에 오는 이름에 해당하는 id 값을 가지는 태그 위치로 페이지를 이동
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h2 id="top">[[[아이디가 top인 태그]]]</h2>
+    <h2>
+        <a href="http://www.naver.com">네이버</a>
+        <!-- 다음 글자를 클릭하면 다음사이트로 이동.. -->
+        <a href="http://www.daum.net">다음</a>
+
+        <!-- target : _self(기본), _blank(새창), 이름직접 -->
+        <a href="http://www.naver.com"
+           target="_blank"  
+        >네이버</a>
+
+        <a href="http://www.naver.com"
+            target="mypop"  
+        >네이버</a>
+    </h2>
+    <h1>1</h1>
+    <h1>1</h1>
+    <h1>1</h1>
+    <h1>1</h1>
+    <h1>1</h1>
+    <h1>1</h1>
+    <h1>1</h1>
+    <h1>1</h1>
+    <h1>1</h1>
+    <h1>1</h1>
+    <h1>1</h1>
+    <h2 id="middle">[[[아이디가 middle 인 태그]]]</h2>
+    <h1>2</h1>
+    <h1>2</h1>
+    <h1>2</h1>
+    <h1>2</h1>
+    <h1>2</h1>
+    <h1>2</h1>
+    <h1>2</h1>
+    <h1>2</h1>
+    <h1>2</h1>
+    <h1>2</h1>
+    <h1>2</h1>
+    <a href="#top">위로</a>
+    <a href="#middle">중간</a>
+    <a href="#aaa">13</a>
+    <a href="#">ㅁㅁㅁㅁㅁ</a>
+
+    <!-- 이동 글자를 클릭하게 되면 test02.html 페이지로 이동 -->
+    <a href="test02.html">이동</a>
+
+</body>
+</html>

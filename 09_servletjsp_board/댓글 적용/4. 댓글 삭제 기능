@@ -1,0 +1,40 @@
+1. 댓글 등록 SQL 추가하기(board.xml에 추가)
+
+	<delete id="deleteComment" parameterType="int">
+	    delete 
+	      from tb_comment
+	     where comment_no = #{commentNo}
+	</delete>			
+
+
+2. SQL을 호출하는 Mapper 코드 추가 (BoardMapper.java)
+
+	void deleteComment(int commentNo);
+
+
+3. detail.jsp 페이지에 댓글 삭제 링크 추가하기
+
+	commentList 의 댓글 삭제 링크 주소를 <a href="#">삭제</a> 아래와 같이 수정
+	<a href="comment-delete.do?commentNo=${comment.commentNo}&no=${comment.no}">삭제</a>
+	
+	
+4. Controller 서블릿 작성하기(kr.co.mlec.board.controller)
+		
+@WebServlet("/board/comment-delete.do")		
+public class CommentDeleteController extends HttpServlet {
+
+	private BoardMapper mapper;
+	
+	public CommentDeleteController() {
+		mapper = MyAppSqlConfig.getSqlSession().getMapper(BoardMapper.class);
+	}
+	
+	@Override
+	public void service(
+			HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		mapper.deleteComment(Integer.parseInt(request.getParameter("commentNo")));
+		response.sendRedirect("detail.do?no=" + Integer.parseInt(request.getParameter("no")));
+		
+	}
+}	

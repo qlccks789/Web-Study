@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<style>
+	button {
+		margin: 5px;
+		font-size: 20px;
+		height: 50px;
+		background: tomato;
+		color: white;
+		border: 5px solid black;
+	}
+	</style>
+	<script src="../js/jquery-3.2.1.js"></script>
+</head>
+<body>
+    <button>hide</button>
+    <button>show</button>
+    <button>toggle</button>
+    <div id="effDiv">
+        <h1>애니메이션 효과</h1>
+        <p>애니메이션 효과</p>
+    </div>
+    <script>
+	/*	
+		효과가 적용될 시간 설정
+		----------------------------
+		show(시간)    
+		hide(시간)
+		toggle(시간)
+
+		fadeOut
+		fadeIn
+		fadeToggle
+
+		slideUp
+		slideDown
+		slideToggle
+		-----------------------------
+    */
+    $("button:eq(0)").click(function () {
+		$("#effDiv").hide(2000);
+	});
+    $("button:eq(1)").click(function () {
+		$("#effDiv").show(2000);
+	});
+    $("button:eq(2)").click(function () {
+		$("#effDiv").toggle(2000);
+	});
+	</script>
+</body>
+</html>

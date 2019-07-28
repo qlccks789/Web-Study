@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        div {
+            width: 50px; height: 50px;
+            background-color: orange;
+			position: relative;
+        }
+    </style>
+    <script src="../js/jquery-3.2.1.js"></script>
+</head>
+<body>
+    <div>hi</div><div></div>
+    <div></div><div></div>
+    <div></div><div></div>
+    <script>
+        // 	animate(properties[, duration][, easing][, complete]) : 애니메이션 등록하기
+        $("div").click(function () {
+            
+        });
+
+        $("div").hover(
+            /*
+            function () { $(this).animate({margin: 50}, "slow"); }, 
+            function () { $(this).animate({margin: 0}, "slow");}
+            
+            function () { $(this).animate({left: 300}, "slow"); }, 
+            function () { $(this).animate({left: 0}, "slow");}
+            
+            function () { $(this).animate({opacity: 0.1}, "slow"); }, 
+            function () { $(this).animate({opacity: 1.0}, "slow"); }
+            */
+           function () { $(this).animate({margin: 50, left: 300, opacity: 0.1}, 100); }, 
+           function () { $(this).animate({margin: 0, left: 0, opacity: 1.0}, 100); }
+        );
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

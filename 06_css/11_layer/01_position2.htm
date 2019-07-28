@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!-- 
+    엘리먼트 위치 지정하기
+    position 속성의 값을 지정
+    absolute 절대좌표 지정시 사용함
+    top, left, right, bottom으로 위치를 지정
+ -->
+<html>
+<head>
+<title> position </title>
+<meta charset="utf-8" />
+<style type="text/css">
+    html {
+        background-color: #b3b3b3;
+        padding: 15px;
+        margin: 0px;
+        height: 1000px;
+    }
+    body {
+        background-color: #fa923f;
+        padding: 20px;
+        margin: 0px;
+        border: 5px solid black;
+    }
+    .parent {
+        background-color: white;
+        padding: 20px;
+        margin: 0px;
+        border: 5px solid black;
+    }
+
+    .parent > div {
+        padding: 10px;
+        border: 5px solid black;
+        margin: 10px;
+        font-size: 2em;
+        font-weight: bold;
+
+        /* 사용시 좌표와 같이 사용함 */
+        position: absolute;
+    }
+    #abs1 { 
+        background-color: skyblue; 
+        top: 10px; right: 10px;
+    }
+    #abs2 { 
+        background-color: tomato; 
+        top: 100px;
+        left: 100px;
+    }
+    #abs3 { 
+        background-color: yellow; 
+        bottom: 10px;
+        right: 10px;
+    }
+</style>
+</head>
+<body>
+    <h1>위</h1>
+    <div class="parent">
+        <div id="abs1">1</div>
+        <div id="abs2">2</div>
+        <div id="abs3">3</div>
+    </div>
+    <h1>아래</h1>
+</body>
+</html>
+
+
+
+
+
+
+

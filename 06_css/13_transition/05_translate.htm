@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> transition  </title>
+<meta charset="utf-8" />
+<style>
+    #outer > div {
+        width: 100px; height: 100px;
+        text-align: center;
+        padding: 5px;
+        margin: 5px 10px;
+        color: white;
+        background: black;
+        font-size: 30px;
+        font-weight: bold;
+    }
+
+    #outer:hover > div {
+        width: 500px;
+    }
+
+    #outer:hover > .ease {
+        transition: 5s ease;
+    }
+    #outer:hover > .linear {
+        transition: 5s linear;
+    }
+    #outer:hover > .ease-in {
+        transition: 5s ease-in;
+    }
+    #outer:hover > .ease-out {
+        transition: 5s ease-out;
+    }
+    #outer:hover > .ease-in-out {
+        transition: 5s ease-in-out;
+    }
+</style>
+</head>
+<body>
+<div id="outer">
+    <div class="ease"> ease </div>
+    <div class="linear"> linear </div>
+    <div class="ease-in"> ease-in </div>
+    <div class="ease-out"> ease-out </div>
+    <div class="ease-in-out"> ease-in-out </div>
+</div>
+</body>
+</html>

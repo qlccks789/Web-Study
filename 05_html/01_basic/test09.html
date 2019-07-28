@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Form</title>
+</head>
+<body>
+    <!--
+        form 태그
+        1. 사용자가 입력한 값을 서버에 전송하기 위한 태그이다.
+        2. 속성
+           : action - 사용자가 입력한 값을 받아서 처리할 서버의 페이지 주소
+                    - action 속성을 생략했을 경우 자기자신 페이지를 호출
+           : method - GET(사용자의 입력정보가 브라우저 URL에 노출됨), 
+                    - POST(RequestBody에 붙여서 서버 전송) 를 사용한다.
+           : name - 프로그램에서 form을 접근하고자 할 때 사용
+           : encType - 사용자의 입력정보에 파일정보가 있을 때 사용함
+                     - multipart/form-data( 파일 정보를 전송 )
+    -->
+    <form action="proc.jsp" 
+          method="get"
+          name="mainForm"
+          encType="multipart/form-data">
+       <!-- 
+            사용자의 입력 받기  - 3가지 태그
+            input, select, textarea
+            
+            input 태그에 type 속성을 지정하지 않으면 디폴트 "text" 적용됨
+
+            input 태그 하나로 여러가지 입력 UI를 제공함
+
+            위의 태그들이 값을 서버로 전송하기 위해서는 반드시
+            "name" 속성을 지정해야 한다.
+            "name" 속성이 없는 경우 서버로 전송되지 않는다.
+        -->      
+
+        <!-- type="hidden" 
+             사용자에게 값을 입력받지 않는다.
+             값을 임의로 설정해서 보낸다.(개발자가 필요에 의해서 사용)
+        -->
+        <div>
+            hidden : 
+            <input type="hidden" name="smid1" value="s_menu" />
+            <input type="hidden" name="smid2" value="ticket" />
+        </div>
+        
+        <!-- type="text" 
+             한줄 입력 창
+
+             value : 서버에 전송되는 값
+             만약, value 속성에 값을 미리 설정했다면 화면 로딩시
+             텍스트 창에 값이 설정되어 보인다.
+        -->
+        <div>
+            text : <input type="text" name="id" value="admin" />
+            이름 : <input type="text" name="name" 
+                          autofocus
+                          placeholder="이름을 입력하세요" />
+            메세지 : <input name="msg" />              
+        </div>
+        
+        <!-- type="password" 
+             입력값을 암호화 해서 보여준다.
+
+        -->
+        <div>
+            password : <input type="password" name="pass"
+                              maxlength="8"
+                        />
+        </div>
+
+        <!-- type="radio" 
+             여러개의 항목에서 하나만 선택하게 하려면
+             여러개의 항목들이 같은 name 속성의 값을 사용해야 한다.
+
+             value 속성을 별도로 지정하지 않은 경우
+             선택된 라디오 항목의 이름=on 의 형태로 전송이 됨
+
+             라디오 또는 체크박스는 사용자가 아무값도 선택하지 
+             않으면 해당 항목의 파라미터 자체가 전송되지 않는다.
+
+             value 속성의 값을 지정하지 않으면 체크된 항목의 
+             수만큼 "on" 이 넘어가기 때문에 어떤 항목이 체크되어
+             있는지 알 수 없다.
+             따라서, 사용하기 위해서 value 속성을 필수로 작성해야 한다. 
+
+             화면로딩시 특정 항목을 체크된 상태로 보이려면
+             "checked" 속성값을 활용한다.
+        -->
+        <div>
+            이메일 수신 : 
+            <input type="radio" id="email1" name="email" value="Y" /> 
+            <label for="email1">수신</label>
+
+            <input type="radio" id="email2" name="email" 
+                   value="N" checked /> 
+            <label for="email2">수신하지 않음</label>
+        </div>
+        <!-- type="checkbox" -->
+        <div>
+            좋아하는 과일 : 
+            <input type="checkbox" id="fruit1" name="fruit" value="1" /> 
+            <label for="fruit1">사과</label>
+            <input type="checkbox" id="fruit2" name="fruit" 
+                   value="2" checked  /> 
+            <label for="fruit2">포도</label>
+        </div>
+        <!-- type="file" 
+             파일의 내용을 전송하기 위한 2가지 조건
+
+             form 태그의 method 속성이 "post" 로 지정
+             encType="multipart/form-data" 로 지정
+        -->
+        <div>
+            file : <input type="file" name="attach" />
+        </div>
+
+        <!-- select 박스가 화면에 로딩될때 특정 항목을
+             선택된 상태로 보이게 하려면 
+             "selected" 속성 이용
+        -->
+        <div>
+            select :
+            <select name="area">
+                <option value="0">선택하세요</option>
+                <option value="1">서울</option>
+                <option value="2" selected>제주</option>
+            </select>
+        </div>
+
+        <div>
+            textarea : 
+            <textarea name="content" rows="8" cols="70">이곳에 내용을 입력하세요</textarea>
+        </div>
+
+        <!-- 
+            fieldset : 입력항목을 그룹으로 묶어서 표현시 사용
+            legend : 그룹핑에 대한 설명
+        -->
+        <div>
+            <fieldset>
+                <legend>날짜 관련</legend>
+                date : <input type="date" />
+                date : <input type="date" />
+            </fieldset>
+        </div>
+
+        <div>
+            <!--
+                type이 생략되면 디폴트가 "submit"이 적용
+            -->
+            <button>저장</button>
+            <button type="submit">저장</button>
+            <button type="reset">취소</button>
+            <button type="button">눌러</button>
+        </div>
+
+        <!-- type="submit" 
+             사용자가 입력한 데이터를 action에 지정된 
+             서버 페이지로 전송한다.
+        -->
+        <input type="submit" value="저장" />
+
+        <!-- type="reset" 
+             사용자가 입력한 값들을 페이지가 로딩되었을 때
+             상태로 되돌린다.
+        -->
+        <input type="reset" value="취소" />
+        
+        <!-- type="button" 
+             처리할 일들을 개발자가 직접 정의해서 사용
+
+             onclick="자바스크립트코드"
+        -->
+        <input type="button" value="눌러" 
+               onclick="alert('눌렀음...');"
+        />
+    </form>
+    <h2>1</h2>
+    <h2>1</h2>
+    <h2>1</h2>
+    <h2>1</h2>
+    <h2>1</h2>
+    <h2>1</h2>
+    <h2>1</h2>
+</body>
+</html>

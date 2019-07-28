@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> rotate (회전) </title>
+<meta charset="utf-8" />
+<style>
+    .outer > div {
+        background-color: yellow;
+        width: 300px; height: 250px;
+        border: 2px solid tomato;
+        float: left;
+        margin: 20px;
+    }
+
+    img {
+        width: 300px; height: 250px;
+        transition: 3s;
+    }
+
+    .outer {
+        width: 100%;
+        height: 300px;
+    }
+
+    #x:hover > img { transform: rotateX(45deg); }
+    #x1:hover > img { transform: rotateX(70deg); }
+    #x2:hover > img { transform: rotateX(120deg); }
+
+    #y:hover > img { transform: rotateY(45deg); }
+    #y1:hover > img { transform: rotateY(70deg); }
+    #y2:hover > img { transform: rotateY(120deg); }
+
+    #z:hover > img { transform: rotateZ(45deg); }
+    #z1:hover > img { transform: rotateZ(70deg); }
+    #z2:hover > img { transform: rotateZ(700deg); }
+</style>
+</head>
+<body>
+    <h1>rotate (회전)</h1>
+    <div class="outer">
+	    <div id="x"><img src="../images/pic1.jpg"/></div>
+	    <div id="x1"><img src="../images/pic1.jpg"/></div>
+	    <div id="x2"><img src="../images/pic1.jpg"/></div>
+    </div>
+    <div class="outer">
+        <div id="y"><img src="../images/pic1.jpg" /></div>
+        <div id="y1"><img src="../images/pic1.jpg" /></div>
+        <div id="y2"><img src="../images/pic1.jpg" /></div>
+    </div>
+    <div class="outer">
+        <div id="z"><img src="../images/pic1.jpg" /></div>
+        <div id="z1"><img src="../images/pic1.jpg" /></div>
+        <div id="z2"><img src="../images/pic1.jpg" /></div>
+    </div>
+</body>
+</html>
+

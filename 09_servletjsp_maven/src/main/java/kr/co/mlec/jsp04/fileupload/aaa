@@ -1,0 +1,20 @@
+------WebKitFormBoundaryiJhU2qrXBRLvUJfC
+Content-Disposition: form-data; name="msg1"
+
+test
+------WebKitFormBoundaryiJhU2qrXBRLvUJfC
+Content-Disposition: form-data; name="msg2"
+
+test
+------WebKitFormBoundaryiJhU2qrXBRLvUJfC
+Content-Disposition: form-data; name="msg3"
+
+test
+------WebKitFormBoundaryiJhU2qrXBRLvUJfC
+Content-Disposition: form-data; name="attach1"; filename="Test01.java"
+Content-Type: application/octet-stream
+
+public class Test01 {  	public static void main(String[] args) {		System.out.println(1);		System.out.println(2);		System.out.println(3);		System.out.println(4);		System.out.println(5);			}}
+------WebKitFormBoundaryiJhU2qrXBRLvUJfC
+Content-Disposition: form-data; name="attach2"; filename=""Content-Type: application/octet-stream
+------WebKitFormBoundaryiJhU2qrXBRLvUJfC--

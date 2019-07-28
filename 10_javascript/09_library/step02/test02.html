@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!--
+    라이브러리에 innerHTML 추출 기능 추가하기..
+    element.html()
+
+    객체.innerHTML = "값";
+    객체.innerHTML
+
+    $(..).html("값");
+    $(..).html();
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery.js"></script>
+</head>
+<body>
+    <button>설정</button>    
+    <button>추출</button>    
+    <button>설정 및 추출</button>    
+    <div>기본</div>
+    <div>기본</div>
+    <div>기본</div>
+    <div>기본</div>
+    <div>기본</div>
+    <script>
+        $("button:nth-child(1)")[0].addEventListener(
+            "click", 
+            function () {
+                $("div").html("변경하기");
+            }
+        );
+        $("button:nth-child(2)")[0].addEventListener(
+            "click", 
+            function () {
+                alert( $("div").html() );
+            }
+        );
+        $("button:nth-child(3)")[0].addEventListener(
+            "click", 
+            function () {
+                /*
+                $("div").html("변경하기");
+                alert( $("div").html() );
+                
+                var $div = $("div");
+                $div.html("변경하기");
+                alert( $div.html() );
+                */
+               
+               alert( $("div").html("변경하기").html() );
+            }
+        );
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,121 @@
+<!--
+	:contains("문자열")   :  지정한 문자열이 포함된 엘리먼트 선택
+	:has(선택자)          :  지정된 선택자를 포함할 수 있는 엘리먼트 선택
+	:not(선택자)          :  선택자에 해당하지 않는 엘리먼트 선택
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>css selectors</title>
+    <style type="text/css">
+        .choice {
+            margin: 5px;
+            padding: 5px;
+            border: solid #000000 thick;
+            background: orange;
+        }
+        
+        .java {
+            font-size: 20px;
+        }
+        
+        .sql {
+            font-weight: bold;
+        }
+        
+        .css {
+            font-style: italic;
+        }
+    </style>
+    <script src="../js/jquery-3.2.1.js"></script>
+</head>
+
+<body>
+    <div>
+        <h1>선택자 연습</h1>
+        <ul id="language">
+            <li class="java">Java Programming
+                <ul>
+                    <li>조건문</li>
+                    <li>반복문</li>
+                    <li>클래스</li>
+                    <li>API 활용</li>
+                    <li>데이터베이스</li>
+                </ul>
+            </li>
+            <li class="sql">SQL
+                <ul>
+                    <li>Select</li>
+                    <li>Insert</li>
+                    <li>Update</li>
+                    <li>Delete</li>
+                </ul>
+            </li>
+            <li class="css">CSS
+                <ul>
+                    <li>선택자</li>
+                    <li>background</li>
+                    <li>text</li>
+                    <li class="box"><span>box</span></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <script>
+    /*
+        :contains("문자열")   :  지정한 문자열이 포함된 엘리먼트 선택
+        :has(선택자)          :  지정된 선택자를 포함할 수 있는 엘리먼트 선택
+        :not(선택자)          :  선택자에 해당하지 않는 엘리먼트 선택
+        
+        $("li:contains('문')").addClass("choice");
+        
+        $("ul > li:has(span)").addClass("choice");
+
+        $("ul > li > ul > li:has(span)").addClass("choice");
+     */
+
+        $("li.css > ul > li:not(.box)").addClass("choice");
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

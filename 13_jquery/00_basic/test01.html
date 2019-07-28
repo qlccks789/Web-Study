@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<!-- 라이브러리 충돌... -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <script src="../js/jquery-3.2.1.js"></script>
+
+    <script>
+        var $ = function (msg) {
+            alert(msg);
+        };
+    </script>
+    
+    <script type="text/javascript">
+        console.log($);
+        $("안녕하세요");
+    </script>
+</head>
+<body></body>
+</html>

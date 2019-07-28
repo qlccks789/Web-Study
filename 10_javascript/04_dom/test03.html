@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!--
+    DOM API
+
+    속성 추가
+
+    엘리먼트객체.속성명 = 값 -> 사용자 정의 속성은 지정이 불가능
+
+
+    엘리먼트객체.setAttribute(속성명, 속성값);  : 사용자 정의 속성 지정 가능
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="doAdd();">추가</button>
+    <div id="list"></div>
+
+    <script>
+        function doAdd() {
+            // <img src="" width="" height="">
+            var imgEle = document.createElement("img");
+            imgEle.src = "ball1.gif";
+            imgEle.width = 100;
+            imgEle.height = 100;
+
+            // imgEle.msg = "사용자 정의 속성";
+            imgEle.setAttribute("data-msg", "사용자 정의 속성");
+
+            document.querySelector("#list").appendChild(imgEle);
+
+        }
+    </script>
+</body>
+</html>

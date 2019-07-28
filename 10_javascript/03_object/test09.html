@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--
+    객체의 prototype 이해하기
+
+    - 객체들이 공동으로 사용하는 함수나 변수를 prototype에 보관하면
+      각 객체별로 중복해서 생성할 필요가 없으 메모리가 효율적이다.
+    - 모든 생성자는 prototype 객체를 가지고 있다.
+    __proto__ : 모든 객체들에 기본으로 할당되는 프로퍼티
+              : 부모 객체의 prototype 공간을 가리킨다.
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Prototype 확인하기</h2>
+    <script>
+        "use strict";
+
+        function Member(id, name, age) {
+            this.id = id;
+            this.name = name;
+            this.age = age;
+            /*
+            // 생성되는 객체마다 메모리 별도 할당되어 효율적이지 않다.
+            this.info = function () {
+                console.log(this.id, this.name, this.age);
+            };
+            */
+        }
+
+        Member.prototype.info = function () {
+                console.log(this.id, this.name, this.age);
+        };
+
+        var m1 = new Member("lee", "강인", 17);
+
+        m1.info = function () {
+            console.log("m1의 info");
+        }
+
+        console.dir(m1);
+        m1.info();
+        
+        var m2 = new Member("son", "흥민", 27);
+        console.dir(m2);
+        m2.info();
+    </script>
+</body>
+</html>

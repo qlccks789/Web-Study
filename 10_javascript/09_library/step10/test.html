@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!-- 
+	태그 삭제 기능 추가하기
+	기존 : el.remove();
+ -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="jquery.js"></script>
+</head>
+<body>
+	<button>추가</button>
+	<button>삭제</button>
+	
+	<div id="list"></div>
+	
+	<script>
+		$("button:nth-child(1)").click(function () {
+			$("#list").html( $("#list").html() + "<h2>테스트</h2>" );
+		});
+		$("button:nth-child(2)").click(function () {
+			$("#list > h2:last-child").remove();
+		});
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

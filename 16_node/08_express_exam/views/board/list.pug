@@ -1,0 +1,21 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    title 노드 게시판
+  body
+    h1 노드 게시판
+    table
+      thead
+        tr
+          td 번호
+          td 제목
+          td 작성자
+      tbody
+        each row, index in rows
+          tr
+            td #{row.no}
+            td 
+              a(href='detail.do?no=' + row.no)= row.title
+            td= row.writer   
+    a(href='writeForm.do') 글쓰기

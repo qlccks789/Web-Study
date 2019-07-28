@@ -1,0 +1,54 @@
+<!-- 
+	cors 에러 확인하기
+	- sop : same origin policy
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.2.1.js"></script>
+</head>
+<body>
+	<button>요청</button>
+	<div id="result"></div>
+	<script>
+	
+	/* 
+		Access to XMLHttpRequest at 
+		'http://localhost:9999/14_jquery_apiserver/cors/test01.do' 
+		from origin 'http://localhost' has been blocked by CORS policy: 
+		
+		No 'Access-Control-Allow-Origin' 
+		header is present on the requested resource.
+	*/
+		console.log(location.origin);
+		
+		$("button").click(function () {
+			$.ajax({
+				url: "http://localhost:9999/14_jquery_apiserver/cors/test01.do",
+				success: function (result) {
+					$("#result").html(result);
+				}
+			});
+		});
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

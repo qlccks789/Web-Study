@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script> 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">        
+<style>
+	.container {
+		width: 90%;
+		margin: 20px auto;
+	}
+	#list {
+		float: left;
+		width: 50%;
+		border: 1px solid #334455;
+	}
+	#detail {
+		float: right;
+		width: 48%;
+	}
+	
+	#detail > div {
+	    height: 70px;
+	    padding: 20px;
+	    box-sizing: border-box;
+	    line-height: 30px;
+	    font-size: 30px;
+	}
+	
+	#detail > div:hover {
+		animation-name: detail;
+		animation-duration: 5s;
+		animation-direction: alternate;		
+	}
+	
+	@keyframes detail {
+		30% {
+			transform: translateX(100px);
+		}
+		70% {
+			border: 3px solid #345;
+			font-weight: bold;
+			font-size: 40px;
+			background: skyblue;
+			box-shadow: 0px 2px 10px 2px #345;
+			transform: scale(3);
+		}
+	} 
+</style>
+</head>
+<body>
+	<h2>자유게시판</h2>
+	<hr>
+	<div class="container">
+		<div id="list">목록</div>
+		<div id="detail"></div>
+	</div>
+	<script>
+	$(function () {
+		getAjaxList()
+	})
+	
+	function getAjaxList() {
+		$.ajax({
+			url: "list.do", 
+			dataType: "json",
+			success: function (list) {
+				var html = "<table class='table'>"
+			         + "<tr>"
+			         + "<th>번호</th><th>제목</th><th>글쓴이</th>"
+			         + "</tr>"
+			    for (let b of list) {
+			    	html += "<tr>"
+			    	html += `<td>${b.no}</td>
+			    	         <td><a href='#1' onclick='getAjaxDetail(${b.no})'>${b.title}</a></td>
+			    	         <td>${b.writer}</td>`
+			    	html += "</tr>"
+			    }
+				html += "</table>"
+				$("#list").html(html);
+			}
+		});
+	}
+	
+	function getAjaxDetail(no) {
+		$.ajax({
+			url: "detail.do",
+			data: "no=" + no,
+			dataType: "json",
+			success: function (board) {
+				$("#detail").html(
+					`<div>번호 : ${board.no}</div>
+					 <div>작성자 : ${board.writer}</div>	
+					 <div>제목 : ${board.title}</div>`		
+				)	
+			}
+		});		
+	}	
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

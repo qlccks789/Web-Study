@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            margin-top: 50px;
+            width: 500px; height: 300px;
+            font-size: 30px;
+            border: 5px solid tomato;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        <a href="#1" onclick="show('movie');">영화</a>
+        <a href="#1" onclick="show('music');">음악</a>
+    </p>
+    <div id="movie">
+        <h2>캡틴 마블</h2>
+        <p>재미없음...</p>
+    </div>
+    <div id="music">
+        <h2>복면가왕 - 음악대장</h2>
+        <p>9연승.......</p>
+    </div>
+
+    <script>
+        document.querySelector("#music").style.display = "none";
+
+        function show(idName) {
+            document.querySelector("#music").style.display = "none";
+            document.querySelector("#movie").style.display = "none";
+
+            document.querySelector("#" + idName).style.display = "block";
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!-- 
+    블록형 태그와 인라인 태그를 바꾸기 
+    - css의 display 속성의 값을 바꾼다.
+ -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>block, inline</title>
+<style>
+    h1, div, p, span, a {
+        border: 2px solid teal;
+        padding: 5px;
+        width: 400px; height: 200px;
+        margin: 10px;
+    }
+    h1, div, p {
+        /* inline 성격으로 변경 */
+        display: inline;
+    }
+    span, a {
+        display: block;
+    }
+</style>
+</head>
+<body>
+    <h1>Block, Inline</h1>
+    <div>블록과 인라인 태그의 차이점은 무엇일까요?</div>
+    <p>대표적인 블록형 태그는 div, p, h1 ~ h6 태그가 있습니다.</p>
+    <span>span 태그는 대표적인 인라인 태그입니다.</span>
+    또한 <a href="#1">a태그</a> 역시 대표적 인라인 태그입니다.
+</body>
+</html>
+
+
+

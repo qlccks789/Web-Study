@@ -1,0 +1,49 @@
+<!-- 
+	해결책 3.
+	jsonp(json padding) 활용하기
+	- script 태그를 이용해 자바스크립트 파일을 요청하는 것은 
+	  SOP(Same Oring Policy)의 영향을 받지 않는 것을 이용 
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.2.1.js"></script>
+</head>
+<body>
+	<button>요청</button>
+	<div id="result"></div>
+	<script>
+		function cb(msg) {
+			$("#result").html(msg);
+		}
+		
+		$("button").click(function () {
+			$("body").append(
+				$("<script src='http://localhost:9999/14_jquery_apiserver/cors/test03.do'>&lt;/script>")		
+			);
+		});
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

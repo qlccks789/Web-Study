@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--
+    document.querySelector("css 선택자") 
+    : css 선택자에 해당하는 Element 한개 접근
+
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h2>엘리먼트 접근하기 - 1</h2>
+    <div>자바스크립트를 이용한 접근</div>
+    <p id="food">
+        모든 음식에는 <span id="msg">정성이</span> 들어가야 한다.
+    </p>
+    <button onclick="doAction();">클릭</button>
+    <script>
+        function doAction() {
+            var pEle = document.querySelector("#food");
+            /*
+            console.log(pEle);
+            console.dir(pEle);
+            console.log(pEle.innerText);
+            console.log(pEle.innerHTML);
+            pEle.innerText = "<h2>스크립트를 이용한 변경</h2>";
+            */
+            pEle.innerHTML = "<h2>스크립트를 이용한 변경</h2>";
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+

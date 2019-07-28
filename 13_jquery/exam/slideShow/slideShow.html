@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>슬라이드쇼</title>
+    <meta charset="utf-8" />
+	<link rel="stylesheet" href="./slideShow.css" />	
+	<script src="../../js/jquery-3.2.1.js"></script>
+</head>
+<body>
+<div id="bodyDiv">
+    <div id="topDiv">
+        <div id="titleDiv">
+            <h2>슬라이드쇼</h2>
+        </div>
+    </div>
+    <div id="contentDiv">
+		<div style="width:640px; margin:0 auto; padding-top:20px">
+			<div class="both" style="padding-bottom:20px; overflow:hidden">
+					<div class="fl">
+						슬라이드쇼 :&nbsp;
+						<select name="time" onchange="setSlideTime(this.value);" style="line-height: 15px;">
+							<option value="1000">1초</option>
+							<option value="2000">2초</option>
+							<option value="3000">3초</option>
+						</select>
+						<span class="button small"><input type="button" value="시작" id="startBtn" /></span>
+						<span class="button small"><input type="button" value="중지" id="stopBtn" /></span>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						크기 :&nbsp;
+						<span class="button small"><input type="button" value="축소" id="downBtn" /></span>
+						<span class="button small"><input type="button" value="기본크기" id="oriBtn" /></span>
+						<span class="button small"><input type="button" value="확대" id="upBtn" /></span> &nbsp;&nbsp;&nbsp;&nbsp;
+					</div>
+					<div class="fr">
+						<span class="button small"><input type="button" value="◀◀" id="firstBtn" /></span>
+						<span class="button small"><input type="button" value="◀" id="prevBtn" /></span>
+                        &nbsp;
+                        <span id="currIdx" style="vertical-align: top;">1</span>/<span id="maxIdx" style="vertical-align: top;"></span>
+                        &nbsp;
+						<span class="button small"><input type="button" value="▶" id="nextBtn" /></span>
+						<span class="button small"><input type="button" value="▶▶" id="lastBtn" /></span>
+				</div>
+			</div>
+			<div style="padding:10px; border-top:1px solid #333">
+				<table>
+					<tr>
+						<td colspan="3">
+							<div id="slideshow">
+								<div id="slideshow-reel">
+									<div class="slide">
+										<img src="./images/pic1.jpg" id="img_0" alt="이미지" width="610" height="420" />
+									</div>
+									<div class="slide">
+										<img src="./images/pic2.jpg" id="img_1" alt="이미지" width="610" height="420" />
+									</div>
+									<div class="slide">
+										<img src="./images/pic3.jpg" id="img_2" alt="이미지" width="610" height="420" />
+									</div>
+									<div class="slide">
+										<img src="./images/pic4.jpg" id="img_3" alt="이미지" width="610" height="420" />
+									</div>
+									<div class="slide">
+										<img src="./images/pic5.jpg" id="img_4" alt="이미지" width="610" height="420" />
+									</div>
+									<div class="slide">
+										<img src="./images/pic6.jpg" id="img_5" alt="이미지" width="610" height="420" />
+									</div>
+									<div class="slide">
+										<img src="./images/pic5.jpg" id="img_4" alt="이미지" width="610" height="420" />
+									</div>
+									<div class="slide">
+										<img src="./images/pic6.jpg" id="img_5" alt="이미지" width="610" height="420" />
+									</div>
+									<div class="slide">
+										<img src="./images/pic5.jpg" id="img_4" alt="이미지" width="610" height="420" />
+									</div>
+									<div class="slide">
+										<img src="./images/pic6.jpg" id="img_5" alt="이미지" width="610" height="420" />
+									</div>
+									<div class="slide">
+										<img src="./images/pic5.jpg" id="img_4" alt="이미지" width="610" height="420" />
+									</div>
+									<div class="slide">
+										<img src="./images/pic6.jpg" id="img_5" alt="이미지" width="610" height="420" />
+									</div>
+								</div>
+							</div>
+						</td>
+                    </tr>
+
+					<tr>
+						<td><a href="#" id="slideshow-left"><img src="./images/btn_prev.gif" alt="이전" /></a></td>
+						<td style="width:540px; margin: 10 0;">
+							<div id="slideshow-nav">
+								<div class="slideshow-nav-item">
+									<div class="nav-item">
+										<a class="fl" title="0"><img src="./images/pic1.jpg" width="94" height="94" alt="썸네일1" /></a>
+									</div>
+									<div class="nav-item">
+										<a class="fl" title="1"><img src="./images/pic2.jpg" width="94" height="94" alt="썸네일2" /></a>
+									</div>
+									<div class="nav-item">
+										<a class="fl" title="2"><img src="./images/pic3.jpg" width="94" height="94" alt="썸네일3" /></a>
+									</div>
+									<div class="nav-item">
+										<a class="fl" title="3"><img src="./images/pic4.jpg" width="94" height="94" alt="썸네일4" /></a>
+									</div>
+									<div class="nav-item">
+										<a class="fl" title="4"><img src="./images/pic5.jpg" width="94" height="94" alt="썸네일5" /></a>
+									</div>
+									<div class="nav-item">
+										<a class="fl" title="5"><img src="./images/pic6.jpg" width="94" height="94" alt="썸네일5" /></a>
+									</div>
+									<div class="nav-item">
+										<a class="fl" title="6"><img src="./images/pic5.jpg" width="94" height="94" alt="썸네일5" /></a>
+									</div>
+									<div class="nav-item">
+										<a class="fl" title="7"><img src="./images/pic6.jpg" width="94" height="94" alt="썸네일5" /></a>
+									</div>
+									<div class="nav-item">
+										<a class="fl" title="8"><img src="./images/pic5.jpg" width="94" height="94" alt="썸네일5" /></a>
+									</div>
+									<div class="nav-item">
+										<a class="fl" title="9"><img src="./images/pic6.jpg" width="94" height="94" alt="썸네일5" /></a>
+									</div>
+									<div class="nav-item">
+										<a class="fl" title="10"><img src="./images/pic5.jpg" width="94" height="94" alt="썸네일5" /></a>
+									</div>
+									<div class="nav-item">
+										<a class="fl" title="11"><img src="./images/pic6.jpg" width="94" height="94" alt="썸네일5" /></a>
+									</div>
+								</div>
+							</div>
+						</td>
+						<td><a href="#" id="slideshow-right"><img src="./images/btn_next.gif" alt="다음" /></a></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+	<script type="text/javascript">
+    // 슬라이더 관련 변수 설정
+    var defaultImgWidth = 0,
+        defaultImgHeight = 0,
+        activeSlideshow,
+        currSlide = 0,
+        slideTimeout,
+        $slideshow,
+        $slideReel,
+        maxSlide = 0,
+        // 하단 네비게이션 관련 속성
+        $slideNav;
+        // 네비게이션 아이템 총 카운트
+        navItem = 0,
+        // 5개씩 하단 블락을 이동시키기 위한 변수
+        maxNavBlock = 0,
+        $slideLeftNav = null,
+        $slideRightNav = null;
+
+    // 기본크기 복원용 이미지 크기 저장 배열
+    var imgSize = new Array();
+
+    // 슬라이더 관련 변수 설정
+    defaultImgWidth = 610,
+    defaultImgHeight = 420,
+    activeSlideshow = false,
+    currSlide = 0,
+    slideTimeout,
+    $slideshow = $('#slideshow'),
+    $slideReel = $slideshow.find('#slideshow-reel'),
+    maxSlide   = $slideReel.children().length - 1,
+    // 하단 네비게이션 관련 속성
+    $slideNav   = $('.slideshow-nav-item');
+    // 네비게이션 아이템 총 카운트
+    navItem     = $slideNav.children().length - 1,
+    // 5개씩 하단 블락을 이동시키기 위한 변수
+    maxNavBlock = ((navItem + 1) % 5 == 0) ? parseInt((navItem + 1) / 5) : parseInt((navItem + 1) / 5) + 1,
+    $slideLeftNav  = $('#slideshow-left'),
+    $slideRightNav = $('#slideshow-right');
+
+    // 상단 슬라이더 개수 표시
+    $("#maxIdx").text(maxSlide + 1);
+    
+    // 상단 이미지 개수에 따른 DIV 사이즈 계산
+    $("#slideshow-reel").width((maxSlide + 1) * defaultImgWidth);
+
+    // 상단 이미지 개수에 따른 하단 네비게이션 아이템 DIV 사이즈 계산
+    $slideNav.width((maxSlide + 1) * 110);
+
+    $("img[id^=img_]").each(function (idx) {
+        var width = new Number($(this).width());
+        var height = new Number($(this).height());
+
+        imgSize[idx] = new Array(width, height);
+    });
+    
+    // 디폴트 슬라이더 시간 설정
+    var slideTime = 1000;
+
+    // 슬라이더 시간 설정
+    function setSlideTime(val) {
+        slideTime = val;
+    }
+
+    // 이전, 다음 버튼 클릭 시 이동
+    function moveSlide (val) {
+        changeSlide( parseInt(currSlide) + val );
+    }
+
+    // 슬라이더 변경
+    function changeSlide( newSlide ) {
+		
+        // 슬라이더 중지
+        clearTimeout( slideTimeout );
+        // 현재 슬라이더 번호로 설정
+        currSlide = newSlide;
+
+        // 슬라이더 설정
+        if( currSlide > maxSlide ) {
+            currSlide = 0;
+        } else if ( currSlide < 0 ) {
+            currSlide = maxSlide;
+        }
+
+        // 슬라이더 상단 이미지 동작
+        $slideReel.animate({
+            left : currSlide * -610
+        }, 400, 'swing', function() {
+            // 이미지 테두리 없애기
+            $("a.fl > img").css({"border": ""});
+
+            // 이미지 테두리 표시
+            $("a.fl > img:eq(" + currSlide + ")").css({"border": "3px solid #f00"});
+            
+            // 슬라이더가 활성화 상태라면 슬라이더를 재시작
+            if ( activeSlideshow ) slideTimeout = setTimeout(nextSlide, slideTime);
+        });
+
+        // 슬라이더 하단 네비게이션 동작
+        currItemBlock = parseInt(currSlide / 5);
+
+        // 슬라이더 설정
+        if( currSlide > maxSlide ) {
+            currItemBlock = 0;
+        } else if( currSlide < 0 ) {
+            currItemBlock = maxNavBlock;
+        }
+
+        $slideNav.animate({
+            left : currItemBlock * -550
+        }, 400, 'swing');
+
+        var idx = new Number(currSlide);
+        $("#currIdx").text(idx +1);
+    }
+
+    // 다음 버튼 클릭 시
+    function nextSlide() {
+        changeSlide( parseInt(currSlide) + 1 );
+    }
+
+    // 이미지 확대, 축소, 원래대로
+    function sizeChange(type) {
+        var sourceSize = imgSize[currSlide];
+
+        var $slide = $("img[id^=img_]:eq(" + currSlide + ")");
+        	
+        var panelWidth = 610;
+        var panelHeight = 410;
+
+        var tw = $slide.width ();
+        var th = $slide.height();
+
+        var w, h;
+        switch (type) {
+            case "+":
+                tw = tw + (tw / 10);
+                th = th + (th / 10);
+                if(tw < panelWidth && th < panelHeight) {
+                    w = tw;
+                    h = th;
+                }
+                break;
+            case "-":
+                tw = tw - (tw / 10);
+                th = th - (th / 10);
+                if(tw > 0 && th > 0) {
+                    w = tw;
+                    h = th;
+                }
+                break;
+            case "0":
+                w = sourceSize[0];
+                h = sourceSize[1];
+                break;
+        }
+        $slide.width (w);
+        $slide.height(h);
+    }
+    
+    // ----------------------------------------------------------------
+	// 이벤트 설정하기
+    // ----------------------------------------------------------------
+    // 시작 버튼 클릭    
+    $("#startBtn").click(function () { 
+        activeSlideshow = true;
+        slideTimeout = setTimeout(nextSlide, 0);
+    });
+	
+	// 중지 버튼 클릭    
+    $("#stopBtn").click(function () {
+        activeSlideshow = false;
+        clearTimeout( slideTimeout );
+    });
+	
+	// 축소 버튼 클릭
+	$("#downBtn").click(function () { sizeChange('-'); }); 
+	// 기본크기 버튼 클릭
+	$("#oriBtn").click(function () { sizeChange('0'); }); 
+	// 확대 버튼 클릭
+	$("#upBtn").click(function () { sizeChange('+'); }); 
+
+	// 처음(<<) 버튼 클릭
+	$("#firstBtn").click(function () { changeSlide( 0 ); }); 
+
+	// 이전(<) 버튼 클릭
+	$("#prevBtn").click(function () { moveSlide( -1 ); }); 
+
+	// 다음(>) 버튼 클릭
+	$("#nextBtn").click(function () { moveSlide( 1 ); }); 
+
+	// 마지막(>>) 버튼 클릭
+	$("#lastBtn").click(function () { changeSlide( maxSlide ); }); 
+	
+    // 네이게이션 이벤트 설정
+    // 하단 네비게이션 : 왼쪽 슬라이더 이미지 클릭 시
+    $slideLeftNav.click(function(ev) {
+        changeSlide( parseInt(currSlide) - 1 );
+        return false;
+    });
+
+    // 하단 네비게이션 : 오른쪽 슬라이더 이미지 클릭 시
+    $slideRightNav.click(function(ev) {
+        changeSlide( parseInt(currSlide) + 1 );
+        return false;
+    });
+
+    // 하단 이미지 클릭시 슬라이더 적용
+    $('a.fl').click(function(ev) {
+        changeSlide( $(this).attr('title') );
+    });
+    // ----------------------------------------------------------------
+	
+ 	// 최초 적용
+    $("a.fl > img:eq(0)").css({"border": "3px solid #f00"}); 
+    </script>
+</body>
+</html>

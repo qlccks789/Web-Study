@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--
+    자바스크립트에서 CSS 사용하는 방법
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .a {
+            border: 5px solid black;
+            color: white;
+            background-color: skyblue;
+            padding: 30px;
+            margin: 30px;
+            height: 100px;
+            border-radius: 20px;
+            text-align: center;
+            line-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h2>스크립트에서 CSS 적용하기</h2>
+
+    <div id="result" onclick="changeCss();">CSS 적용하기</div>
+
+    <script>
+        function changeCss() {
+            var divEle = document.querySelector("#result");
+            divEle.className = "a";
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

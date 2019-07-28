@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>dom</title>
+<meta charset="utf-8">
+<style>
+
+	div.a {
+		margin: 10px 0px;
+		height: 222px;
+		border: 5px solid skyblue;
+        white-space: nowrap;
+        overflow: auto;
+		position: relative;
+	}
+	input[type=button] {
+		font-size: 20px;
+		font-weight: bold;
+		width: 150px;
+		height: 40px;
+	}
+</style>
+<script src="../js/jquery-3.2.1.js"></script>
+</head>
+<body>
+	<button>복사하기</button>
+	<div class="a">
+		<img src="images/pic1.jpg" width="150" height="160" />
+		<p>하위 태그</p>
+	</div>
+
+	<div id="list"></div>
+	<script>
+		$("div.a").click(function () {
+			alert("클릭됨...");
+		});
+
+		$("button").click(function () {
+			// $("#list").append( $("div.a:first").clone() );
+			$("#list").append( $("div.a:first").clone(true) );
+		});
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--
+    기본 이벤트 중지하기
+
+    이벤트객체.preventDefault();
+
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        a {
+            display: inline-block;
+            margin-left: 30px;
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h2>기본 이벤트 중지하기</h2>
+
+    <a href="javascript:fn1()">링크1</a><br>
+    <a href="http://www.naver.com" onclick="fn2(); return false;">링크2</a><br>
+    <a href="http://www.naver.com" onclick="return fn3();">링크3</a><br>
+    <a href="http://www.naver.com" onclick="fn4();">링크4</a><br>
+    <a href="http://www.naver.com" id="link5">링크5</a><br>
+
+    <script>
+        let link5 = document.querySelector("#link5");
+        /*
+        link5.onclick = function (e) {
+            alert("링크5");
+            e.preventDefault();
+        };
+        */
+        link5.addEventListener("click", function (e) {
+            alert("링크5");
+            e.preventDefault();
+        });
+
+        function fn4() {
+            alert("fn4");
+            // 이벤트 객체 얻기
+            let e = window.event;
+            e.preventDefault();
+        }
+        function fn3() {
+            alert("fn3");
+            return false;
+        }
+        function fn2() {
+            alert("fn2");
+        }
+        function fn1() {
+            alert("fn1");
+        }
+    </script>
+</body>
+</html>

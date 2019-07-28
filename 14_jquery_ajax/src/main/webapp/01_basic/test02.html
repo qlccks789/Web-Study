@@ -1,0 +1,73 @@
+<!-- 
+	단축메서드
+	$.get(url [, data ] [, success ] [, dataType ] )
+	$.get(options) - 1.12, 2.2 부터 지원
+	$.post() : POST 방식, $.get 과 사용방식 동일
+	$.getJSON(url [, data ] [, success ] )
+	$("선택자").load() - jsp 인클루드 방식 처럼 사용가능
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.2.1.js"></script>
+</head>
+<body>
+	<input type="text" id="msg" />
+	<button>요청</button>
+	<div id="result"></div>
+	<script>
+		$("button").click(function () {
+			/*
+			$.ajax({
+				url: "/14_jquery_ajax/basic/exam01.do",
+				type: "GET",
+				data: "msg=" + $("#msg").val(),
+				success: function (result) {
+					$("#result").html(result);
+				}
+			});
+			$.get(
+				"/14_jquery_ajax/basic/exam01.do",
+				"msg=" + $("#msg").val(),
+				function (result) {
+					$("#result").html(result);
+				}
+			);
+			$.post(
+				"/14_jquery_ajax/basic/exam01.do",
+				"msg=" + $("#msg").val(),
+				function (result) {
+					$("#result").html(result);
+				}
+			);
+			$.getJSON(
+				"/14_jquery_ajax/basic/exam02.do",
+				"msg=" + $("#msg").val(),
+				function (result) {
+					$("#result").html(result.msg);
+				}
+			);
+			*/
+		});
+		
+		$("#result").load("menu.html");
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

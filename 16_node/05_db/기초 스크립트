@@ -1,0 +1,40 @@
+-- 사용자 생성
+create user '사용자 아이디'@'외부접속정보' identified by '비밀번호';
+create user 'bit2019'@'%' identified by 'bit2019';
+
+
+-- 사용자에게 권한 부여하기
+grant create, drop, select, delete, update, insert on *.* to bit2019@'%';
+
+
+-- 모든 권한을 부여하기
+grant all privileges on *.* to bit2019@'%' with grant option;
+
+
+-- 데이터베이스 생성
+create database bitdb default character set utf8 collate utf8_general_ci;
+
+
+-- 테이블 생성
+create table tb_board (
+	no int(10) auto_increment primary key,
+	writer varchar(30) not null,
+	title varchar(300) not null,
+	content varchar(4000) not null,
+	reg_date datetime default now() 
+);
+
+
+-- 데이터 추가
+insert into tb_board(writer, title, content) values
+('tester1', '연습1', 'mysql1'),
+('tester2', '연습2', 'mysql2'),
+('tester3', '연습3', 'mysql3');
+
+
+-- 데이터베이스 삭제
+drop database bitdb;
+
+
+-- 사용자 삭제
+drop user bit2019;

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="jquery.js"></script>
+</head>
+<body>
+	<h2>데이터가져오기(JSON)</h2>
+	<button>목록데이터 조회</button>
+	<hr>
+	<div id="result"></div>
+	
+	<script>
+		$("button").click(function () {
+			var xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = function () {
+				if (xhr.readyState == 4) {
+					if (xhr.status == 200) {
+						// 결과 문자 데이터를 JSON 객체로 변환하자..
+						// ES5 부터 가능
+						let result = "";
+						let list = JSON.parse(xhr.responseText);
+						for (let board of list) {
+							result += `<div>${board.no}:::${board.title}</div>`;
+						}
+						$("#result").html(result);	
+					}
+				}
+			};
+			xhr.open("GET", "test05.do", true);
+			xhr.send();
+		});
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

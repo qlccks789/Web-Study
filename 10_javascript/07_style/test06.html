@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            position: absolute;
+            background-color: #000;
+            color: #fff;
+            padding: 10px;
+            font-size: 40px;
+            font-weight: bold;
+            width: 600px; height: 400px;
+            top: -420px;  left: 200px;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        <a href="#1" onclick="showSlide();">슬라이드</a>
+    </p>
+    <div>자바스크립트</div>
+
+    <script>
+        var x = -400;
+        function showSlide() {
+            x += 10;
+            var divEle = document.querySelector("div");
+            divEle.style.top = x + "px";
+
+            if (x < 100) {
+                setTimeout(showSlide, 1000 / 30);
+            } else {
+                x = -400;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <style>
+		p {
+			font-size: 20px;
+			font-weight: bold;
+			height: 40px;
+			background: tomato;
+			color: white;
+			text-align: center;
+			line-height: 40px;
+		}
+
+		input[type=button] {
+			font-size: 20px;
+			font-weight: bold;
+			width: 150px;
+			height: 40px;
+		}
+    </style>
+    <script src="../js/jquery-3.2.1.js"></script>
+</head>
+<body>
+	<button>one click</button>
+	<button>one event</button>
+	<br /><br />
+    <p>이벤트 연습</p>
+    <script>
+			$("button:eq(0)").click(function () {
+				alert("클릭됨");
+				$(this).off();
+			});
+
+			$("button:eq(1)").one("click", function () {
+				alert("클릭됨");
+			});
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

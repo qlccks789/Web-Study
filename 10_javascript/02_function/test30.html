@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!-- 
+    퀴즈 연습..
+    -->
+ <html>
+ <head>
+ <meta charset="UTF-8">
+ <title>Insert title here</title>
+ <style>
+     #result {
+        font-size: 50px;
+        font-weight: bold;
+    }
+ </style>
+ </head>
+ <body>
+     <h1>3초 동안 누가 많이 클릭하나</h1>
+     <div id="view">
+         <button onclick="doStart();">시작</button>
+         <button onclick="doAction();">클릭</button>
+         <div id="result"></div>
+     </div>
+     <script>
+         function doStart() {
+             console.log("doStart");
+             setTimeout(function() {
+                console.log("time 시작");
+                 var view = document.querySelector("#view");
+                 var result = document.querySelector("#result");
+                 view.innerText = result.innerText + "회 클릭하였습니다.";
+             }, 3000);
+         }
+
+         function doAction() {
+			var result = document.querySelector("#result");
+			if (!result.innerText) {
+				result.innerText = 0;
+			} 
+			result.innerText = parseInt(result.innerText) + 1;
+         }
+     </script>
+ </body>
+ </html> 

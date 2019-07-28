@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--
+    팝업창 띄우기
+    window.open(url, target, options)
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h2>팝업창 사용하기</h2>        
+    <div>
+        <button onclick="openPop(1);">팝업창1</button>
+        <button onclick="openPop(2);">팝업창2</button>
+        <button onclick="openPop(3);">팝업창3</button>
+        <button onclick="openPop(4);">팝업창4</button>
+    </div>
+    <div id="result"></div>
+
+    <script>
+        function openPop(comm) {
+            switch (comm) {
+                case 1:
+                    window.open("http://www.naver.com", "pop1", "width=400,height=300");
+                    break;
+                case 2:
+                    window.open("http://www.naver.com", "", "width=400,height=300");
+                    break;
+                case 3:
+                    let left = (screen.width - 400) / 2;
+                    let top = (screen.height - 300) / 2;
+                    window.open(
+                        "http://www.naver.com", 
+                        "pop2", 
+                        `width=400,height=300,top=${top},left=${left}`
+                    );
+                    break;
+                case 4:
+                    window.open("test01_child.html", "", "width=400,height=300");
+                    break;                
+            }
+        }
+        function doResult(msg) {
+            document.querySelector("#result").innerHTML = 
+                "<h2>" + msg + "</h2>";
+        }
+    </script>
+</body>
+</html>

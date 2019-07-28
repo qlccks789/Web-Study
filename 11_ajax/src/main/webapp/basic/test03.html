@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="jquery.js"></script>
+</head>
+<body>
+	<h2>Ajax 통신 연습</h2>
+	<button>호출하기</button>
+	<hr>
+	<div id="result"></div>
+	
+	<script>
+		$("button").click(function () {
+			var xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = function () {
+				if (xhr.readyState == 4) {
+					if (xhr.status == 200) {
+						$("#result").html(xhr.responseText);
+					}
+				}
+			};
+// 			xhr.open("GET", "/11_ajax/basic/test03.do", true);
+			// Ajax + Servlet
+			xhr.open("GET", "test03.do", true);
+			xhr.send();
+		});
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

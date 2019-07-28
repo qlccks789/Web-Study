@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h2>고전 방식의 이벤트 설정 및 해제</h2>  
+    <button id="btn1">시작</button>  
+    <button id="btn2">중지</button>  
+
+    <script>
+        function fn1() {
+            alert("시작");
+            // 시작 버튼의 이벤트를 중지
+            this.onclick = null;
+
+            // 중지 버튼의 이벤트를 설정
+            var btn2 = document.querySelector("#btn2");
+            btn2.onclick = fn2;
+        }
+
+        // 중지 버튼에서 사용할 클릭 이벤트 함수
+        function fn2() {
+            alert("중지");
+            this.onclick = null;
+            var btn1 = document.querySelector("#btn1");
+            btn1.onclick = fn1;
+        }
+
+        // 시작 버튼에 클릭 이벤트 설정 - fn1 함수
+        var btn1 = document.querySelector("#btn1");
+        btn1.onclick = fn1;
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+

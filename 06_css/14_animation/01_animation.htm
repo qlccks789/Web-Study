@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!-- 
+애니메이션
+1. @keyframes : 애니메이션이 진행되는 상태에 따른 변경사항을 적용
+   - from, to
+   예>  @keyframes 이름 {
+           from {background-color: red;}
+           to {background-color: yellow;}
+       }
+     
+   - %
+   예>  @keyframes 이름 {
+           0%   {background-color: red;}
+           25%  {background-color: yellow;}
+           50%  {background-color: blue;}
+           100% {background-color: green;}
+       }
+    
+2. animation : 생성된 @keyframes을 적용
+   - animation-name: keyframes 이름;
+   - animation-duration : 시간(초);
+   - animation-delay: 시간(초);
+   - animation-iteration-count: 반복횟수 | infinite(무한);
+   - animation-direction: normal(정상) | reverse(반대) | alternate(정상 <-> 반대);
+   - animation-timing-function: linear;
+        1) linear : 시작에서 끝까지 똑같은 속도로 진행
+        2) ease : 처음에는 천천히 시작하고 점점 빨라지다가 마지막엔 천천히
+        3) ease-in : 트랜지션 시작을 느리게
+        4) ease-out 트랜션을 느리게 끝냄
+        5) ease-in-out : 느리게 시작하고 느리게 끝냄
+        
+   예>  div {
+           width: 100px; height: 100px;
+           background-color: red;
+           
+           animation-name: example;
+           animation-duration: 5s;
+           animation-timing-function: linear;
+           animation-delay: 2s;
+           animation-iteration-count: infinite;
+           animation-direction: alternate;
+           
+           /* 단축 */                
+           animation: example 5s linear 2s infinite alternate;
+       }
+ -->
+<html>
+<head>
+<title> transition  </title>
+<meta charset="utf-8" />
+<style>
+    div {
+        position: relative;
+        width: 200px; height: 200px;
+        background-color: red;
+
+        animation-name: posmove;
+        animation-duration: .2s;
+        animation-timing-function: linear;
+        animation-iteration-count: 10;
+        animation-direction: alternate;
+    }
+
+    @keyframes posmove {
+        0% { top: 0px; left: 0px; }
+        /* 50% { top: 0px; left: 500px; } */
+        100% { top: 0px; left: 700px; }
+    }
+</style>
+</head>
+<body>
+<p> animation 속성 연습</p>
+<div></div>
+</body>
+</html>
+
+
+
+
+
+
+

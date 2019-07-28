@@ -1,0 +1,50 @@
+<!-- 
+	해결책 3.
+	jquery 를 이용한 jsonp 활용하기
+	
+	GET 방식만이 가능함
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.2.1.js"></script>
+</head>
+<body>
+	<button>요청</button>
+	<div id="result"></div>
+	<script>
+		function mycb(result) {
+			$("#result").html(result);
+		}
+	
+		$("button").click(function () {
+// 			$.getScript("http://localhost:9999/14_jquery_apiserver/cors/test03.do?callback=mycb");
+			
+			$.ajax({
+				url: "http://localhost:9999/14_jquery_apiserver/cors/test03.do",
+				type: "GET",
+				dataType: "jsonp",
+				jsonp: "callback",  
+				success: function (result) {
+					$("#result").html(result);
+				}
+			});
+			
+		});
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

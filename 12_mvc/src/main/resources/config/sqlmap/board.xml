@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.mlec.repository.mapper.BoardMapper">
+	<resultMap id="boardMap" type="board">
+		<result column="no" property="no" />
+		<result column="writer" property="writer" />
+		<result column="title" property="title" />
+		<result column="content" property="content" />
+		<result column="reg_date" property="regDate" />
+	</resultMap>
+	
+	<select id="selectBoard" parameterType="page" resultMap="boardMap">
+		select *
+		  from (select rownum rnum, a.*
+		          from ( select *
+		                   from tb_board
+		                  order by no desc) a
+		       )   
+		 where rnum between #{begin} and #{end}
+	</select>
+
+	<select id="selectBoardCount" resultType="int">
+		select count(*)
+		  from tb_board
+	</select>
+	
+	<!-- 게시물 등록하기 : insertBoard -->
+	<insert id="insertBoard" parameterType="board">
+		insert into tb_board(
+			no, title, writer, content
+		) values (
+			s_board_no.nextval, #{title}, #{writer}, #{content}
+		)
+	</insert>
+	
+    <select id="selectBoardByNo" parameterType="int" resultMap="boardMap">
+    	select *
+    	  from tb_board
+    	 where no = #{no} 
+    </select>		
+    <delete id="deleteBoard" parameterType="int">
+    	delete 
+    	  from tb_board
+    	 where no = #{no}
+    </delete>    
+    <update id="updateBoard" parameterType="board">
+    	update tb_board
+    	   set title = #{title},
+    	       content = #{content}
+    	 where no = #{no}
+    </update>	  
+    
+    <!-- 댓글 부분 -->
+    <select id="selectCommentByNo" parameterType="int" resultType="Comment">
+    	select *
+    	  from tb_comment
+    	 where no = #{no}
+    	 order by comment_no 
+    </select>     
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

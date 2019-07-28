@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.mlec.dao.TestMapper3">
+	<resultMap id="memberMap" type="member">
+		<result column="id" property="id" />
+		<result column="name" property="name" />
+		<result column="addr" property="addr" />
+		<result column="email" property="email" />
+		<result column="join_date" property="joinDate" />
+		<!-- account 변수에  selectAccountById 수행결과 대입 -->
+		<association property="account" 
+		             column="id"
+		             select="selectAccountById" />
+		
+	</resultMap>
+	
+	<resultMap id="accountMap" type="account">
+		<result column="id" property="id" />
+		<result column="money" property="money" />
+		<result column="open_date" property="openDate" />
+	</resultMap>
+	
+	<select id="selectMemberList" resultMap="memberMap">
+	select *
+	  from tb_mybatis_member
+	 order by id
+	</select>
+	
+	<select id="selectAccountById" parameterType="string" 
+	        resultMap="accountMap">
+	select *
+	  from tb_mybatis_account
+	 where id = #{id} 
+	</select>
+	
+	<resultMap id="boardDetailMap" type="board">
+		<result column="no" property="no" />
+		<result column="writer" property="writer" />
+		<result column="title" property="title" />
+		<result column="content" property="content" />
+		<result column="reg_date" property="regDate" />
+		<!-- commentList에 글번호에 해당하는 댓글 목록을 설정 -->
+		<collection property="commentList" 
+		            column="no"
+		            select="selectCommentListByNo" />
+	</resultMap>
+	
+	<select id="selectBoardByNo" parameterType="int"
+	        resultMap="boardDetailMap">
+	select *
+	  from tb_mybatis_board
+	 where no = #{no}
+	</select>	
+	
+	<resultMap id="commentMap" type="comment">
+		<result column="comment_no" property="commentNo" />
+		<result column="no" property="no" />
+		<result column="writer" property="writer" />
+		<result column="content" property="content" />
+		<result column="reg_date" property="regDate" />	
+	</resultMap>
+	
+	<select id="selectCommentListByNo" parameterType="int"
+	        resultMap="commentMap">
+	select *
+	  from tb_mybatis_comment
+	 where no = #{no}
+	 order by comment_no 	
+	</select>
+	
+	<insert id="insertBoard" parameterType="board">
+		<selectKey keyProperty="no" resultType="int" order="BEFORE">
+			select s_mybatis_board_no.nextval
+			  from dual
+		</selectKey>
+	
+		insert into tb_mybatis_board (
+			no, writer, title, content
+		) values (
+			#{no}, #{writer}, #{title}, #{content} 
+		)		
+	</insert>
+	
+	<!-- 파일 정보 입력 -->
+	<insert id="insertFile" parameterType="file">
+	insert into tb_mybatis_file (
+		file_no, no, file_name, file_size
+	) values (
+		s_mybatis_file_no.nextval, #{no}, #{fileName}, #{fileSize}
+	)
+	</insert>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

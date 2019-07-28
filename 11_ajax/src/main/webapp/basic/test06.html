@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="jquery.js"></script>
+</head>
+<body>
+	<h2>데이터가져오기(JSON)</h2>
+	<button id="btn1">test01</button>
+	<button id="btn3">test03</button>
+	<button id="btn4get">test04 - GET</button>
+	<button id="btn4post">test04 - POST</button>
+	<button id="btn5">test05</button>
+	<hr>
+	<div id="result"></div>
+	
+	<script>
+		$("#btn1").click(function () {
+			$.ajax({
+				url: "hello.jsp",
+				success: function (result) {
+					$("#result").html("test01 : " + result);
+				}
+			});
+		});
+		
+		$("#btn3").click(function () {
+			$.ajax({
+				url: "test03.do",
+				success: function (result) {
+					$("#result").html("test03 : " + result);
+				}
+			});
+		});
+
+		$("#btn4get").click(function () {
+			$.ajax({
+				url: "test04.do",
+				data: "msg=hello",
+				success: function (result) {
+					$("#result").html("test04 - GET : " + result);
+				}
+			});
+		});
+		$("#btn4post").click(function () {
+			$.ajax({
+				type: "POST",
+				url: "test04.do",
+				data: "msg=hello",
+				success: function (result) {
+					$("#result").html("test04 - POST : " + result);
+				}
+			});
+		});
+		$("#btn5").click(function () {
+			$.ajax({
+				url: "test05.do",
+				dataType: "json",
+				success: function (list) {
+					let result = "";
+					for (let board of list) {
+						result += `<div>${board.no}:::${board.title}</div>`;
+					}
+					$("#result").html(result);	
+				}
+			});
+		});
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

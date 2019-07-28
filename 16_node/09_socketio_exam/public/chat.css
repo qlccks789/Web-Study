@@ -1,0 +1,130 @@
+@charset "UTF-8";
+* {
+	text-align: center;
+	margin: 0 auto;
+	padding: 0 auto;
+}
+textarea{
+	margin-top: 10px;
+	display: block;
+	width: 70%;
+	border-radius: 5px;
+}
+.chat_main {
+	width: 340px;
+	height: 530px;
+}
+.chat {
+	width: 70%;
+	position: relative;
+	list-style:none;
+	height: 150px;
+	border: 1px solid gray;
+	padding: 10px;
+	border-radius: 5px;
+}
+.answer {
+	border: 1px solid gray;
+	border-radius: 5px;
+	margin-bottom: 5px;
+	width: 30%;
+	position: relative;
+	float:left;
+	left:0px;
+	clear: both;
+	text-align: left;
+	padding: 5px 5px 5px 10px;
+}
+.me{
+	border: 1px solid gray;
+	border-radius: 5px;
+	margin-bottom: 5px;
+	width: 30%;
+	position: relative;
+	float:right;
+	right:0px;
+	clear: both;
+	text-align: right;
+	padding: 5px 10px 5px 5px;
+}
+hr {
+	width: 50%;
+}
+   	
+@import "https://fonts.googleapis.com/css?family=Montserrat";
+body{height:100%;margin:0;padding:0;background-size:cover;background-position:bottom;}
+
+/* 채팅전체틀 */
+.chat{
+	width:320px;
+	height:450px;
+	box-shadow:0 0 30px -5px grey;
+	margin:2px;
+	background:#fafafa;
+	position:relative;
+	font-family:'Montserrat',sans-serif;
+	}
+	
+/* 채팅상대 */	
+.chat_header{
+	padding:15px;
+	border-bottom:4px solid teal;
+	background:#f0f0f0;
+	color:teal;
+	}
+	
+/* 온라인상태 */
+.chat_status{
+	font-size:11px;
+	margin:4px 0 -4px;
+	}
+	
+/* 대화입력창 */
+.chat_input{
+	width: 105%;
+	margin-left: -10px;
+	background:#c8c8c8;
+	height: 60px;
+	}
+	
+/* 대화입력박스 */
+.chat_text{
+	width:calc(83% - 10px);
+	height:90%;
+	padding:10px;
+	box-sizing:border-box;
+	margin:0 5px 5px;
+	font-family:'Montserrat',sans-serif;
+	}
+
+/* 전송버튼 */
+.chat_submit{
+	width:calc(15% - 5px);
+	height:90%; padding:10px;
+	box-sizing:border-box;
+	margin:0 5px 5px 0;
+	vertical-align:top;
+	border:1px solid teal;
+	cursor:pointer;
+	color:teal;
+	border-radius:0 8px 8px 0;
+	transition:all .4s;
+	}
+.chat_submit:hover{
+	background:teal;
+	color:#fff;
+	}
+
+.chat_bubble-1,.chat_bubble-2{padding:10px;margin:13px 17px;width:200px;font-size:14px;}
+.chat_bubble-1{border:1px solid teal;border-radius:12px 12px 12px 0;}
+.chat_bubble-2{border:1px solid grey;border-radius:12px 12px 0 12px;margin-left:80px;}
+
+/* 대화내용 */
+.chat_s{
+	height:392px;
+	overflow-x:hidden; 
+	overflow-y:scroll;
+	box-sizing: border-box;
+}
+::-webkit-scrollbar{width:13px;}
+::-webkit-scrollbar-thumb{border-radius:10px;-webkit-box-shadow:inset 0 0 0 4px #fff;background:rgba(0,0,0,0.2);}

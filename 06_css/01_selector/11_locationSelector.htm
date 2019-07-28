@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!-- 
+가상 위치 선택자
+형식 :  
+:first-child        : 부모의 첫번째 자식일 경우 가능
+:last-child         : 부모의 마지막 자식일 경우 가능
+- 차이점 : 같은 타입(엘리먼트)만을 대상으로..
+:first-of-type
+:last-of-type
+ -->
+<html>
+<head>
+<meta charset="utf-8" />
+<title> 속성 선택 스타일 </title>
+<style type="text/css">
+/*
+    h1:first-child {
+        background: skyblue;
+    }
+    h1:last-child {
+        background: tomato;
+    }
+    */    
+    h1:first-of-type {
+        background: skyblue;
+    }
+    h1:last-of-type {
+        background: tomato;
+    }
+</style>                        
+</head>
+<body>
+    <p>주의사항</p> 
+    <div>
+	    <h1>1</h1>
+	    <h1>2</h1>
+        <h1>3</h1>
+        <h2>h2</h2>
+    </div>
+    <div>
+	    <h1>4</h1>
+	    <h1>5</h1>
+	    <h1>6</h1>
+    </div>
+    <p>주의사항</p>
+</body>
+</html>

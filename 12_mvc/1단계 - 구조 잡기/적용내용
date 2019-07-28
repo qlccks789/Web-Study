@@ -1,0 +1,7 @@
+1. FrontController 패턴 적용
+   : DispatcherServlet 클래스 작성 추가
+   
+2. web.xml 파일 내용 변경
+   : *.do URL 적용하기
+   
+3. Controller 상속 제거      

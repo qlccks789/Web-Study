@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="ham" class="kr.co.mlec.di._07collection.HamSand" />
+	<bean id="egg" class="kr.co.mlec.di._07collection.EggSand" />
+	<bean id="cheese" class="kr.co.mlec.di._07collection.CheeseSand" />
+	
+	<bean id="menu" class="kr.co.mlec.di._07collection.Menu">
+		<!-- setSandProp -->
+		<property name="sandProp">
+			<props>
+				<prop key="ham">햄 샌드위치</prop>
+				<prop key="egg">계란 샌드위치</prop>
+				<prop key="cheese">치즈 샌드위치</prop>
+			</props>
+		</property>
+
+		<!-- setSandMap -->
+		<property name="sandMap">
+			<map>
+				<entry key="ham"  value-ref="ham" />
+				<entry key="egg" value-ref="egg" />
+				<entry key="cheese" value-ref="cheese" />
+			</map>
+		</property>
+		
+		<!-- setSandSet  -->
+		<property name="sandSet">
+			<set>
+				<ref bean="ham" />
+				<ref bean="egg" />
+				<ref bean="cheese" />			
+			</set>
+		</property>
+		
+		<property name="sandList">
+			<list>
+				<ref bean="ham" />
+				<ref bean="egg" />
+				<ref bean="cheese" />			
+			</list>
+		</property>
+	</bean>
+	
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

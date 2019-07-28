@@ -1,0 +1,49 @@
+1. detail.jsp 페이지에 코드 변경하기
+
+   - 댓글 수정 버튼 링크 변경
+         기존 : <a href="#">수정</a>
+         변경 : <a href="detail.do?commentNo=${comment.commentNo}&no=${comment.no}">수정</a>	
+
+   - 상세페이지의 commentNo 파라미터 존재 여부로 댓글 수정 버튼 요청인지 확인하여 처리하도록 코드 수정
+   - 수정폼에서 수정버튼 클릭 시 수정 진행을 위한 폼 추가
+	<div id="commentList">
+		<form action="comment-update.do" method="post">
+			<input type="hidden" name="no" value="${board.no}" />
+			<input type="hidden" name="commentNo" value="${param.commentNo}" />
+			
+		  <table width='80%' border='1'>
+			<c:forEach var="comment" items="${commentList}">
+			<c:choose>
+		  		<c:when test="${param.commentNo eq comment.commentNo}">	
+					<tr>
+					  <td><c:out value="${comment.writer}" /></td>
+					  <td>
+					  	<textarea name="content" rows="2" cols="60"><c:out value="${comment.content}" /></textarea>
+					  </td>
+					  <td colspan="2">
+					  	  <input type="submit" value="수정" />
+					  	  <a href="detail.do?no=${comment.no}">취소</a>
+					  </td>
+					 </tr>
+			 	</c:when>
+			 	<c:otherwise>
+					<tr>
+					  <td><c:out value="${comment.writer}" /></td>
+					  <td><c:out value="${comment.content}" /></td>
+					  <td><fmt:formatDate value="${comment.regDate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+					  <td>
+					  	  <a href="comment-delete.do?commentNo=${comment.commentNo}&no=${comment.no}">삭제</a>	
+					  	  <a href="detail.do?commentNo=${comment.commentNo}&no=${comment.no}">수정</a>	
+					  </td>
+					 </tr>
+			 	</c:otherwise>
+			 </c:choose>	
+			 </c:forEach>
+			 <c:if test="${empty commentList}">
+			 <tr>
+			    <td colspan='4'>댓글이 존재하지 않습니다.</td>
+			 </tr>
+		 	</c:if>
+		 </table>
+		</form>
+	</div> 

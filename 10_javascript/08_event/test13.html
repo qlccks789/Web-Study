@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	div {
+		position: absolute;
+		
+		top: 300px;
+		left: 600px;
+		
+		width: 200px;
+		height: 200px;
+		background: tomato;
+		font-size: 30px;
+	}
+</style>
+</head>
+<body>
+	<div>이동</div>
+	<script>
+		var gap = {};
+		var isDrag = false;
+		var div = document.querySelector("div");
+		div.addEventListener("mousedown", function(e) {
+			if (!isDrag) isDrag = true;
+
+			gap.x = e.offsetX;
+			gap.y = e.offsetY;
+
+			document.addEventListener("mousemove", moveAction, true);
+			document.addEventListener("mouseup", upAction, true);
+			function moveAction(e) {
+				if (isDrag) {
+					console.dir(this)
+					console.log(e.offsetX, e.offsetY)
+					div.style.left = e.clientX - gap.x + "px";
+					div.style.top = e.clientY - gap.y + "px";
+				}
+			}
+			function upAction(e) {
+				gap.x = 0;
+				gap.y = 0;
+				isDrag = false;
+				document.removeEventListener("mouseup", upAction, true);
+				document.removeEventListener("mousemove", moveAction, true);
+			}		
+		});
+	</script>
+</body>
+</html>

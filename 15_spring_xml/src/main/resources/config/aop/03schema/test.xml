@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/aop 
+                           http://www.springframework.org/schema/aop/spring-aop.xsd">
+	
+	<!-- 핵심기능 클래스 -->
+	<bean id="board" class="kr.co.mlec.aop._03schema.BoardController" />
+	<bean id="member" class="kr.co.mlec.aop._03schema.MemberController" />
+	
+	<!-- 공통기능 클래스 -->
+	<bean id="log" class="kr.co.mlec.aop._03schema.LogAspect" />
+	<bean id="time" class="kr.co.mlec.aop._03schema.TimeAspect" />
+	
+	<!-- 핵심기능과 공통기능을 AOP처리 -->
+	<aop:config proxy-target-class="true">
+		<aop:pointcut id="pCut" expression="execution(* kr.co.mlec..*Controller.service(..))" />
+<!-- 		<aop:pointcut id="pCut" expression="execution(* service())" /> -->
+		
+		<aop:aspect ref="time">
+			<aop:around method="executeTime" pointcut-ref="pCut" />
+		</aop:aspect>
+		
+		<aop:aspect ref="log">
+			<aop:before method="showLog" pointcut-ref="pCut" />
+			<!-- 
+			<aop:after-returning method="a" pointcut-ref="pCut" />
+			<aop:after-throwing method="b" pointcut-ref="pCut" />
+			 -->
+		</aop:aspect>
+	</aop:config>
+	
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

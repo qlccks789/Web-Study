@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!-- 
+CSS 선택 우선순위
+
+1. 속성값 뒤에 !important 를 붙인 속성   
+   :  CSS에는 중복되는 속성 사용시 특정 순위에 따라 적용하는데, 
+       이를 무시하고 절대적으로 우위에 가게 하고 싶다면 속성 값 뒤에 !important 를 사용하면 된다.
+2. Inline Styles(HTML에서 style을 직접 지정한 속성)
+3. #id 로 지정한 속성 
+4. .클래스, :추상클래스, [attribute] 로 지정한 속성 
+5. 태그이름, ::pseudo-element(추상엘리먼트) 으로 지정한 속성
+6. 상위 객체에 의해 상속된 속성
+   : 가장 가까운 부모의 속성을 물려받는다.
+ -->
+<html>
+<head>
+<meta charset="utf-8" />
+<title> 속성 선택 스타일 </title>
+<style type="text/css">
+    #d1 {
+        background: skyblue;
+    }
+    .orange_bg {
+        background: orange;
+    }
+    div {
+        background: gray;
+    }
+</style>                        
+</head>
+<body>
+    <div style="background: red;" class="orange_bg" id="d1">
+        <h1>h1</h1>
+        <p>CSS 우선순위 연습</p>
+    </div>
+</body>
+</html>

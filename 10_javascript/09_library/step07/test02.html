@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!-- 
+    getAttribute 기능 추가하기
+    원래 : el.getAttribute("width");
+    
+    설정 : attr("속성명");
+    예> : attr("width");
+-->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="jquery.js"></script>
+</head>
+<body>
+    <button>가져오기</button>
+	<div id="result" data-count="1">속성확인용</div>
+	
+	<script>
+        $("button").click(function () {
+            alert( $("#result").attr("data-count") );
+        });
+	</script>	
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

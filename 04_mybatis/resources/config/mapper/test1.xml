@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.mlec.dao.TestMapper1">
+	<!-- tb_mybatis_member 테이블의 데이터를 처리하기 위한 SQL -->
+	<!-- 
+		id : 자바에서 해당 태그를 부를때 사용함, namespace + id
+		parameterType : 메서드의 매개변수 생각..
+		resultType : 메서드의 반환타입, 결과값을 담을 타입지정
+	 -->
+	<select id="selectMemberInfo1" parameterType="String"
+	        resultType="member">
+	select id,
+		   name,
+		   addr,
+		   email
+	  from tb_mybatis_member
+	 where id = #{id}
+	</select> 
+	
+	<select id="selectMemberInfo2" parameterType="member"
+		    resultType="member">
+	select id,
+	       name, 
+	       addr, 
+	       email
+	  from tb_mybatis_member
+	 where id = #{id}
+	   and name = #{name}
+	</select>
+	    
+	<select id="selectMemberInfo3" parameterType="string"
+	        resultType="string">
+	select name
+	  from tb_mybatis_member
+	 where id = #{id}    
+	</select>  
+	
+	<select id="selectMemberInfo4" resultType="int">
+	select count(*)
+	  from tb_mybatis_member
+	</select>
+	
+	<select id="selectMemberList1" resultType="member">
+	select id,
+		   name,
+		   email,
+		   addr,
+		   join_date as joinDate
+	  from tb_mybatis_member
+	 order by name    
+	</select>    
+	
+	<!-- 컬럼의 이름과  VO 클래스의 변수명이 서로 다른 경우 -->
+	<resultMap id="memberMap" type="member">
+		<result column="id" property="id" />
+		<result column="name" property="name" />
+		<result column="addr" property="addr" />
+		<result column="email" property="email" />
+		<result column="join_date" property="joinDate" />
+	</resultMap>
+		
+	<select id="selectMemberList2" resultMap="memberMap">
+	select *
+	  from tb_mybatis_member
+	 order by name    
+	</select>    
+	
+	<insert id="insertMember" parameterType="member">
+	insert into tb_mybatis_member (
+		id, name, email, addr
+	) values (
+		#{id}, #{name}, #{email}, #{addr}
+	)
+	</insert>
+	
+	<update id="updateMember" parameterType="member">
+	update tb_mybatis_member
+	   set name = #{name}
+	 where id = #{id}  	
+	</update>
+	
+	<delete id="deleteMember" parameterType="string">
+	delete 
+	  from tb_mybatis_member
+	 where id = #{id}
+	</delete>
+	
+	<select id="selectMemberIteratorList" parameterType="member"
+	        resultMap="memberMap">
+	select *
+	  from tb_mybatis_member
+	 where addr in <foreach item="addr" collection="addrs"
+	                        open="(" separator="," close=")">
+	 					#{addr}
+	               </foreach> 
+	</select>
+	
+	<sql id="commonFromWhere">
+		  from tb_mybatis_member
+		 where id like 'm%'	
+	</sql>
+	
+	<!-- 목록 데이터 -->
+	<select id="selectMemberIncludeList" resultMap="memberMap">
+		select *
+		<include refid="commonFromWhere" />
+	</select>
+
+	<!-- 전체 카운트-->
+	<select id="selectMemberIncludeListCount" resultType="int">
+		select count(*)
+		<include refid="commonFromWhere" />
+	</select>
+	
+	<select id="selectMemberSearchList" parameterType="search"
+	        resultMap="memberMap">
+		select *
+		  from tb_mybatis_member
+		<where>
+			<choose>
+			   <when test="searchType == 'id'">
+			   	   id like '%' || #{searchWord} || '%'
+			   </when> 	
+			   <when test="searchType == 'name'">
+			   	   name like '%' || #{searchWord} || '%'
+			   </when> 	
+			   <otherwise>
+			   	   email like '%' || #{searchWord} || '%'		   		
+			   </otherwise>
+			</choose>
+		</where>
+	</select>
+	
+	<select id="selectMemberSearchList2" parameterType="member"
+	        resultMap="memberMap">
+		select *
+		  from tb_mybatis_member
+		 <where>
+		 	<if test="id != null">
+		 		id like '%' || #{id} || '%'
+		 	</if>
+		 </where> 
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

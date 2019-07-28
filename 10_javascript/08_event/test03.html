@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--
+    표준 이벤트 설정 방식
+
+    요즘 사용하는 방식임... 라이브러리가 사용하는 방식..
+    객체.onclick = 콜백함수(이벤트리스너)
+
+    - 설정
+    객체.addEventListener(이벤트타입, 콜백함수(이벤트리스너), 전파방식(true/false));
+    
+    - 해제
+    객체.removeEventListener(이벤트타입, 콜백함수(이벤트리스너))
+
+    고전 이벤트 방식과 표준 이벤트 방식의 차이점
+    - 표준 이벤트 방식은 하나의 이벤트 타입에 여러가지 동작을 지시할 수 있다.
+      (이벤트 리스너를 여러개 설정이 가능함)
+
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h2>표준 이벤트 방식 이해하기</h2>
+    <button id="btn" onclick="console.log('0번');">클릭</button>
+
+    <script>
+        function fn1() {
+            console.log("fn1");
+            // 이벤트 제거
+            this.removeEventListener("click", fn1);
+        }
+        
+        function fn2() {
+            console.log("fn2");
+        }
+        
+        var btn = document.querySelector("#btn");
+        /*
+        btn.onclick = fn1;
+        btn.onclick = fn2;
+        */
+        btn.addEventListener("click", fn1);
+        btn.addEventListener("click", fn2);
+    </script>
+</body>
+</html>

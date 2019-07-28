@@ -1,0 +1,25 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    title Insert title here
+  body
+    h1 노드 게시판
+    form(action='update.do', method='post')
+      input(type='hidden', name='no', value=no)
+      table(style='border: 1px solid black')
+        tr
+          th 제목
+          td
+            input(type='text', name='title', value=title)
+        tr
+          th 글쓴이
+          td= writer
+        tr
+          th 내용
+          td
+            textarea(name='content', rows='6', cols='70') #{content}
+        tr
+          td(colspan='2')
+            button 수정
+            a(href='detail.do?no=' + no) 취소

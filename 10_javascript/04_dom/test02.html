@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--
+    태그를 동적으로 추가하기
+
+    <div>
+        테스트
+    </div>
+
+    1. div 엘리먼트 만들기
+        var 변수 = document.createElement("태그명")
+        var divEle = document.createElement("div");
+        <div></div> <img>
+
+    2. "테스트" 텍스트 노드 만들기
+       var 변수 = document.createTextNode("내용");
+       var txt = document.createTextNode("테스트");
+
+    3. 생성된 div 엘리먼트의 자식으로 txt 테스트 노드를 추가하기
+       부모객체.appendChild(자식객체);
+       divEle.appendChild(txt);   
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Dom API를 활용한 엘리먼트 동적 추가</h2>
+
+    <button onclick="doAdd();">추가</button>
+
+    <div id="list"></div>
+
+    <script>
+        function doAdd() {
+            /*
+            var h2Ele = document.createElement("h2");
+            var txt = document.createTextNode("동적 생성");
+            h2Ele.appendChild(txt);
+
+            var list = document.querySelector("#list");
+            list.appendChild(h2Ele);
+            */
+
+            /*
+           var h2Ele = document.createElement("h2");
+           h2Ele.innerText = "동적 생성"; 
+           var list = document.querySelector("#list");
+           list.appendChild(h2Ele);
+           */
+
+           var list = document.querySelector("#list");
+           list.innerHTML = list.innerHTML + "<h2>동적 생성</h2>";
+
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

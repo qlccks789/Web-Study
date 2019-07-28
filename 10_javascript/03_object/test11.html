@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!--
+객체 이해하기
+- 인스턴스와 연관없는 함수는 함수 객체 자체에 등록을 추천함...(static 유사)
+ -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h2>함수 자체 활용</h2>
+    <script>
+        function Member(id) {
+            this.id = id;
+        }
+        Member.msg = "회원의 정보를 가지고 있는 객체임";
+
+        console.dir(Member);
+        console.log(Member.msg);
+    </script>
+</body>
+</html>

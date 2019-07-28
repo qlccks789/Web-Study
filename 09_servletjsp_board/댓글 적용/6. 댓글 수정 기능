@@ -1,0 +1,39 @@
+1. 댓글 수정 SQL 추가하기(board.xml에 추가)
+
+	<update id="updateComment" parameterType="comment">
+	    update tb_comment
+	       set content = #{content}
+	     where comment_no = #{commentNo}
+	</update> 		
+
+
+2. SQL을 호출하는 Mapper 코드 추가 (BoardMapper.java)
+
+	void updateComment(CommentVO comment);
+
+	
+3. Controller 서블릿 작성하기(kr.co.mlec.board.controller)
+		
+@WebServlet("/board/comment-update.do")
+public class CommentUpdateController extends HttpServlet {
+
+	private BoardMapper mapper;
+	
+	public CommentUpdateController() {
+		mapper = MyAppSqlConfig.getSqlSession().getMapper(BoardMapper.class);
+	}
+	
+	@Override
+	public void doPost(
+			HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		request.setCharacterEncoding("utf-8");
+				
+		CommentVO comment = new CommentVO();
+		comment.setContent(request.getParameter("content"));
+		comment.setCommentNo(Integer.parseInt(request.getParameter("commentNo")));
+		mapper.updateComment(comment);
+		
+		response.sendRedirect("detail.do?no=" + Integer.parseInt(request.getParameter("no")));
+	}
+}

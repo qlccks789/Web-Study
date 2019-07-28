@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<style>
+	button {
+		margin: 5px;
+		font-size: 20px;
+		height: 50px;
+		background: tomato;
+		color: white;
+		border: 5px solid black;
+	}
+	</style>
+	<script src="../js/jquery-3.2.1.js"></script>
+</head>
+<body>
+    <button>toggle</button>
+    <button>fadeToggle</button>
+    <button>slideToggle</button>
+    <div id="effDiv1">
+        <h1>애니메이션 효과</h1>
+        <p>애니메이션 효과</p>
+    </div>
+    <div id="effDiv2" style="display: none;">
+        <h1>숨겨져 있는 영역</h1>
+        <p>숨겨져 있는 영역</p>
+    </div>
+    <script>
+	/*
+		show
+		hide
+		toggle
+
+		fadeOut
+		fadeIn
+		fadeToggle
+
+		slideUp
+		slideDown
+		slideToggle
+	*/	
+	$("button:eq(0)").click(function () {
+		/*
+		$("#effDiv1").hide();
+		$("#effDiv2").show();
+		*/
+		$("#effDiv1, #effDiv2").toggle();
+	});
+	
+	$("button:eq(1)").click(function () {
+		/*
+		$("#effDiv1").fadeOut();
+		$("#effDiv2").fadeIn();
+		*/
+		
+		$("#effDiv1, #effDiv2").fadeToggle();
+	});
+	
+	$("button:eq(2)").click(function () {
+		$("#effDiv1").slideUp();
+		$("#effDiv2").slideDown();
+		
+		/*
+		$("#effDiv1, #effDiv2").slideToggle();
+		*/
+	});
+
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

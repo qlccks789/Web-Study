@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+<style>
+	* { margin: 0px; padding: 0px; }
+	p {
+		width: 100px;
+		height: 100px;
+		margin: 10px;
+		color: white;
+		font-size: 20px;
+		font-weight: bold;
+		background: tomato;
+	}
+	input[type=button] {
+		font-size: 20px;
+		font-weight: bold;
+		width: 150px;
+		height: 40px;
+	}	
+	div {
+		margin: 20px 10px;
+		font-size: 20px;
+		font-weight: bold;
+	}
+</style>
+<script src="../js/jquery-3.2.1.js"></script>
+</head>
+<body>
+	<p>Hello</p>
+	<div id="result">결과 출력</div>
+	<div>
+		<button>위치확인(offset())</button>
+		<button>크기확인(sizeCk())</button>
+	</div>
+	<script>
+	/*
+		offset() : 엘리먼트 좌표 정보
+		width() : 엘리먼트 넓이
+		height() : 엘리먼트 높이
+	*/	
+		$("button:eq(0)").click(function () {
+			var $p = $("p");
+			$("#result").html(
+				$p.offset().top + ", " + $p.offset().left
+			);
+		});
+		$("button:eq(1)").click(function () {
+			var $p = $("p");
+			$("#result").html(
+				$p.width() + ", " + $p.height()
+			);	
+		});
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>css selectors</title>
+<style type="text/css">
+	.choice {
+		margin : 5px;
+		padding: 5px;
+		border : solid #000000 thick;
+		background: orange;
+	}
+    .java {
+        font-size: 20px;
+    }
+    .sql {
+        font-weight: bold;
+    }
+    .css {
+        font-style: italic;
+    }
+</style>
+<script src="../js/jquery-3.2.1.js"></script>
+</head>
+<body>
+    <div>
+        <ul id="language">
+            <li class="java">Java Programming
+                <ul>
+                    <li>조건문</li>
+                    <li>반복문</li>
+                    <li>클래스</li>
+                    <li>API 활용</li>
+                    <li>데이터베이스</li>
+                </ul>
+            </li>
+            <li class="sql">SQL
+                <ul>
+                    <li>Select</li>
+                    <li>Insert</li>
+                    <li>Update</li>
+                    <li>Delete</li>
+                </ul>
+            </li>
+            <li class="css">CSS
+                <ul>
+                    <li>선택자</li>
+                    <li>background</li>
+                    <li>text</li>
+                    <li>box</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+	<script>	
+	/*
+	:first
+	:last
+	
+	// 엘리먼트 번호 0번 부터 시작..
+	:even
+	:odd
+	:eq(n)
+	:gt(n)
+	:lt(n)
+     */   
+     
+    /*
+        $("li:first").addClass("choice");
+        $("li:last").addClass("choice");
+        $("ul:even").addClass("choice");
+        $("ul:odd").addClass("choice");
+        
+        $("li:eq(1)").addClass("choice");
+        $("li:eq(7)").addClass("choice");
+        $("li:eq(12)").addClass("choice");
+
+        $("ul#language > li > ul > li:first").addClass("choice");
+        $("ul#language > li > ul > li:first-child").addClass("choice");
+    */
+
+        $(".java > ul > li:lt(2)").addClass("choice");
+        $(".java > ul > li:gt(2)").addClass("choice");
+
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

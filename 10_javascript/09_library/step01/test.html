@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--
+    $ 함수의 의미 이해하기..
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery.js"></script>
+</head>
+<body>
+    <button>설정하기</button>
+    <div id="a">아이디 접근</div>
+    <div class="b">클래스 접근</div>
+    <div>태그 접근</div>
+    
+    <script>
+        var btn = document.querySelector("button");
+        var aDiv = document.querySelector("#a");
+        var bDiv = document.querySelector(".b");
+        var arr = document.querySelectorAll("div");
+
+        var btn = mlec("button")[0];
+        var aDiv = mlec("#a")[0];
+        var bDiv = mlec(".b")[0];
+        var arr = mlec("div");
+        
+        var btn = $("button")[0];
+        var aDiv = $("#a")[0];
+        var bDiv = $(".b")[0];
+        var arr = $("div");
+    </script>
+</body>
+</html>

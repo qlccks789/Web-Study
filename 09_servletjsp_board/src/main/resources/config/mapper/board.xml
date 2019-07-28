@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.mlec.board.dao.BoardMapper">
+	<resultMap id="boardMap" type="board">
+		<result column="no" property="no" />
+		<result column="writer" property="writer" />
+		<result column="title" property="title" />
+		<result column="content" property="content" />
+		<result column="reg_date" property="regDate" />
+		<result column="view_cnt" property="viewCnt" />
+	</resultMap>
+
+	<select id="selectBoard" parameterType="page" resultMap="boardMap">
+		select *
+		  from (select rownum rnum, a.*
+		          from ( select *
+		                   from tb_board
+		                  order by no desc) a
+		       )   
+		 where rnum between #{begin} and #{end}
+	</select>
+
+	<select id="selectBoardCount" resultType="int">
+		select count(*)
+		  from tb_board
+	</select>
+	
+	<!-- 게시글 상세 정보 가져오기 -->
+	<select id="selectBoardByNo" parameterType="int" resultMap="boardMap">
+		select *
+		  from tb_board
+		 where no = #{no}		
+	</select>
+	
+
+	<!-- 게시글 등록하기 -->
+    <insert id="insertBoard" parameterType="board">
+    	<selectKey keyProperty="no" resultType="int" order="BEFORE">
+    		select s_board_no.nextval from dual
+    	</selectKey>
+		insert into tb_board(
+			no, writer, title, content
+		) values (
+			#{no}, #{writer}, #{title}, #{content}
+		) 
+	</insert>
+	
+	<!-- 조회수 증가시키기 -->
+	<update id="updateViewCnt" parameterType="int">
+		update tb_board
+		   set view_cnt = view_cnt + 1
+		 where no = #{no}  
+	</update>
+	
+	<delete id="deleteBoard" parameterType="int">
+		delete 
+		  from tb_board
+		 where no = #{no} 
+	</delete>
+	
+	<update id="updateBoard" parameterType="board">
+		update tb_board
+		   set title = #{title},		
+		       content = #{content}		
+		 where no = #{no} 
+	</update>	
+	
+	<!-- 댓글 파트 시작 ============================= -->	
+	<resultMap id="commentMap" type="comment">
+		<result column="comment_no" property="commentNo" />
+		<result column="no" property="no" />
+		<result column="writer" property="writer" />
+		<result column="content" property="content" />
+		<result column="reg_date" property="regDate" />
+	</resultMap>
+	
+	<!-- 댓글 목록 -->
+	<select id="selectCommentsByNo" parameterType="int" resultMap="commentMap">
+	    select *
+	      from tb_comment
+	     where no = #{no}
+	     order by comment_no 
+	</select>	
+	
+	<!--  댓글 등록  -->
+	<insert id="insertComment" parameterType="comment">
+		insert into tb_comment(
+			comment_no, no, writer, content
+		) values (
+			s_comment_no.nextVal, #{no}, #{writer}, #{content}
+		)
+	</insert>
+	
+	<!--  댓글 삭제  -->
+	<delete id="deleteComment" parameterType="int">
+	    delete 
+	      from tb_comment
+	     where comment_no = #{commentNo}
+	</delete>
+	
+	<!--  댓글 수정  -->
+	<update id="updateComment" parameterType="comment">
+	    update tb_comment
+	       set content = #{content}
+	     where comment_no = #{commentNo}
+	</update> 	
+
+	<!-- 파일 파트 시작 ============================= -->
+	<!-- 파일 등록 -->
+	<insert id="insertFile" parameterType="file">
+		insert into tb_board_file (
+			file_no, no, file_path, org_name, system_name, file_size
+		) values (
+			s_board_file_no.nextval, #{no}, #{filePath}, #{orgName}, #{systemName}, #{fileSize}		
+		)
+	</insert> 	
+	
+	<!-- 파일 목록 -->
+	<resultMap id="fileMap" type="file">
+		<result column="file_no" property="fileNo" />
+		<result column="no" property="no" />
+		<result column="org_name" property="orgName" />
+		<result column="system_name" property="systemName" />
+		<result column="file_path" property="filePath" />
+		<result column="file_size" property="fileSize" />
+	</resultMap>
+	<select id="selectFilesByNo" parameterType="int" 
+	        resultMap="fileMap">
+		select *
+		  from tb_board_file
+		 where no = #{no}
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>css selectors</title>
+    <style type="text/css">
+        div,
+        h1 {
+            font-size: 16px;
+            font-weight: normal;
+            padding: 5px;
+        }
+        
+        h1 {
+            display: inline;
+        }
+        
+        .choice {
+            border: 2px solid #000000;
+            background: tomato;
+        }
+        
+        .fs {
+            font-size: 30px;
+            color: white;
+        }
+        
+        .fs2 {
+            font-size: 30px;
+            color: tomato;
+        }
+    </style>
+    <script src="../js/jquery-3.2.1.js"></script>
+</head>
+
+<body>
+    <div id="d1">div<h1>1</h1></div>
+    <div id="d2">div<span>2</span></div>
+    <div id="d3">div<h1>3</h1></div>
+    <div id="d4">div<span>4</span></div>
+    <div id="d5">div<h1>5</h1></div>
+    <div id="d6">div<span>6</span></div>
+    <div>
+        <span>
+            <span>123</span>
+        </span>    
+        <p>456</p>
+    </div>
+    <script>
+    /*
+        prev()      :  선택된 요소의 형제중에서 이전 요소
+        prevAll()   :  선택된 요소의 형제중에서 이전 모든 요소
+        next()      :  선택된 요소의 형제중에서 다음 요소
+        nextAll()   :  선택된 요소의 형제중에서 다음 모든 요소
+        siblings()  :  선택된 요소의 형제
+
+        parent()    :  선택된 요소의 부모 요소
+
+        find(선택자) :  선택된 요소의 후손중에서 선택자에 해당하는 요소 
+        children()   :  선택된 요소의 모든 직계 자식 요소를 선택
+        children(선택자)  :  선택된 요소의 직계중에서 선택자에 해당하는 요소를 선택
+    */   
+   
+    /*
+        $("div#d3").addClass("choice").prev().addClass("fs2");
+        $("div#d3").addClass("choice").prevAll().addClass("fs2");
+        $("div#d3").addClass("choice").next().addClass("fs2");
+        $("div#d3").addClass("choice").nextAll().addClass("fs2");
+        $("div#d3").addClass("choice").siblings().addClass("fs2");
+        $("span:first").addClass("fs").parent().addClass("choice");
+        
+        $("div").addClass("choice").find("span").addClass("fs");
+        $("div").addClass("choice").children("span").addClass("fs");
+    */    
+        $("div").addClass("choice").children().addClass("fs");
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="jquery.js"></script>
+</head>
+<body>
+	<h2>Ajax 통신 연습</h2>
+	<button>호출하기</button>
+	<hr>
+	<div id="result"></div>
+	
+	<script>
+		$("button").click(function () {
+			console.log("Ajax 요청 시작함...");
+			
+			// 1단계 : Ajax 통신을 위해서 XMLHttpRequest 객체 얻기
+			let xhr = new XMLHttpRequest();
+			
+			// 2단계 : 서버의 특정 페이지 요청을 위한 설정
+			// 서버 연결, open(요청방식, 요청페이지주소, 비동기여부);
+			xhr.open("GET", "hello.jsp", true);
+			
+			// 3단계 : 서버와 데이터 주고 받기
+			xhr.send();
+			
+			// 4단계 : 결과 받아서 처리
+			// 결과받기 : xhr.responseText
+			setTimeout(function () {
+				console.log("Ajax 호출 결과", xhr.responseText);				
+			}, 50);
+		});
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

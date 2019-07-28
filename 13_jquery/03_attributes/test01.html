@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>css selectors</title>
+<style type="text/css">
+	p {
+		margin: 0px auto;
+		width: 80%;
+		height: 100px;
+		font-size: 5em;
+	}
+	button {
+		margin-right: 30px;
+		height: 50px;
+		font-weight: bold;
+		font-size: 20px;
+	}
+</style>
+<script src="../js/jquery-3.2.1.js"></script>
+</head>
+<body>
+	<img src="images/pic1.jpg" width="50px" height="50px" />
+	<div>
+		<button>attr 설정</button>
+		<button>attr 삭제</button>
+		<button>attr 추출</button>
+	</div>
+	<script>
+	/*
+		attr( "속성명" ) : 속성값 얻기
+		attr( "속성명", "값" ) : 하나를 설정
+		attr( Object ) : 여러개를 한번에 설정하려 할때
+		removeAttr( "속성명" ) : 속성 삭제
+	*/
+
+		$("button:eq(0)").on("click", function () {
+			/*
+			$("img").attr("width", "200px");
+			$("img").attr("height", "300px");
+			$("img").attr("title", "고아라");
+			$("img").attr("src", "images/pic1.jpg");
+
+			var $img = $("img");
+			$img.attr("width", "200px");
+			$img.attr("height", "300px");
+			$img.attr("title", "고아라");
+			$img.attr("src", "images/pic1.jpg");
+
+			$("img").attr("width", "200px")
+			        .attr("height", "300px")
+					.attr("title", "고아라")
+					.attr("src", "images/pic1.jpg");
+			*/
+					
+			$("img").attr({ 
+				width: "200px", height: "300px", title: "고아라", src: "images/pic1.jpg"
+			});
+					
+
+		});
+		$("button:eq(1)").click(function () {
+			$("img").removeAttr("src");
+		});
+		$("button:eq(2)").click(function () {
+			alert( $("img").attr("src") );
+		});
+
+	</script>
+	
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

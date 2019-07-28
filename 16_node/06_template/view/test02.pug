@@ -1,0 +1,19 @@
+html
+  head
+    title #{title}
+    meta(charset='utf-8')
+  body
+    h1 동적 데이터 전달하기
+    // 속성에서는 =url
+    // a(href="#{url}") Naver 이동하기  
+    a(href=url) Naver 이동하기  
+    
+    // 반복하기
+    - for (let i = 0; i < arr.length; i++) {
+        h1 #{title} - #{i}
+    - }
+    
+    each val, index in arr
+        h1 #{index} - #{val}
+
+
